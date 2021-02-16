@@ -1,5 +1,6 @@
 import "./App.css";
 import Hero from "./components/Hero";
+import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="bg-black">
       <Navbar />
       <Hero />
+      <Footer />
     </div>
   );
 }
