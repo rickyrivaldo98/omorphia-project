@@ -2,8 +2,11 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Dropdown from "./components/Dropdown";
 import Hero from "./components/Hero";
+import Gallery from "./components/Gallery";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
+
+
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +31,11 @@ function App() {
       <Navbar toggle={toggle} />
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Hero />
+      <Gallery />
       <Footer />
     </div>
   );
+ 
 }
 
 export default App;
