@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/image/logo-brand.png";
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <>
       <nav className="flex justify-between items-center h-16 bg-transparent text-white relative pt-10 ">
         <Link to="/" className="2xl:pl-72 xl:pl-64 lg:pl-28 md:pl-20 pl-10">
           <img src={Logo} alt="" />
         </Link>
-        <div className="px-10 cursor-pointer md:hidden">
+        <div className="px-10 cursor-pointer md:hidden" onClick={toggle}>
           <svg
             className="w-6 h-6"
             fill="none"
@@ -26,20 +26,43 @@ const Navbar = () => {
           </svg>
         </div>
         <div className="pr-10 hidden md:block 2xl:pr-72 xl:pr-64 lg:pr-28">
-          <Link className="p-4" to="/">
-            Home
+          <Link
+            className=" text-base lg:text-xl font-medium 
+          2xl:mr-10 xl:mr-5 lg:mr-3"
+            to="/"
+          >
+            <button className="py-2 px-4 rounded-full transition duration-500 bg-transparent hover:bg-green-400 ">
+              Home
+            </button>
           </Link>
-          <Link className="p-4" to="/about">
-            About
+          <Link
+            className=" text-base lg:text-xl 2xl:mr-10 xl:mr-5 lg:mr-3"
+            to="/about"
+          >
+            <button className="py-2 px-4 rounded-full transition duration-500 bg-transparent hover:bg-green-400 ">
+              About
+            </button>
           </Link>
-          <Link className="p-4" to="/services">
-            Services
+          <Link
+            className=" text-base lg:text-xl 2xl:mr-10 xl:mr-5 lg:mr-3"
+            to="/services"
+          >
+            <button className="py-2 px-4 rounded-full transition duration-500 bg-transparent hover:bg-green-400 ">
+              Services
+            </button>
           </Link>
-          <Link className="p-4" to="/works">
-            Works
+          <Link
+            className=" text-base lg:text-xl 2xl:mr-10 xl:mr-5 lg:mr-3"
+            to="/works"
+          >
+            <button className="py-2 px-4 rounded-full transition duration-500 bg-transparent hover:bg-green-400">
+              Works
+            </button>
           </Link>
-          <Link className="p-4" to="/contact">
-            Contact
+          <Link className=" text-base lg:text-xl " to="/contact">
+            <button className="py-2 px-4 rounded-full transition duration-500 bg-transparent hover:bg-green-400 ">
+              Contact
+            </button>
           </Link>
         </div>
       </nav>
