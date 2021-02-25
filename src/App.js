@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Dropdown from "./components/Dropdown";
 import Hero from "./components/Hero";
-import Gallery from "./components/Gallery";
+import ImageGallery from "./components/ImageGallery";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Bgatas1 from "./assets/image/bg1.png";
@@ -80,7 +80,7 @@ export const App = () => {
         <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
           <Timeslide />
           <Testimonial />
-          {/* <Gallery /> */}
+          <ImageGallery />
           <Footer />
         </div>
       </div>
