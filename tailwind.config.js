@@ -15,6 +15,7 @@ module.exports = {
     height: {
       slider: "30rem",
     },
+
     extend: {
       zIndex: {
         "-1": "-1",
