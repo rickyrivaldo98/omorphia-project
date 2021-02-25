@@ -11,7 +11,7 @@ const Gallery = () => {
                     <div className="flex-auto ml-40 mt-28">
                         <h3 className="text-4xl mb-5">Works</h3>
                         <Link className="" to="/">
-            <p> Explore more works {'>>'} </p>
+            <p className="underline"> Explore more works {'>>'} </p>
           </Link>
                         
                     </div>

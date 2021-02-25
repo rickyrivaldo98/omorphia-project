@@ -11,6 +11,7 @@ import Pic1 from "./assets/image/pic1.svg";
 import Pic2 from "./assets/image/pic2.svg";
 import Pic3 from "./assets/image/pic3.svg";
 import Timeslide from "./components/Timeslide";
+import Testimonial from "./components/Testimonial";
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +79,8 @@ export const App = () => {
 
         <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
           <Timeslide />
-          <Gallery />
+          <Testimonial />
+          {/* <Gallery /> */}
           <Footer />
         </div>
       </div>
