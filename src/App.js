@@ -9,9 +9,9 @@ import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Bgatas1 from "./assets/image/bg1.png";
 import Bgatas2 from "./assets/image/bg2.png";
-import Pic1 from "./assets/image/pic1.svg";
-import Pic2 from "./assets/image/pic2.svg";
-import Pic3 from "./assets/image/pic3.svg";
+import Pic1 from "./assets/image/pic1.jpg";
+import Pic2 from "./assets/image/pic2.png";
+import Pic3 from "./assets/image/pic3.jpg";
 import bgmobile from "./assets/image/bg_mobile.png";
 import Timeslide from "./components/Timeslide";
 import Testimonial from "./components/Testimonial";
@@ -100,14 +100,11 @@ export const App = () => {
         <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
           <Timeslide />
           <div className="section-testi">
-
-          <Testimonial />
+            <Testimonial />
           </div>
-         
         </div>
         <div className="section-gallery overflow-hidden">
-
-        <ImageGallery />
+          <ImageGallery />
           <Footer />
         </div>
       </div>
