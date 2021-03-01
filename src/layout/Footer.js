@@ -11,14 +11,14 @@ const Footer = () => {
   return (
     <>
       <div className="contact text-white mb-32">
-        <div className="flex md:container md:mx-auto">
-          <div className="flex-auto ml-40 mt-28">
+        <div className="md:flex md:container md:mx-auto">
+          <div className="flex-auto 2xl:ml-40 2xl:mt-28 ml-8 mt-20">
             <h3 className="text-4xl mb-5">Get in Touch</h3>
-            <p>If you find our works interesting, and want to <br /> collaborate, don't hesitate to contact us.</p>
+            <p className="md:w-3/5">If you find our works interesting, and want to collaborate, don't hesitate to contact us.</p>
           </div>
           <div className="flex-auto lg:mr-40">
             <form action="" className="mt-6">
-              <div className="md:w-full px-3 mb-6 md:mb-4">
+              <div className="md:w- px-3 mb-6 md:mb-4">
                 <input className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3" type="text" placeholder="Your Name*" />
               </div>
               <div className="md:w-full px-3 mb-6 md:mb-4">
@@ -28,9 +28,11 @@ const Footer = () => {
               <div className="md:w-full px-3 mb-6 md:mb-4">
                 <textarea className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3" placeholder="Message*"></textarea>
               </div>
-              <button class="bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+              <div className="flex flex-col justify-center items-center md:flex-none md:justify-start md:items-start">
+              <button className="bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                 Send Message
               </button>
+              </div>
             </form>
           </div>
 

@@ -19,11 +19,23 @@ body {
 }
 
 .react-3d-carousel .slider-container .slider-right {
-  left: 85% !important;
+  /* left: 85% !important; */
   border: none !important;
 }
 .react-3d-carousel .slider-container .slider-left {
-  right: 85% !important;
+  /* right: 85% !important; */
+  border: none !important;
+
+}
+
+@media screen and (max-width:768px){
+  .slider-container .slider-content .slider-single.proactive {
+    margin-left: 200px;
+  }
+  .slider-container .slider-content .slider-single.preactive {
+    margin-left: -200px;
+  }
+  
 }
 .react-3d-carousel .slider-container .slider-left div {
   border: none !important;
@@ -42,4 +54,17 @@ body {
 
 .ReactGridGallery_tile-viewport {
   border-radius: 20px;
+}
+
+.fa {
+    font-size: 30px !important;
+    font-weight: 100 !important;
+}
+.fa.fa-arrow-right::before{
+    content: '\f054';
+}
+
+.fa.fa-arrow-left::before{
+    content: '\f053';
+    
 }
