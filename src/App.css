@@ -68,3 +68,24 @@ body {
     content: '\f053';
     
 }
+
+
+.section-testi{
+  background: linear-gradient(196.12deg, #14203F 16.77%, #011EF4 248.81%);
+}
+
+
+.section-gallery {
+  background: linear-gradient(149.33deg, #1C2732 14.92%, #011EF4 239.54%);
+}
+/* footer bagian send message */
+
+.section-footer{
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 3.29%, rgba(255, 255, 255, 0) 91.29%);
+/* opacity: 0.7; */
+}
+
+
+.button-message {
+  background: linear-gradient(149.77deg, #051DF4 -42.69%, #FA27D5 102.65%), #051DF4;
+}
