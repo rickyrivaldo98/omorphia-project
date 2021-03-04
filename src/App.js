@@ -15,6 +15,8 @@ import Pic3 from "./assets/image/pic3.jpg";
 import bgmobile from "./assets/image/bg_mobile.png";
 import Timeslide from "./components/Timeslide";
 import Testimonial from "./components/Testimonial";
+import Image from "./components/Image";
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 export const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,15 +76,15 @@ export const App = () => {
             alt=""
           />
         ) : (
-          <>
-            <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
-            <img
-              className="absolute -z-1  w-full md:hidden"
-              src={bgmobile}
-              alt=""
-            />
-          </>
-        )}
+                <>
+                  <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
+                  <img
+                    className="absolute -z-1  w-full md:hidden"
+                    src={bgmobile}
+                    alt=""
+                  />
+                </>
+              )}
 
         <img
           className="absolute -z-1 w-full top-80 md:top-0"
@@ -99,12 +101,21 @@ export const App = () => {
 
         <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
           <Timeslide />
-          <div className="section-testi">
+          <div data-aos="fade-up" className="section-testi">
             <Testimonial />
           </div>
         </div>
         <div className="section-gallery overflow-hidden">
+          <div data-aos="fade-right">
           <ImageGallery />
+          </div>
+          <div data-aos="fade-left">
+            <SimpleReactLightbox >
+              <Image />
+            </SimpleReactLightbox>
+          </div>
+          <br />
+          <br />
           <Footer />
         </div>
       </div>

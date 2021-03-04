@@ -22,11 +22,12 @@
     "react-recaptcha-google": "^1.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "simple-react-lightbox": "^3.6.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"

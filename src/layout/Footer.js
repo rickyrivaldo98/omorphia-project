@@ -1,17 +1,20 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import twitter from "../assets/image/Twitter.svg";
 import facebook from "../assets/image/Facebook.svg";
 import fiverr from "../assets/image/Fiverr.svg";
 import instagram from "../assets/image/Instagram.svg";
+import inprnt from "../assets/image/inprnt.svg";
+import kofi from "../assets/image/mug.svg";
+import artstation from "../assets/image/artstation.svg";
 
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
   return (
     <>
       <div className="footer-omorphia">
-        <div className="contact text-white mb-32">
+        <div data-aos="fade-down" className="contact text-white mb-32">
           <div className="md:flex md:container md:mx-auto">
             <div className="flex-auto 2xl:ml-40 2xl:mt-28 ml-8 mt-20">
               <h3 className="text-4xl mb-5">Get in Touch</h3>
@@ -43,21 +46,30 @@ const Footer = () => {
 
 
         <div className="section-footer">
-        <div className="flex flex-col justify-center items-center text-white">
+        <div data-aos="fade-up" className="flex flex-col justify-center items-center text-white">
           <h1 className="text-2xl">Catch us on</h1>
           <div className="icon-social grid grid-cols-4 p-10">
             <a href="">
-              <img className="pl-3 pr-3" src={twitter} alt="" />
-            </a>
-            <a href="">
               <img className="pl-3 pr-3" src={instagram} alt="" />
             </a>
+            <Link to="">
+              <img className="pl-3 pr-3" src={twitter} alt="" />
+            </Link>
             <a href="">
               <img className="pl-3 pr-3" src={facebook} alt="" />
             </a>
             <a href="">
               <img className="pl-3 pr-3" src={fiverr} alt="" />
             </a>
+            {/* <Link to="">
+              <img className="pl-3 pr-3" src={inprnt} alt="" />
+            </Link>
+            <Link to="">
+              <img className="pl-3 pr-3" src={kofi} alt="" />
+            </Link>
+            <Link to="">
+              <img className="pl-3 pr-3" src={artstation} alt="" />
+            </Link> */}
           </div>
           <footer className="font-semibold  pb-10">
             <h2>© 2020 Omorphia Visual</h2>

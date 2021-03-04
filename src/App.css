@@ -78,6 +78,37 @@ body {
 .section-gallery {
   background: linear-gradient(149.33deg, #1C2732 14.92%, #011EF4 239.54%);
 }
+
+.gallery-container {
+  position: relative;
+  width: 670px;
+  height: 300px;
+  background-color: aqua;
+}
+.gallery-container2 {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: aqua;
+  
+}
+
+@media (max-width: 768px){
+  .gallery-container {
+    width: 570px;
+    height: 200px;
+  }
+  .gallery-container2 {
+    width: 200px;
+    height: 200px;
+  }
+}
+.gallery{
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+}
 /* footer bagian send message */
 
 .section-footer{
@@ -88,4 +119,19 @@ body {
 
 .button-message {
   background: linear-gradient(149.77deg, #051DF4 -42.69%, #FA27D5 102.65%), #051DF4;
+}
+
+/* @keyframes flickerAnimation {
+  100% { 
+    transform: translateX(-66.6666%);  
+  }
+
+} */
+
+.animate-translateX {
+  
+  -webkit-animation: flickerAnimation 10s linear infinite;
+  -moz-animation: flickerAnimation 1s infinite;
+  -o-animation: flickerAnimation 1s infinite;
+   animation: flickerAnimation 10s infinite;
 }
