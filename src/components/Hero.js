@@ -38,13 +38,13 @@ const Hero = (props) => {
         <img
           src={star1}
           alt=""
-          className="absolute xl:right-40 xl:top-64 lg:right-40 md:top-3 md:right-20 md:w-20 right-10 top-44"
+          className="absolute transform w-10 z-50 xl:right-40 xl:top-64 lg:right-40 md:top-3 md:right-20 md:w-20 right-10 top-44"
           onClick={changeImage}
         />
         <img
           src={star2}
           alt=""
-          className="absolute md:right-1/3 right-10 top-80 lg:top-32 md:w-20 md:top-28"
+          className="absolute w-12 md:right-1/3 right-10 top-80 lg:top-32 md:w-20 md:top-28"
           onClick={changeImage2}
         />
         <img
@@ -57,7 +57,7 @@ const Hero = (props) => {
         <img
           src={star1}
           alt=""
-          className="absolute xl:left-40 xl:top-64 lg:right-40 md:top-3 md:left-20 md:w-20 w-12 top-72 left-10"
+          className="absolute transform rotate-90 xl:left-40 xl:top-64 lg:right-40 md:top-3 md:left-20 md:w-20 w-12 top-72 left-10"
           onClick={changeImage}
         />
         <img
@@ -83,7 +83,7 @@ const Hero = (props) => {
         md:text-3xl md:mt-40 md:pl-20 md:text-left 
         sm:text-3xl sm:text-left"
           >
-            Everything you can <br /> imagine is real
+            Everything you can <br/> imagine is real
           </div>
           <div
             data-aos="fade-down"

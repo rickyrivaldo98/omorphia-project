@@ -12,6 +12,8 @@ import Bgatas2 from "./assets/image/bg2.png";
 import Pic1 from "./assets/image/pic1.jpg";
 import Pic2 from "./assets/image/pic2.png";
 import Pic3 from "./assets/image/pic3.jpg";
+import Logo from "./assets/image/logo.png";
+
 import bgmobile from "./assets/image/bg_mobile.png";
 import Timeslide from "./components/Timeslide";
 import Testimonial from "./components/Testimonial";
@@ -53,25 +55,27 @@ export const App = () => {
   };
   return (
     <>
-      <div className="w-full relative ">
+
+      <link rel="icon" href={Logo}  type="image/icon" /> 
+      <div className="w-full relative">
         {image1 ? (
-          <img
+          <img className="star-image"
             data-aos="fade-up"
-            className=" absolute -z-1 w-full"
+            className="star-image absolute -z-1 w-full"
             src={Pic1}
             alt=""
           />
         ) : image2 ? (
-          <img
+          <img className="star-image"
             data-aos="fade-up"
-            className=" absolute -z-1 w-full"
+            className="star-image absolute -z-1 w-full"
             src={Pic2}
             alt=""
           />
         ) : image3 ? (
-          <img
+          <img 
             data-aos="fade-up"
-            className=" absolute -z-1 w-full"
+            className="star-image absolute -z-1 w-full"
             src={Pic3}
             alt=""
           />
@@ -85,7 +89,6 @@ export const App = () => {
                   />
                 </>
               )}
-
         <img
           className="absolute -z-1 w-full top-80 md:top-0"
           src={Bgatas2}
@@ -107,7 +110,7 @@ export const App = () => {
         </div>
         <div className="section-gallery overflow-hidden">
           <div data-aos="fade-right">
-          <ImageGallery />
+            <ImageGallery />
           </div>
           <div data-aos="fade-left">
             <SimpleReactLightbox >

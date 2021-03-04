@@ -29,6 +29,10 @@ body {
 }
 
 @media screen and (max-width:768px){
+  .star-image {
+    height: 80vh;
+    object-fit: cover;
+  }
   .slider-container .slider-content .slider-single.proactive {
     margin-left: 200px;
   }
