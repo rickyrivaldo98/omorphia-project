@@ -87,7 +87,7 @@ const Hero = (props) => {
           </div>
           <div
             data-aos="fade-down"
-            className="text-sm text-center font-normal italic pt-2 mb-1 
+            className="invisible md:visible text-sm text-center font-normal italic pt-2 mb-1 
         2xl:text-xl  2xl:pl-72 2xl:text-left 2xl:mb-96
         xl:text-xl  xl:pl-64 xl:text-left xl:mb-96
         lg:text-lg  lg:pl-28 lg:text-left lg:mb-96
