@@ -5,6 +5,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import LandingPage from "./LandingPages";
 import About from "./About";
+import Services from "./Services";
 
 export const App = () => {
   return (
@@ -13,7 +14,9 @@ export const App = () => {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/services"></Route>
+        <Route path="/services">
+          <Services />
+        </Route>
         <Route path="/works"></Route>
         <Route path="/">
           <LandingPage />
