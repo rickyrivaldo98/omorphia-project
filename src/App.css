@@ -1,5 +1,6 @@
 body {
   background-color: #14203f;
+  transition:all 1s;
 }
 .react-3d-carousel
   .slider-container
@@ -138,4 +139,24 @@ body {
   -moz-animation: flickerAnimation 1s infinite;
   -o-animation: flickerAnimation 1s infinite;
    animation: flickerAnimation 10s infinite;
+}
+
+
+.photo-list {
+  width: 90%;
+  list-style: none;
+  margin: 20px auto;
+}
+
+.photo-item {
+  display: flex;
+  width: 300px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+  margin: 20px 0;
+}
+
+.photo-item img {
+  display: flex;
+  width: 100%;
+  border: 4px double rgba(0, 0, 0, .12);
 }
