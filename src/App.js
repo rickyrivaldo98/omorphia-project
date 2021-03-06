@@ -6,11 +6,15 @@ import "aos/dist/aos.css";
 import LandingPage from "./LandingPages";
 import About from "./About";
 import Services from "./Services";
+import Contacts from "./Contacts";
 
 export const App = () => {
   return (
     <>
       <Switch>
+        <Route path="/contact">
+          <Contacts />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
