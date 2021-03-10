@@ -40,12 +40,12 @@ export const LandingPage = () => {
       }
     };
     window.addEventListener("resize", hideMenu);
-    return () => {
-      window.removeEventListener("resize", hideMenu);
-    },
-
-    setTimeout(()=> setOverlay(false), 6000)
-
+    return (
+      () => {
+        window.removeEventListener("resize", hideMenu);
+      },
+      setTimeout(() => setOverlay(false), 6000)
+    );
   }, []);
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -61,9 +61,8 @@ export const LandingPage = () => {
   };
   return (
     <>
-        <link rel="icon" href={Logo} type="image/icon" />
-    {
-      overlay === false ? (
+      <link rel="icon" href={Logo} type="image/icon" />
+      {overlay === false ? (
         <div className="w-full relative">
           {image1 ? (
             <img
@@ -110,7 +109,7 @@ export const LandingPage = () => {
             callImage2={handleCallback2}
             callImage3={handleCallback3}
           />
-  
+
           <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
             <Timeslide />
             <div data-aos="fade-up" className="section-testi">
@@ -131,11 +130,10 @@ export const LandingPage = () => {
             <Footer />
           </div>
         </div>
-      
       ) : (
         <Overlay />
       )}
-     </>
+    </>
   );
 };
 
