@@ -160,3 +160,7 @@ body {
   width: 100%;
   border: 4px double rgba(0, 0, 0, .12);
 }
+
+.btn-filter {
+  margin: 10px 10px;
+}
