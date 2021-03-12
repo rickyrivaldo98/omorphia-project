@@ -44,11 +44,11 @@ export const LandingPage = () => {
       () => {
         window.removeEventListener("resize", hideMenu);
       },
-      setTimeout(() => setOverlay(false), 6000)
+      setTimeout(() => setOverlay(false), 8000)
     );
   }, []);
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 2000, once: true });
   }, []);
   let handleCallback = (data) => {
     setImage1(data);

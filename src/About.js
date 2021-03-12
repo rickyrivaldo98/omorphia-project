@@ -14,75 +14,114 @@ import Github from "./assets/image/about/github.svg";
 import Twitch from "./assets/image/about/twitch.svg";
 import Slack from "./assets/image/about/slack.svg";
 
+import Aria from "./assets/image/testimonial/aria.jpg";
+import Rhys from "./assets/image/testimonial/rhys.jpg";
+import Mumu from "./assets/image/testimonial/mumu.jpg";
+import Jae from "./assets/image/testimonial/jae.jpg";
+import Arven from "./assets/image/testimonial/arven.jpg";
+import testingImage from "./assets/image/testimonial/testimoni_arven.jpg";
+
 const About = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-56 w-full justify-center items-center flex flex-col mb-96">
-        <img src={LogoAbout} alt="" className="mb-5" />
-        <div className="md:w-1/3 "></div>
-        <div className="text-white text-center md:w-1/3 font-bold md:text-2xl ">
-          We are digging tunnels in creativity and paving the way for
-          aesthetics. The Phantom rules. We follow him crafting brands,
-          packaging, books – illustrating all the way into this occult
-          pilgrimage. How we do it.
-        </div>
-        <div className="md:w-1/3"></div>
-      </div>
-      <div className="w-full mb-40 flex bg-black py-24">
-        <div className="md:w-2/5 pl-80 text-white text-6xl font-medium">
-          Who We Are
-        </div>
-        <div className="md:w-2/5 text-white text-xl font-medium">
-          Roaming this world in his creative paths, exploring the inevitable
-          limits of the human perception and artificial creativity.
-          <br />
-          <br /> The fear of white paper, the anxiety of a deadline, the blood
-          rush of creation, the happiness of production; all of them embodied in
-          an airy, mystical and mysterious form. <br />
-          <br /> We are pilgrims, devoted disciples in all creative projects of
-          the phantom. All the way. Phantom choose us. We obey.
-        </div>
-        <div className="md:w-1/5"></div>
-      </div>
-      <div className="w-full mb-40 py-24 flex bg-black">
-        <div className="md:w-2/5 pl-80 text-white text-6xl font-medium">
-          Selling Point
-        </div>
-        <div className="md:w-2/5 text-white text-xl font-medium">
-          Phantom provides design solutions aesthetic supremacy and unique
-          character in the fields of branding, packaging and web interfaces.
-          Skilfully combining our craft in traditional and modern mediums – like
-          new age artisans, we deliver exquisite and to the point outcomes.
-          Looking at the bigger picture and tackling each issue with a holistic
-          approach, here at Phantom we are have an eye on detail as well.
-          Details make the difference; both in print and digital design, usually
-          the small things are the most impactful. Founded in 2017 by Marios
-          Georntamilis.
-        </div>
-        <div className="md:w-1/5"></div>
-      </div>
-      <div className="w-full mb-40 py-24 flex bg-black">
-        <div className="md:w-2/5 pl-80 text-white text-6xl font-medium">
-          Our Client
-        </div>
-        <div className="md:w-2/5">
-          <div className="flex">
-            <img className="pr-24" src={Youtube} alt="" />
-            <img className="pr-24" src={Reddit} alt="" />
-            <img className="pr-24" src={Snapchat} alt="" />
-            <img className="pr-24" src={Pack} alt="" />
-            <img className="pr-24" src={Octo} alt="" />
+      <div className="section-about mt-36  mb-20">
+        <div className="w-full py-12 justify-center items-center flex flex-col">
+          <img src={LogoAbout} alt="" className="mb-5" />
+          <div className="text-white  md:text-4xl text-center font-bold my-12">
+            <h1>Omorphia Studio</h1>
           </div>
-          <div className="flex mt-14">
-            <img className="pr-24" src={Ps} alt="" />
-            <img className="pr-24" src={Discord} alt="" />
-            <img className="pr-24" src={Github} alt="" />
-            <img className="pr-24" src={Twitch} alt="" />
-            <img className="pr-24" src={Slack} alt="" />
+          <div className="md:w-1/5 "></div>
+          <div className="text-white text-center md:w-3/5 font-normal md:text-2xl ">
+            <div className="mb-5">
+              Born in 2020, Omorphia Studio is 2D background art illustration
+              specialist team based on Bandung, Indonesia. It’s all started when
+              our founder, Ahmad Saefudin Ferdiansyah, wanted to reimagine the
+              nostalgic emotion of his childhood memories and his admiration
+              towards Japanese art and culture.
+            </div>
+            <div className="mb-5">
+              Since then, we’ve been passionately producing over 100
+              high-quality background assets from popular anime visual styles
+              such as virtual YouTuber and video games projects.
+            </div>
+            <div className="mb-5">
+              By marrying between interior design and pop culture visuals, we
+              believe that background art is not just a complementary but could
+              be meaningful too.
+            </div>
+            <div className="mb-5">
+              So, buckle up and get ready to have a rollercoaster feeling!
+            </div>
+          </div>
+          <div className="md:w-1/5"></div>
+        </div>
+      </div>
+      <div className="sec-about-services mb-20">
+        <div className="w-full py-12 justify-center items-center flex flex-col">
+          <div className="text-white text-2xl  md:text-4xl text-center font-bold md:my-12">
+            <h1>Our Services</h1>
           </div>
         </div>
-        <div className="md:w-1/5"></div>
+        <div className="justify-center text-center items-center md:flex ">
+          <div className="md:w-1/2 p-10 md:p-32 ">
+            <img className="rounded-lg " src={testingImage} alt="" />
+            <div className="text-white  md:text-2xl text-center font-bold mt-12 mb-4">
+              Large Space
+            </div>
+            <div className="textlarge-space md:text-xl font-bold text-center">
+              Landscape / Architectural / Enviroment
+            </div>
+          </div>
+          <div className="md:w-1/2 p-10 md:p-32 ">
+            <img className="rounded-lg" src={testingImage} alt="" />
+            <div className="text-white  md:text-2xl text-center font-bold mt-12  mb-4">
+              Small Space
+            </div>
+            <div className="textsmall-space md:text-xl font-bold text-center">
+              Small Unit / House / Room
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="sec-about-client mb-20 pb-3">
+        <div className="w-full  justify-center items-center flex flex-col">
+          <div className=" text-2xl text-white  md:text-4xl text-center font-bold my-12">
+            <h1>Our Clients</h1>
+          </div>
+        </div>
+        <div className="justify-center text-center items-center md:flex mb-20 ">
+          <div className="w-28 mx-auto md:mx-5">
+            <img className=" rounded-full" src={Aria} alt="" />
+            <div className="text-xs md:text-normal text-white text-center font-bold my-5">
+              @AriaSchnuffel (China)
+            </div>
+          </div>
+          <div className="w-28 mx-auto md:mx-5">
+            <img className=" rounded-full" src={Rhys} alt="" />
+            <div className="text-xs md:text-normal text-white text-center font-bold my-5">
+              @RhysCyfnos (United States)
+            </div>
+          </div>
+          <div className="w-28 mx-auto md:mx-5">
+            <img className=" rounded-full" src={Mumu} alt="" />
+            <div className="text-xs md:text-normal text-white text-center font-bold my-5">
+              @MumuGaVT (Japan)
+            </div>
+          </div>
+          <div className="w-28 mx-auto md:mx-5">
+            <img className=" rounded-full" src={Jae} alt="" />
+            <div className="text-xs md:text-normal text-white text-center font-bold my-5">
+              @jaejoonah_vt (Korea)
+            </div>
+          </div>
+          <div className="w-28 mx-auto md:mx-5">
+            <img className=" rounded-full" src={Arven} alt="" />
+            <div className="text-xs md:text-normal text-white text-center font-bold my-5">
+              @arventisgontera (German)
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

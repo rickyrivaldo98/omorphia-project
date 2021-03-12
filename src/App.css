@@ -1,6 +1,6 @@
 body {
   background-color: #14203f;
-  transition:all 1s;
+  transition: all 1s;
 }
 .react-3d-carousel
   .slider-container
@@ -26,10 +26,9 @@ body {
 .react-3d-carousel .slider-container .slider-left {
   /* right: 85% !important; */
   border: none !important;
-
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
   .star-image {
     height: 80vh;
     object-fit: cover;
@@ -40,7 +39,6 @@ body {
   .slider-container .slider-content .slider-single.preactive {
     margin-left: -200px;
   }
-  
 }
 .react-3d-carousel .slider-container .slider-left div {
   border: none !important;
@@ -62,26 +60,23 @@ body {
 }
 
 .fa {
-    font-size: 30px !important;
-    font-weight: 100 !important;
+  font-size: 30px !important;
+  font-weight: 100 !important;
 }
-.fa.fa-arrow-right::before{
-    content: '\f054';
-}
-
-.fa.fa-arrow-left::before{
-    content: '\f053';
-    
+.fa.fa-arrow-right::before {
+  content: "\f054";
 }
 
-
-.section-testi{
-  background: linear-gradient(196.12deg, #14203F 16.77%, #011EF4 248.81%);
+.fa.fa-arrow-left::before {
+  content: "\f053";
 }
 
+.section-testi {
+  background: linear-gradient(196.12deg, #14203f 16.77%, #011ef4 248.81%);
+}
 
 .section-gallery {
-  background: linear-gradient(149.33deg, #1C2732 14.92%, #011EF4 239.54%);
+  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
 }
 
 .gallery-container {
@@ -95,10 +90,9 @@ body {
   width: 300px;
   height: 300px;
   background-color: aqua;
-  
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .gallery-container {
     width: 570px;
     height: 200px;
@@ -108,7 +102,7 @@ body {
     height: 200px;
   }
 }
-.gallery{
+.gallery {
   object-fit: cover;
   background-size: cover;
   background-position: center;
@@ -116,14 +110,23 @@ body {
 }
 /* footer bagian send message */
 
-.section-footer{
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 3.29%, rgba(255, 255, 255, 0) 91.29%);
-/* opacity: 0.7; */
+.section-footer {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.4) 3.29%,
+    rgba(255, 255, 255, 0) 91.29%
+  );
+  /* opacity: 0.7; */
 }
 
-
 .button-message {
-  background: linear-gradient(149.77deg, #051DF4 -42.69%, #FA27D5 102.65%), #051DF4;
+  background: linear-gradient(149.77deg, #051df4 -42.69%, #fa27d5 102.65%),
+    #051df4;
+}
+
+input[type="text"],
+textarea[type="text"] {
+  color: white;
 }
 
 /* @keyframes flickerAnimation {
@@ -134,13 +137,11 @@ body {
 } */
 
 .animate-translateX {
-  
   -webkit-animation: flickerAnimation 10s linear infinite;
   -moz-animation: flickerAnimation 1s infinite;
   -o-animation: flickerAnimation 1s infinite;
-   animation: flickerAnimation 10s infinite;
+  animation: flickerAnimation 10s infinite;
 }
-
 
 .photo-list {
   width: 90%;
@@ -151,16 +152,104 @@ body {
 .photo-item {
   display: flex;
   width: 300px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
   margin: 20px 0;
 }
 
 .photo-item img {
   display: flex;
   width: 100%;
-  border: 4px double rgba(0, 0, 0, .12);
+  border: 4px double rgba(0, 0, 0, 0.12);
 }
 
 .btn-filter {
   margin: 10px 10px;
+}
+
+.section-about {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.section-about::after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(114.96deg, #fde423 0.54%, #28efed 119.26%),
+    #051df4;
+  opacity: 0.5;
+}
+
+.sec-about-services {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.textlarge-space {
+  background: linear-gradient(
+      139.67deg,
+      #f7e23b 4.7%,
+      rgba(255, 255, 255, 0) 122.62%
+    ),
+    #ff2128;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.textsmall-space {
+  background: linear-gradient(114.96deg, #fde423 0.54%, #28efed 119.26%),
+    #051df4;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sec-about-services::after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(111.48deg, #f70d6c 5.39%, #2826fe 133.74%),
+    #051df4;
+  opacity: 0.5;
+}
+
+.sec-about-client {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.sec-about-client::after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(63.58deg, #0452cd 9.83%, #00fb4f 124.29%), #051df4;
+  opacity: 0.5;
+}
+
+.servicesImage-large {
+  width: 545px;
+  height: 605px;
+  background-color: aqua;
+}
+
+.servicesImage-small {
+  width: 496px;
+  height: 280px;
+  background-color: aqua;
 }

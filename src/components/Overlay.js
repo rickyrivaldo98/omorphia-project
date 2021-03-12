@@ -10,33 +10,30 @@ const Overlay = () => {
   const [isOverlayStart, setOverlayStart] = useState(true);
   const [isOverlayEnd, setOverlayEnd] = useState(false);
   const [isOverlayLoad, setOverlayLoad] = useState(false);
+  const [isOverlayOver, setOverlayOver] = useState(false);
 
   useEffect(() => {
-    // console.log(isOverlayStart);
-    // console.log(isOverlayEnd);
-    // setOverlayStart(true);
-
-    // console.log(isOverlayStart);
-    setTimeout(() => {
+    const loading1 = setTimeout(() => {
       setOverlayStart(false);
       setOverlayEnd(true);
     }, 2000);
+    return () => clearTimeout(loading1);
+  });
 
-    setTimeout(() => {
+  useEffect(() => {
+    const loading2 = setTimeout(() => {
       setOverlayEnd(false);
+      setOverlayOver(true);
+    }, 2000);
+    return () => clearTimeout(loading2);
+  });
+
+  useEffect(() => {
+    const loading3 = setTimeout(() => {
+      setOverlayOver(false);
       setOverlayLoad(true);
     }, 2000);
-
-    // console.log(isOverlayStart);
-    // setOverlayEnd(true);
-
-    // console.log(isOverlayEnd);
-    // setTimeout(() => {
-    //   setOverlayEnd(false);
-    // }, 3000);
-    console.log(isOverlayStart);
-    console.log(isOverlayEnd);
-    console.log(isOverlayLoad);
+    return () => clearTimeout(loading3);
   });
 
   return (
@@ -47,13 +44,18 @@ const Overlay = () => {
         </div>
       )}
       {isOverlayEnd && (
-        <div className="overlay-load">
+        <div className="overlay-end">
           <img src={OverlayEnd} alt="" />
         </div>
       )}
       {isOverlayLoad && (
         <div className="overlay-load">
           <img src={OverlayLoad} alt="" />
+        </div>
+      )}
+      {isOverlayOver && (
+        <div className="overlay-over">
+          <img src={EndOverlay} alt="" />
         </div>
       )}
     </>
