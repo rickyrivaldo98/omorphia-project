@@ -186,12 +186,6 @@ textarea[type="text"] {
   opacity: 0.5;
 }
 
-.sec-about-services {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .textlarge-space {
   background: linear-gradient(
       139.67deg,
@@ -208,6 +202,12 @@ textarea[type="text"] {
     #051df4;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.sec-about-services {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .sec-about-services::after {
@@ -243,13 +243,41 @@ textarea[type="text"] {
 }
 
 .servicesImage-large {
-  width: 545px;
+  width: 130%;
   height: 605px;
   background-color: aqua;
 }
 
 .servicesImage-small {
-  width: 496px;
+  width: 110%;
   height: 280px;
   background-color: aqua;
+}
+
+.service-image {
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.services-right {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.services-right::after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* Galactic Bulge */
+
+  background: linear-gradient(135deg, #0d1632 0%, #5d27ab 100%);
+  opacity: 0.5;
 }
