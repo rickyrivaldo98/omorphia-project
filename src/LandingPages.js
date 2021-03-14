@@ -7,8 +7,8 @@ import Hero from "./components/Hero";
 import ImageGallery from "./components/ImageGallery";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
-import Bgatas1 from "./assets/image/bg1.png";
-import Bgatas2 from "./assets/image/bg2.png";
+import Bgatas1 from "./assets/image/bg1(1).png";
+import Bgatas2 from "./assets/image/bg2(1).png";
 import Pic1 from "./assets/image/pic1.jpg";
 import Pic2 from "./assets/image/pic2.png";
 import Pic3 from "./assets/image/pic3.jpg";
@@ -62,77 +62,83 @@ export const LandingPage = () => {
   return (
     <>
       <link rel="icon" href={Logo} type="image/icon" />
-      {overlay === false ? (
-        <div className="w-full relative">
-          {image1 ? (
-            <img
-              className="star-image"
-              data-aos="fade-up"
-              className="star-image absolute -z-1 w-full"
-              src={Pic1}
-              alt=""
-            />
-          ) : image2 ? (
-            <img
-              className="star-image"
-              data-aos="fade-up"
-              className="star-image absolute -z-1 w-full"
-              src={Pic2}
-              alt=""
-            />
-          ) : image3 ? (
-            <img
-              data-aos="fade-up"
-              className="star-image absolute -z-1 w-full"
-              src={Pic3}
-              alt=""
-            />
-          ) : (
-            <>
-              <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
-              <img
-                className="absolute -z-1  w-full md:hidden"
-                src={bgmobile}
-                alt=""
-              />
-            </>
-          )}
+      {/* {overlay === false ? ( */}
+      <div className="w-full relative">
+        {image1 ? (
           <img
-            className="absolute -z-1 w-full top-80 md:top-0"
-            src={Bgatas2}
+            className="star-image"
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
+            className="star-image absolute -z-1 w-full"
+            src={Pic1}
             alt=""
           />
-          <Navbar toggle={toggle} />
-          <Dropdown isOpen={isOpen} toggle={toggle} />
-          <Hero
-            callImage1={handleCallback}
-            callImage2={handleCallback2}
-            callImage3={handleCallback3}
+        ) : image2 ? (
+          <img
+            className="star-image"
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
+            className="star-image absolute -z-1 w-full"
+            src={Pic2}
+            alt=""
           />
+        ) : image3 ? (
+          <img
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
+            className="star-image absolute -z-1 w-full"
+            src={Pic3}
+            alt=""
+          />
+        ) : (
+          <>
+            <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
+            <img
+              className="absolute -z-1  w-full md:hidden"
+              src={bgmobile}
+              alt=""
+            />
+          </>
+        )}
+        <img
+          className="absolute -z-1 w-full top-80 md:top-0"
+          src={Bgatas2}
+          alt=""
+        />
+        <Navbar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
+        <Hero
+          callImage1={handleCallback}
+          callImage2={handleCallback2}
+          callImage3={handleCallback3}
+        />
 
-          <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
-            <Timeslide />
-            <div data-aos="fade-up" className="section-testi">
-              <Testimonial />
-            </div>
-          </div>
-          <div className="section-gallery overflow-hidden">
-            <div data-aos="fade-right">
-              <ImageGallery />
-            </div>
-            <div data-aos="fade-left">
-              <SimpleReactLightbox>
-                <Image />
-              </SimpleReactLightbox>
-            </div>
-            <br />
-            <br />
-            <Footer />
+        <div className="overflow-hidden 2xl:pt-px xl:pt-28 bg-gradient-to-b from-colorbg1 via-colorbg1 to-colorbg2">
+          <Timeslide />
+          <div data-aos="fade-up" className="section-testi">
+            <Testimonial />
           </div>
         </div>
-      ) : (
+        <div className="section-gallery overflow-hidden">
+          <div data-aos="fade-right">
+            <ImageGallery />
+          </div>
+          <div data-aos="fade-left">
+            <SimpleReactLightbox>
+              <Image />
+            </SimpleReactLightbox>
+          </div>
+          <br />
+          <br />
+          <Footer />
+        </div>
+      </div>
+      {/* ) : (
         <Overlay />
-      )}
+      )} */}
     </>
   );
 };

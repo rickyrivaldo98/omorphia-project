@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import star1 from "../assets/image/bintang1.svg";
-import star2 from "../assets/image/bintang2.svg";
+import star1 from "../assets/image/bintang1.png";
+import star2 from "../assets/image/bintang2.png";
+import star3 from "../assets/image/bintang3.png";
 
 const Hero = (props) => {
   const [image1, setImage] = useState(false);
@@ -48,7 +49,7 @@ const Hero = (props) => {
           onClick={changeImage2}
         />
         <img
-          src={star1}
+          src={star3}
           alt=""
           className="absolute xl:right-1/3 xl:top-1/3 lg:top-72 lg:w-12 md:w-12 md:top-40 md:right-32 right-24 w-12"
           onClick={changeImage3}
@@ -67,7 +68,7 @@ const Hero = (props) => {
           onClick={changeImage2}
         />
         <img
-          src={star1}
+          src={star3}
           alt=""
           className="absolute lg:left-1/4 xl:top-32 lg:top-44 lg:w-12 md:w-12 md:top-32 md:right-32 left-14 w-12 top-10"
           onClick={changeImage3}
@@ -83,7 +84,7 @@ const Hero = (props) => {
         md:text-3xl md:mt-40 md:pl-20 md:text-left 
         sm:text-3xl sm:text-left"
           >
-            Everything you can <br/> imagine is real
+            Everything you can <br /> imagine is real
           </div>
           <div
             data-aos="fade-down"

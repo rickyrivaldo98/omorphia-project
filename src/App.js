@@ -9,11 +9,15 @@ import GalleryLayout from "./components/GalleryLayout";
 import Works from "./Works";
 import Services from "./Services";
 import Contacts from "./Contacts";
+import Admin from "./Admin";
 
 export const App = () => {
   return (
     <>
       <Switch>
+        <Route path="/admin">
+          <Admin />
+        </Route>
         <Route path="/contact">
           <Contacts />
         </Route>
@@ -21,7 +25,7 @@ export const App = () => {
           <About />
         </Route>
         <Route path="/works">
-        <Works/>
+          <Works />
         </Route>
         <Route path="/services">
           <Services />
