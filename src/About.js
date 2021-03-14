@@ -6,13 +6,14 @@ import LogoAbout from "./assets/image/logoabout.svg";
 import LargeSpace from "./assets/image/about/large-space.jpg";
 import SmallSpace from "./assets/image/about/small-space.jpg";
 
+import Star from "./assets/image/about/Star2.svg";
+
 import Aria from "./assets/image/testimonial/aria.jpg";
 import Rhys from "./assets/image/testimonial/rhys.jpg";
 import Mumu from "./assets/image/testimonial/mumu.jpg";
 import Jae from "./assets/image/testimonial/jae.jpg";
 import Arven from "./assets/image/testimonial/arven.jpg";
 import testingImage from "./assets/image/testimonial/testimoni_arven.jpg";
-import "./about.css";
 
 const About = () => {
   return (
@@ -20,7 +21,7 @@ const About = () => {
       <div className="bg-stars">
         <Navbar />
         <div className="section-about mt-36  mb-20">
-          <div className="w-full py-12 justify-center items-center flex flex-col">
+          <div className="w-full px-5 py-12 justify-center items-center flex flex-col">
             <img src={LogoAbout} alt="" className="mb-5" />
             <div className="text-white  md:text-4xl text-center font-bold my-12">
               <h1>Omorphia Studio</h1>
@@ -54,6 +55,7 @@ const About = () => {
         <div className="sec-about-services mb-20">
           <div className="w-full py-12 justify-center items-center flex flex-col">
             <div className="text-white text-2xl  md:text-4xl text-center font-bold md:my-12">
+              <img src={Star} alt="" className="mx-auto" />
               <h1>Our Services</h1>
             </div>
           </div>

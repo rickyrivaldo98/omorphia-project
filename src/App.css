@@ -1,6 +1,26 @@
 body {
-  background-color: #14203f;
+  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
   transition: all 1s;
+}
+
+.bg-stars {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-stars::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background-image: url(./assets/image/about/stars-bg.png);
+  background-position: center;
+  opacity: 0.3;
 }
 .react-3d-carousel
   .slider-container
@@ -71,13 +91,13 @@ body {
   content: "\f053";
 }
 
-.section-testi {
+/* .section-testi {
   background: linear-gradient(196.12deg, #14203f 16.77%, #011ef4 248.81%);
 }
 
 .section-gallery {
   background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
-}
+} */
 
 .gallery-container {
   position: relative;
@@ -279,5 +299,25 @@ textarea[type="text"] {
   /* Galactic Bulge */
 
   background: linear-gradient(135deg, #0d1632 0%, #5d27ab 100%);
+  opacity: 0.5;
+}
+
+.services-left {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.services-left::after {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(111.48deg, #f70d6c 5.39%, #2826fe 133.74%),
+    #051df4;
   opacity: 0.5;
 }
