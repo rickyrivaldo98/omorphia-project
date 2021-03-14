@@ -67,7 +67,9 @@ export const LandingPage = () => {
         {image1 ? (
           <img
             className="star-image"
-            data-aos="fade-up"
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
             className="star-image absolute -z-1 w-full"
             src={Pic1}
             alt=""
@@ -75,14 +77,18 @@ export const LandingPage = () => {
         ) : image2 ? (
           <img
             className="star-image"
-            data-aos="fade-up"
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
             className="star-image absolute -z-1 w-full"
             src={Pic2}
             alt=""
           />
         ) : image3 ? (
           <img
-            data-aos="fade-up"
+            data-aos="zoom-in"
+            data-aos-duration="300"
+            data-aos-easing="ease-in-back"
             className="star-image absolute -z-1 w-full"
             src={Pic3}
             alt=""
