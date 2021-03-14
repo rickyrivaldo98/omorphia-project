@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
             <div className="flex-auto lg:mr-40">
               <form action="" className="mt-6">
-                <div className="md:w- px-3 mb-6 md:mb-4">
+                <div className="md:w-full px-3 mb-6 md:mb-4">
                   <input
                     className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3"
                     type="text"
