@@ -7,11 +7,53 @@ import inprnt from "../assets/image/inprnt.svg";
 import kofi from "../assets/image/mug.svg";
 import artstation from "../assets/image/artstation.svg";
 
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
 
 const Footer = () => {
+  let history = useHistory();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange1 = (e) => setName(e.target.value);
+  const handleChange2 = (e) => setEmail(e.target.value);
+  const handleChange3 = (e) => setMessage(e.target.value);
+
+  const handleContact = (e) => {
+    e.preventDefault();
+    // setError(null);
+    setLoading(true);
+    const contact = {
+      name: name,
+      email: email,
+      message: message,
+    };
+    axios
+      .post("http://localhost:3001/contact", contact)
+      .then((res) => {
+        // console.log("Ini Hasil:");
+        // console.log(res);
+        // console.log("Berhasil Masuk");
+        alert("Telah Dikirim");
+        setTimeout(() => {
+          history.push("/");
+        }, 3000);
+      })
+      .catch((error) => {
+        setLoading(false);
+        // console.log("salah");
+        // console.log(error);
+      });
+  };
+
   return (
     <>
+      {/* {console.log("Nama:" + name)} */}
+      {/* {console.log("Email:" + email)} */}
+      {/* {console.log("Message:" + message)} */}
       <div className="footer-omorphia">
         <div data-aos="fade-down" className="contact text-white mb-32">
           <div className="md:flex md:container md:mx-auto">
@@ -23,12 +65,14 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex-auto lg:mr-40">
-              <form action="" className="mt-6">
+              <form onSubmit={handleContact} className="mt-6">
                 <div className="md:w-full px-3 mb-6 md:mb-4">
                   <input
                     className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3"
                     type="text"
                     placeholder="Your Name*"
+                    id="name"
+                    onChange={handleChange1}
                   />
                 </div>
                 <div className="md:w-full px-3 mb-6 md:mb-4">
@@ -36,6 +80,8 @@ const Footer = () => {
                     className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3"
                     type="text"
                     placeholder="Your Email*"
+                    id="email"
+                    onChange={handleChange2}
                   />
                 </div>
                 <div className="md:w-full px-3 mb-6 md:mb-4">
@@ -43,10 +89,12 @@ const Footer = () => {
                     className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3"
                     type="text"
                     placeholder="Message*"
+                    id="message"
+                    onChange={handleChange3}
                   ></textarea>
                 </div>
                 <div className="flex flex-col justify-center items-center md:flex-none md:justify-start md:items-start">
-                  <button className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                  <button className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
                     Send Message
                   </button>
                 </div>
