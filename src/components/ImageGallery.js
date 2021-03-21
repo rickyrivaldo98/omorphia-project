@@ -19,38 +19,12 @@ const ImageGallery = () => {
             </div>
           </div>
           <Link className="" to="/">
-            <button className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded  ">
+            <button className="text-sm bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded  ">
               See Related Works
             </button>
           </Link>
         </div>
       </div>
-
-      {/* <div style={{ transform: 'rotate(-2deg)' }}>
-                <div className="popup-gallery pb-5 flex flex-nowrap">
-                    <div className="px-3 items-center">
-                        <div className="gallery-container gallery " style={{ backgroundImage: `url(${Image1})` }}>
-                            <img src={Image1} alt="" />
-                        </div>
-                    </div>
-                    <div className=" px-3 items-center">
-                        <div className="gallery-container2 gallery " style={{ backgroundImage: `url(${Image2})` }}>
-                            <img src={Image2} alt="" />
-                        </div>
-                    </div>
-                    <div className=" px-3 items-center">
-                        <div className="gallery-container gallery " style={{ backgroundImage: `url(${Image1})` }}>
-
-                        </div>
-                    </div>
-                    <div className=" px-3 items-center">
-                        <div className="gallery-container2 gallery " style={{ backgroundImage: `url(${Image2})` }}>
-
-                        </div>
-                    </div>
-                </div>
-              
-            </div> */}
     </>
   );
 };
