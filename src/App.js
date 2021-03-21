@@ -10,6 +10,8 @@ import Works from "./Works";
 import Services from "./Services";
 import Contacts from "./Contacts";
 import Admin from "./Admin";
+import DetailWorks from "./DetailWorks";
+import Services_mobile from "./Services_mobile";
 
 export const App = () => {
   return (
@@ -30,7 +32,12 @@ export const App = () => {
         <Route path="/services">
           <Services />
         </Route>
-        <Route path="/works"></Route>
+        <Route path="/detailworks">
+          <DetailWorks />
+        </Route>
+        <Route path="/servicesmobile">
+          <Services_mobile />
+        </Route>
         <Route path="/">
           <LandingPage />
         </Route>
