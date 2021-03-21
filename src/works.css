@@ -1,0 +1,17 @@
+.bg-detailWorks {
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.category-display {
+  background: linear-gradient(
+      139.67deg,
+      #f7e23b 4.7%,
+      rgba(255, 255, 255, 0) 122.62%
+    ),
+    #ff2128;
+  border-radius: 30px;
+}

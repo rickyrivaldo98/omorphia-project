@@ -35,8 +35,8 @@ const Services_mobile = () => {
         </div>
         <div className="mt-56 w-full flex">
           <div className="w-full pb-9">
-            <div className="services-right p-10">
-              <div className="text-white  md:text-4xl  font-semibold mt-12 mb-4">
+            <div className="services-right p-8">
+              <div className="text-white text-3xl  md:text-4xl  font-semibold mt-12 mb-4">
                 Small Space
               </div>
               <p className="text-white font-semibold">
@@ -48,28 +48,33 @@ const Services_mobile = () => {
                 </span>
                 <br /> <br /> Start From 110$*
                 <br />
-                +40$ for commercial rate ( streams, Video Games) <br /> *)Prices
-                may increase defending complexity
+                +40$ for commercial rate ( streams, Video Games) <br /> <br />{" "}
+                *)Prices may increase defending complexity
               </p>
-              <div className="w-full flex">
-                <div className="w-1/2">
-                  <img className="rounded-lg" src={Small2} alt="" />
+              <div className="w-full flex mt-10 mb-10 ">
+                <div className="w-1/2 my-auto">
+                  <img className="rounded-lg mb-3" src={Small2} alt="" />
                   <img className="rounded-lg" src={Small} alt="" />
                 </div>
                 <div className="w-full">
                   <div
-                    className="services-img container-img"
+                    className="services-img container-img ml-3"
                     style={{ backgroundImage: `url(${Small3})` }}
                   ></div>
                 </div>
+
+                <button className="items-center justify-center button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded absolute bottom-4 right-32">
+                  See Related Works
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-20 w-full h-full flex mb-96">
-          <div className="md:w-3/5 pb-9 pr-9">
-            <div className="services-left p-10 text-right">
-              <div className="text-white  md:text-4xl  font-semibold mt-12 mb-4">
+
+        <div className="mt-56 w-full flex">
+          <div className="w-full pb-9">
+            <div className="services-left p-8">
+              <div className="text-white text-3xl  md:text-4xl  font-semibold mt-12 mb-4">
                 Large Space
               </div>
               <p className="text-white font-semibold">
@@ -81,32 +86,25 @@ const Services_mobile = () => {
                 </span>
                 <br /> <br /> Start From 180$*
                 <br />
-                +40$ for commercial rate ( streams, Video Games) <br /> *)Prices
-                may increase defending complexity
+                +40$ for commercial rate ( streams, Video Games) <br /> <br />
+                *) Prices may increase defending complexity
               </p>
-            </div>
-          </div>
-          <div className="md:w-1/5 rounded-md mr-32">
-            <div
-              className="servicesImage-large service-image relative"
-              style={{ backgroundImage: `url(${Large2})` }}
-            >
-              <div>
-                <button className="button-services bg-transparent hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 border border-black  rounded-full hover:border-transparent rounded absolute bottom-10 left-10">
+              <div className="w-full flex mt-10 mb-10 ">
+                <div className="w-full">
+                  <div
+                    className="services-img container-img"
+                    style={{ backgroundImage: `url(${Large2})` }}
+                  ></div>
+                </div>
+                <div className="w-1/2 my-auto ml-3">
+                  <img className="rounded-lg mb-3" src={Large3} alt="" />
+                  <img className="rounded-lg" src={Large} alt="" />
+                </div>
+
+                <button className="items-center justify-center button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded absolute bottom-4 right-32">
                   See Related Works
                 </button>
               </div>
-            </div>
-          </div>
-          <div className="md:w-1/5">
-            <div className=" mb-10 rounded-md ">
-              <img
-                className="servicesImage-small service-image "
-                src={Large3}
-              />
-            </div>
-            <div className=" mb-10 rounded-md">
-              <img className="servicesImage-small service-image " src={Large} />
             </div>
           </div>
         </div>

@@ -118,13 +118,9 @@ const Hero = (props) => {
         sm:text-left sm:block"
           >
             Born in 2020, Omorphia Studio is 2D background art illustration
-            specialist team based on Bandung, Indonesia. It’s all started when
-            our founder, Ahmad Saefudin Ferdiansyah, wanted to reimagine the
-            nostalgic emotion of his childhood memories and his admiration
-            towards Japanese art and culture. <br /> <br /> Since then, we’ve
-            been passionately producing over 100 high-quality background assets
-            from popular anime visual styles such as virtual YouTuber and video
-            games projects.
+            specialist team based on Bandung, Indonesia. We’ve been passionately
+            producing over 100 high-quality background assets from popular anime
+            visual styles such as virtual YouTuber and video games projects.
           </div>
         </div>
       </div>
