@@ -12,7 +12,10 @@ import Contacts from "./Contacts";
 import Admin from "./Admin";
 import DetailWorks from "./DetailWorks";
 import Services_mobile from "./Services_mobile";
-
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>;
 export const App = () => {
   return (
     <>
