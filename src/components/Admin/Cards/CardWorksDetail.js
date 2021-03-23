@@ -108,10 +108,16 @@ export default function CardWorksDetail({ color }) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
                   <div className="flex">
                     <button
-                      className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                       type="button"
                     >
-                      Details
+                      Edit
+                    </button>
+                    <button
+                      className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"
+                    >
+                      Delete
                     </button>
                   </div>
                 </td>
@@ -133,10 +139,16 @@ export default function CardWorksDetail({ color }) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
                   <div className="flex">
                     <button
-                      className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                       type="button"
                     >
-                      Details
+                      Edit
+                    </button>
+                    <button
+                      className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"
+                    >
+                      Delete
                     </button>
                   </div>
                 </td>
