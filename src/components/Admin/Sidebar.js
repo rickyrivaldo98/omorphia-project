@@ -17,10 +17,10 @@ export default function Sidebar() {
           </button>
           {/* Brand */}
           <Link
-            className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+            className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm  font-bold p-4 px-0"
             to="/"
           >
-            OMORPHIA ADMIN
+            Omorphia Admin
           </Link>
           {/* User */}
           <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -41,10 +41,10 @@ export default function Sidebar() {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link
-                    className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+                    className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm  font-bold p-4 px-0"
                     to="/"
                   >
-                    Notus React
+                    Omorphia
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -72,7 +72,7 @@ export default function Sidebar() {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            <h6 className="md:min-w-full text-gray-600 text-xs  font-bold block pt-1 pb-4 no-underline">
               Admin Menu
             </h6>
             {/* Navigation */}
@@ -81,10 +81,10 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
+                    "text-xs  py-3 font-bold block " +
                     (window.location.href.indexOf("/admin/dashboard") !== -1
                       ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
+                      : "text-gray-700 hover:text-gray-500")
                   }
                   to="/admin/dashboard"
                 >
@@ -93,54 +93,118 @@ export default function Sidebar() {
                       "fas fa-tv mr-2 text-sm " +
                       (window.location.href.indexOf("/admin/dashboard") !== -1
                         ? "opacity-75"
-                        : "text-gray-400")
+                        : "text-gray-300")
                     }
                   ></i>{" "}
                   Dashboard
                 </Link>
               </li>
+            </ul>
 
+            <hr className="my-4 md:min-w-full" />
+            {/* Heading */}
+            <h6 className="md:min-w-full text-gray-600 text-xs  font-bold block pt-1 pb-4 no-underline">
+              Admin Works Menu
+            </h6>
+            {/* Navigation */}
+
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/settings") !== -1
+                    "text-xs  py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/adminworks") !== -1
                       ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
+                      : "text-gray-800 hover:text-gray-500")
                   }
-                  to="/admin/settings"
+                  to="/admin/adminworks"
                 >
                   <i
                     className={
                       "fas fa-tools mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/settings") !== -1
+                      (window.location.href.indexOf("/admin/adminworks") !== -1
                         ? "opacity-75"
-                        : "text-gray-400")
+                        : "text-gray-300")
                     }
                   ></i>{" "}
-                  Works
+                  Gallery Works
                 </Link>
               </li>
 
               <li className="items-center">
                 <Link
                   className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/tables") !== -1
+                    "text-xs  py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/admincontacts") !== -1
                       ? "text-blue-500 hover:text-blue-600"
                       : "text-gray-800 hover:text-gray-600")
                   }
-                  to="/admin/tables"
+                  to="/admin/admincontacts"
                 >
                   <i
                     className={
                       "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
+                      (window.location.href.indexOf("/admin/admincontacts") !==
+                      -1
                         ? "opacity-75"
                         : "text-gray-400")
                     }
                   ></i>{" "}
-                  Contacts
+                  Add Gallery Works
+                </Link>
+              </li>
+
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs  py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/admincontacts") !== -1
+                      ? "text-blue-500 hover:text-blue-600"
+                      : "text-gray-800 hover:text-gray-600")
+                  }
+                  to="/admin/admincontacts"
+                >
+                  <i
+                    className={
+                      "fas fa-table mr-2 text-sm " +
+                      (window.location.href.indexOf("/admin/admincontacts") !==
+                      -1
+                        ? "opacity-75"
+                        : "text-gray-400")
+                    }
+                  ></i>{" "}
+                  Category Gallery
+                </Link>
+              </li>
+            </ul>
+            <hr className="my-4 md:min-w-full" />
+            {/* Heading */}
+            <h6 className="md:min-w-full text-gray-600 text-xs  font-bold block pt-1 pb-4 no-underline">
+              Admin Contacts
+            </h6>
+            {/* Navigation */}
+
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs  py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/admincontacts") !== -1
+                      ? "text-blue-500 hover:text-blue-600"
+                      : "text-gray-800 hover:text-gray-600")
+                  }
+                  to="/admin/admincontacts"
+                >
+                  <i
+                    className={
+                      "fas fa-table mr-2 text-sm " +
+                      (window.location.href.indexOf("/admin/admincontacts") !==
+                      -1
+                        ? "opacity-75"
+                        : "text-gray-400")
+                    }
+                  ></i>{" "}
+                  See Contacts
                 </Link>
               </li>
             </ul>
