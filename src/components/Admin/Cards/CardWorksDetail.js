@@ -21,7 +21,7 @@ export default function CardWorksDetail({ color }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Gallery Works
+                Gallery (Name)
               </h3>
 
               <button
@@ -68,7 +68,16 @@ export default function CardWorksDetail({ color }) {
                 >
                   Image
                 </th>
-
+                <th
+                  className={
+                    "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
+                    (color === "light"
+                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
+                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
+                  }
+                >
+                  Description Image
+                </th>
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -92,6 +101,9 @@ export default function CardWorksDetail({ color }) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   $2,500 USD
                 </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  Anas adalah anak gembala
+                </td>
 
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
                   <div className="flex">
@@ -113,6 +125,9 @@ export default function CardWorksDetail({ color }) {
                 </td>
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   $2,500 USD
+                </td>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                  Anas adalah anak gembala
                 </td>
 
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
