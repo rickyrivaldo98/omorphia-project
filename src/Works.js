@@ -3,6 +3,7 @@ import GalleryLayout from "./components/GalleryLayout";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import star from "./assets/image/star-works.svg";
+import "./App.css";
 
 const Works = () => {
   return (

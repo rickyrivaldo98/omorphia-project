@@ -10,34 +10,41 @@ import CardDashboard from "./components/Admin/Cards/CardDashboard";
 import AdminContact from "./components/Admin/Admin_Contact";
 import AdminWorksDetail from "./components/Admin/Admin_WorksDetail";
 import AddImages from "./components/Admin/Form/AddImages";
+import styled from "styled-components";
+
+const StyledAdmin = styled.div`
+  font-family: "Nunito";
+`;
 
 const Admin = () => {
   return (
     <>
-      <Sidebar />
-      <div className="relative md:ml-64">
-        <Navbar_admin />
-        <CardDashboard />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
-          <Switch>
-            <Route path="/admin/dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/admin/adminworksdetail">
-              <AdminWorksDetail />
-            </Route>
-            <Route path="/admin/addimages">
-              <AddImages />
-            </Route>
-            <Route path="/admin/adminworks">
-              <AdminWorks />
-            </Route>
-            <Route path="/admin/admincontacts">
-              <AdminContact />
-            </Route>
-          </Switch>
+      <StyledAdmin>
+        <Sidebar />
+        <div className="relative md:ml-64">
+          <Navbar_admin />
+          <CardDashboard />
+          <div className="px-4 md:px-10 mx-auto w-full -m-24">
+            <Switch>
+              <Route path="/admin/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/admin/adminworksdetail">
+                <AdminWorksDetail />
+              </Route>
+              <Route path="/admin/addimages">
+                <AddImages />
+              </Route>
+              <Route path="/admin/adminworks">
+                <AdminWorks />
+              </Route>
+              <Route path="/admin/admincontacts">
+                <AdminContact />
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </div>
+      </StyledAdmin>
     </>
   );
 };
