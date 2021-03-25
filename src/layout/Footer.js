@@ -32,7 +32,7 @@ const Footer = () => {
       message: message,
     };
     axios
-      .post("http://localhost:3001/contact", contact)
+      .post("http://api.sarafdesign.com/contact", contact)
       .then((res) => {
         // console.log("Ini Hasil:");
         // console.log(res);
@@ -51,9 +51,9 @@ const Footer = () => {
 
   return (
     <>
-      {/* {console.log("Nama:" + name)} */}
-      {/* {console.log("Email:" + email)} */}
-      {/* {console.log("Message:" + message)} */}
+      {console.log("Nama:" + name)}
+      {console.log("Email:" + email)}
+      {console.log("Message:" + message)}
       <div className="footer-omorphia">
         <div data-aos="fade-down" className="contact text-white mb-32">
           <div className="md:flex md:container md:mx-auto">
@@ -94,7 +94,10 @@ const Footer = () => {
                   ></textarea>
                 </div>
                 <div className="flex flex-col justify-center items-center md:flex-none md:justify-start md:items-start">
-                  <button className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
+                  <button
+                    className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                    type="submit"
+                  >
                     Send Message
                   </button>
                 </div>

@@ -1,11 +1,24 @@
-import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 // components
 
 export default function CardTable({ color }) {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get("https://api.sarafdesign.com/contact").then((res) => {
+      setData(res.data);
+    });
+    setLoading(false);
+  }, []);
+
   return (
     <>
+      {/* {console.log(name.)} */}
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
@@ -84,54 +97,29 @@ export default function CardTable({ color }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  1.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  Argon Design System
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  Esse aliquip aute reprehenderit ipsum mollit. Reprehenderit
-                  pariatur anim velit ipsum deserunt anim sit adipisicing enim
-                  consectetur culpa. Ut labore cillum laborum deserunt. Pariatur
-                  consectetur labore aliqua aliqua sint ut do sit aute qui ea.
-                  Aliquip enim commodo fugiat voluptate culpa non dolore tempor
-                  aliqua pariatur labore voluptate sit magna. Et officia Lorem
-                  adipisicing incididunt reprehenderit cupidatat adipisicing
-                  aliquip.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">gegeg</div>
-                </td>
-              </tr>
-              <tr>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  1.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  Argon Design System
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  Esse aliquip aute reprehenderit ipsum mollit. Reprehenderit
-                  pariatur anim velit ipsum deserunt anim sit adipisicing enim
-                  consectetur culpa. Ut labore cillum laborum deserunt. Pariatur
-                  consectetur labore aliqua aliqua sint ut do sit aute qui ea.
-                  Aliquip enim commodo fugiat voluptate culpa non dolore tempor
-                  aliqua pariatur labore voluptate sit magna. Et officia Lorem
-                  adipisicing incididunt reprehenderit cupidatat adipisicing
-                  aliquip.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">gegeg</div>
-                </td>
-              </tr>
+              {loading && <div>Loading...</div>}
+              {!loading &&
+                data.map((x) => (
+                  <>
+                    <tr>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                        {x.id}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                        {x.name}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {x.email}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                        {x.message}
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex">gegeg</div>
+                      </td>
+                    </tr>
+                  </>
+                ))}
             </tbody>
           </table>
         </div>

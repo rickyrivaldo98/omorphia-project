@@ -29,7 +29,7 @@ const Admin = () => {
               <Route path="/admin/dashboard">
                 <Dashboard />
               </Route>
-              <Route path="/admin/adminworksdetail">
+              <Route path="/admin/adminworksdetail/:id">
                 <AdminWorksDetail />
               </Route>
               <Route path="/admin/addimages">

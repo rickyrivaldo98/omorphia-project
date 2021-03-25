@@ -33,11 +33,8 @@ const Contactinfo = () => {
       message: message,
     };
     axios
-      .post("http://localhost:3001/contact", contact)
+      .post("https://api.sarafdesign.com/contact", contact)
       .then((res) => {
-        // console.log("Ini Hasil:");
-        // console.log(res);
-        // console.log("Berhasil Masuk");
         alert("Telah Dikirim");
         setTimeout(() => {
           history.push("/");
@@ -45,8 +42,6 @@ const Contactinfo = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // console.log("salah");
-        // console.log(error);
       });
   };
 
