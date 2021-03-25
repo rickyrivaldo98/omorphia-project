@@ -33,11 +33,8 @@ const Contactinfo = () => {
       message: message,
     };
     axios
-      .post("http://localhost:3001/contact", contact)
+      .post("https://api.sarafdesign.com/contact", contact)
       .then((res) => {
-        // console.log("Ini Hasil:");
-        // console.log(res);
-        // console.log("Berhasil Masuk");
         alert("Telah Dikirim");
         setTimeout(() => {
           history.push("/");
@@ -45,16 +42,14 @@ const Contactinfo = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // console.log("salah");
-        // console.log(error);
       });
   };
 
   return (
     <>
-      {/* {console.log("Nama:" + name)} */}
-      {/* {console.log("Email:" + email)} */}
-      {/* {console.log("Message:" + message)} */}
+      {console.log("Nama:" + name)}
+      {console.log("Email:" + email)}
+      // {console.log("Message:" + message)}
       <div className="p-8">
         <div data-aos="fade-down" className="contact text-white mb-32 ">
           <div className="w-full justify-center items-center flex flex-col ">

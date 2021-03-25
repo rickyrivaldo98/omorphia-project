@@ -1,10 +1,21 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // components
 
 export default function CardWorks({ color }) {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get("https://api.sarafdesign.com/gallery").then((res) => {
+      setData(res.data);
+    });
+    setLoading(false);
+  }, []);
   return (
     <>
       <div
@@ -85,70 +96,36 @@ export default function CardWorks({ color }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  1.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  Argon Design System
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  Esse aliquip aute reprehenderit ipsum mollit. Reprehenderit
-                  pariatur anim velit ipsum deserunt anim sit adipisicing enim
-                  consectetur culpa. Ut labore cillum laborum deserunt. Pariatur
-                  consectetur labore aliqua aliqua sint ut do sit aute qui ea.
-                  Aliquip enim commodo fugiat voluptate culpa non dolore tempor
-                  aliqua pariatur labore voluptate sit magna. Et officia Lorem
-                  adipisicing incididunt reprehenderit cupidatat adipisicing
-                  aliquip.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  <div className="flex">
-                    <button
-                      className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      Details
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  1.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                  Argon Design System
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  $2,500 USD
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  Esse aliquip aute reprehenderit ipsum mollit. Reprehenderit
-                  pariatur anim velit ipsum deserunt anim sit adipisicing enim
-                  consectetur culpa. Ut labore cillum laborum deserunt. Pariatur
-                  consectetur labore aliqua aliqua sint ut do sit aute qui ea.
-                  Aliquip enim commodo fugiat voluptate culpa non dolore tempor
-                  aliqua pariatur labore voluptate sit magna. Et officia Lorem
-                  adipisicing incididunt reprehenderit cupidatat adipisicing
-                  aliquip.
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                  <div className="flex">
-                    <Link to="/adminworksdetail">
-                      <button
-                        className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                        type="button"
-                      >
-                        Details
-                      </button>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
+              {loading && <div>loading...</div>}
+              {!loading &&
+                data.map((x) => (
+                  <tr>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                      {x.id_gallery}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                      {x.nama}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      $2,500 USD
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                      {x.deskripsi}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                      <div className="flex">
+                        <Link to={`/admin/adminworksdetail/${x.id_gallery}`}>
+                          <button
+                            className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                            type="button"
+                          >
+                            Details
+                          </button>
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
