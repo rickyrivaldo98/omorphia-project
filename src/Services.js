@@ -11,6 +11,7 @@ import Small3 from "./assets/image/services/small3.png";
 import Large from "./assets/image/services/large.jpg";
 import Large2 from "./assets/image/services/large2.jpg";
 import Large3 from "./assets/image/services/large3.jpg";
+import "./App.css";
 
 import "./services.css";
 

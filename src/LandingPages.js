@@ -61,85 +61,87 @@ export const LandingPage = () => {
   };
   return (
     <>
-      <div className="bg-stars">
-        <link rel="icon" href={Logo} type="image/icon" />
-        {/* {overlay === false ? ( */}
-        <div className="w-full relative">
-          {image1 ? (
-            <img
-              className="star-image"
-              data-aos="zoom-in"
-              data-aos-duration="300"
-              data-aos-easing="ease-in-back"
-              className="star-image absolute -z-1 w-full"
-              src={Pic1}
-              alt=""
-            />
-          ) : image2 ? (
-            <img
-              className="star-image"
-              data-aos="zoom-in"
-              data-aos-duration="300"
-              data-aos-easing="ease-in-back"
-              className="star-image absolute -z-1 w-full"
-              src={Pic2}
-              alt=""
-            />
-          ) : image3 ? (
-            <img
-              data-aos="zoom-in"
-              data-aos-duration="300"
-              data-aos-easing="ease-in-back"
-              className="star-image absolute -z-1 w-full"
-              src={Pic3}
-              alt=""
-            />
-          ) : (
-            <>
-              <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
+      <div className="bg-all">
+        <div className="bg-stars">
+          <link rel="icon" href={Logo} type="image/icon" />
+          {/* {overlay === false ? ( */}
+          <div className="w-full relative">
+            {image1 ? (
               <img
-                className="absolute -z-1  w-full md:hidden"
-                src={bgmobile}
+                className="star-image"
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-back"
+                className="star-image absolute -z-1 w-full"
+                src={Pic1}
                 alt=""
               />
-            </>
-          )}
-          <img
-            className="absolute -z-1 w-full top-80 md:top-0"
-            src={Bgatas2}
-            alt=""
-          />
-          <Navbar toggle={toggle} />
-          <Dropdown isOpen={isOpen} toggle={toggle} />
-          <Hero
-            callImage1={handleCallback}
-            callImage2={handleCallback2}
-            callImage3={handleCallback3}
-          />
+            ) : image2 ? (
+              <img
+                className="star-image"
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-back"
+                className="star-image absolute -z-1 w-full"
+                src={Pic2}
+                alt=""
+              />
+            ) : image3 ? (
+              <img
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-back"
+                className="star-image absolute -z-1 w-full"
+                src={Pic3}
+                alt=""
+              />
+            ) : (
+              <>
+                <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
+                <img
+                  className="absolute -z-1  w-full md:hidden"
+                  src={bgmobile}
+                  alt=""
+                />
+              </>
+            )}
+            <img
+              className="absolute -z-1 w-full top-80 md:top-0"
+              src={Bgatas2}
+              alt=""
+            />
+            <Navbar toggle={toggle} />
+            <Dropdown isOpen={isOpen} toggle={toggle} />
+            <Hero
+              callImage1={handleCallback}
+              callImage2={handleCallback2}
+              callImage3={handleCallback3}
+            />
 
-          <div className="overflow-hidden 2xl:pt-px xl:pt-28">
-            <Timeslide />
-            <div data-aos="fade-up" className="section-testi">
-              <Testimonial />
+            <div className="overflow-hidden 2xl:pt-px xl:pt-28">
+              <Timeslide />
+              <div data-aos="fade-up" className="section-testi">
+                <Testimonial />
+              </div>
+            </div>
+            <div className="section-gallery overflow-hidden">
+              <div data-aos="fade-right">
+                <ImageGallery />
+              </div>
+              <div data-aos="fade-left">
+                <SimpleReactLightbox>
+                  <Image />
+                </SimpleReactLightbox>
+              </div>
+              <br />
+              <br />
+              <Footer />
             </div>
           </div>
-          <div className="section-gallery overflow-hidden">
-            <div data-aos="fade-right">
-              <ImageGallery />
-            </div>
-            <div data-aos="fade-left">
-              <SimpleReactLightbox>
-                <Image />
-              </SimpleReactLightbox>
-            </div>
-            <br />
-            <br />
-            <Footer />
-          </div>
-        </div>
-        {/* ) : (
+          {/* ) : (
         <Overlay />
       )} */}
+        </div>
       </div>
     </>
   );

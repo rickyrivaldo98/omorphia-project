@@ -10,6 +10,11 @@ import CardDashboard from "./components/Admin/Cards/CardDashboard";
 import AdminContact from "./components/Admin/Admin_Contact";
 import AdminWorksDetail from "./components/Admin/Admin_WorksDetail";
 import AddImages from "./components/Admin/Form/AddImages";
+import styled from "styled-components";
+
+const StyledAdmin = styled.div`
+  font-family: "Nunito";
+`;
 
 const Admin = () => {
   return (
@@ -37,7 +42,7 @@ const Admin = () => {
             </Route>
           </Switch>
         </div>
-      </div>
+      </StyledAdmin>
     </>
   );
 };
