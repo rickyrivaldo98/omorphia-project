@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // components
 
@@ -26,22 +27,14 @@ export default function CardWorksDetail({ color }) {
     // e.preventDefault();
     // console.log(e);
     setLoading(true);
-
     axios
       .delete(`https://api.sarafdesign.com/images/gallery/${id}/${e}`)
       .then((res) => {
         setTimeout(() => {
           alert("Kehapus");
-          window.location.reload();
+          // window.location.reload();
         }, 2000);
       });
-    // axios
-    //   .get(`https://api.sarafdesign.com/images/gallery/${id}`)
-    //   .then((res) => {
-    //     setData(res.data);
-    //     // console.log(res.data);
-    //     // window.location.reload();
-    //   });
     setLoading(false);
   };
   // console.log(data.map((x) => x.id_images));
@@ -65,13 +58,14 @@ export default function CardWorksDetail({ color }) {
               >
                 Gallery {data.slice(0, 1).map((x) => x.nama)}
               </h3>
-
-              <button
-                className="bg-green-500 text-white  font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                Add Image
-              </button>
+              <Link to={`/admin/addimages/${id}`}>
+                <button
+                  className="bg-green-500 text-white  font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  Add Image
+                </button>
+              </Link>
             </div>
           </div>
         </div>
