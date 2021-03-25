@@ -16,6 +16,7 @@ export default function CardWorks({ color }) {
     });
     setLoading(false);
   }, []);
+
   return (
     <>
       <div
@@ -107,7 +108,7 @@ export default function CardWorks({ color }) {
                       {x.nama}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      $2,500 USD
+                      {x.category_nama}
                     </td>
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
                       {x.deskripsi}
