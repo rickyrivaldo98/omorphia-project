@@ -19,28 +19,31 @@ const StyledAdmin = styled.div`
 const Admin = () => {
   return (
     <>
-      <Sidebar />
-      <div className="relative md:ml-64">
-        <Navbar_admin />
-        <CardDashboard />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
-          <Switch>
-            <Route path="/admin/dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/admin/adminworksdetail/:id">
-              <AdminWorksDetail />
-            </Route>
-            <Route path="/admin/addimages">
-              <AddImages />
-            </Route>
-            <Route path="/admin/adminworks">
-              <AdminWorks />
-            </Route>
-            <Route path="/admin/admincontacts">
-              <AdminContact />
-            </Route>
-          </Switch>
+      <StyledAdmin>
+        <Sidebar />
+        <div className="relative md:ml-64">
+          <Navbar_admin />
+          <CardDashboard />
+
+          <div className="px-4 md:px-10 mx-auto w-full -m-24">
+            <Switch>
+              <Route path="/admin/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/admin/adminworksdetail/:id">
+                <AdminWorksDetail />
+              </Route>
+              <Route path="/admin/addimages">
+                <AddImages />
+              </Route>
+              <Route path="/admin/adminworks">
+                <AdminWorks />
+              </Route>
+              <Route path="/admin/admincontacts">
+                <AdminContact />
+              </Route>
+            </Switch>
+          </div>
         </div>
       </StyledAdmin>
     </>

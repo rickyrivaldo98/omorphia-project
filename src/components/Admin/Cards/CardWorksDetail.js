@@ -16,11 +16,36 @@ export default function CardWorksDetail({ color }) {
       .get(`https://api.sarafdesign.com/images/gallery/${id}`)
       .then((res) => {
         setData(res.data);
+        console.log(res.data);
         // console.log(data.slice(0, 1).map((x) => x.nama));
       });
     setLoading(false);
   }, []);
-  console.log(data[0].nama);
+
+  let handleDelete = (e) => {
+    // e.preventDefault();
+    // console.log(e);
+    setLoading(true);
+
+    axios
+      .delete(`https://api.sarafdesign.com/images/gallery/${id}/${e}`)
+      .then((res) => {
+        setTimeout(() => {
+          alert("Kehapus");
+          window.location.reload();
+        }, 2000);
+      });
+    // axios
+    //   .get(`https://api.sarafdesign.com/images/gallery/${id}`)
+    //   .then((res) => {
+    //     setData(res.data);
+    //     // console.log(res.data);
+    //     // window.location.reload();
+    //   });
+    setLoading(false);
+  };
+  // console.log(data.map((x) => x.id_images));
+  // console.log(data[0].nama);
   return (
     <>
       <div
@@ -85,16 +110,7 @@ export default function CardWorksDetail({ color }) {
                 >
                   Image
                 </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-                  }
-                >
-                  Description Image
-                </th>
+
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -120,10 +136,11 @@ export default function CardWorksDetail({ color }) {
                         {x.images_nama}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        $2,500 USD
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        Anas adalah anak gembala
+                        <img
+                          src={`https://api.sarafdesign.com/${x.file}`}
+                          // src="https://api.sarafdesign.com/uploads/haloo.jpeg"
+                          alt=""
+                        />
                       </td>
 
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
@@ -137,6 +154,7 @@ export default function CardWorksDetail({ color }) {
                           <button
                             className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                             type="button"
+                            onClick={() => handleDelete(x.id_images)}
                           >
                             Delete
                           </button>
