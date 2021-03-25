@@ -1,14 +1,25 @@
 body {
   transition: all 1s;
-  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
 }
 
 .bg-stars {
   position: relative;
   width: 100%;
   height: 100%;
+  /* background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%); */
 }
 
+.bg-stars::before {
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
+}
 .bg-stars::after {
   content: "";
   display: block;

@@ -117,8 +117,7 @@ export const LandingPage = () => {
               callImage2={handleCallback2}
               callImage3={handleCallback3}
             />
-
-            <div className="overflow-hidden 2xl:pt-px xl:pt-28">
+            <div className=" overflow-hidden 2xl:pt-px xl:pt-28">
               <Timeslide />
               <div data-aos="fade-up" className="section-testi">
                 <Testimonial />
