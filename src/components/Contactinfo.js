@@ -47,13 +47,13 @@ const Contactinfo = () => {
 
   return (
     <>
-      {console.log("Nama:" + name)}
-      {console.log("Email:" + email)}
-      // {console.log("Message:" + message)}
-      <div className="p-8">
-        <div data-aos="fade-down" className="contact text-white mb-32 ">
+      {/* {console.log("Nama:" + name)} */}
+      {/* {console.log("Email:" + email)} */}
+      {/* {console.log("Message:" + message)} */}
+      <div className="">
+        <div className="contact text-white mb-32 ">
           <div className="w-full justify-center items-center flex flex-col ">
-            <div className="">
+            <div data-aos="fade-down" className="">
               <img className="mx-auto" src={Star} alt="" />
               <h3 className="text-4xl text-center mb-5">Get in Touch</h3>
               <div className="w-full">
@@ -63,7 +63,7 @@ const Contactinfo = () => {
                 </p>
               </div>
             </div>
-            <div className="flex-auto mt-14">
+            <div data-aos="fade-down" className="flex-auto mt-14">
               <form onSubmit={handleContact}>
                 <input
                   className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
@@ -101,12 +101,12 @@ const Contactinfo = () => {
         </div>
 
         <div className="section-footer">
-          <div
-            data-aos="fade-up"
-            className="flex flex-col justify-center items-center text-white"
-          >
+          <div className="flex flex-col justify-center items-center text-white">
             <h1 className="text-2xl">Catch us on</h1>
-            <div className="icon-social grid grid-cols-7 p-10">
+            <div
+              data-aos="fade-up"
+              className="icon-social grid grid-cols-7 p-10"
+            >
               <Link
                 to={{ pathname: "https://www.instagram.com/omorphiavisual/" }}
                 target="_blank"
