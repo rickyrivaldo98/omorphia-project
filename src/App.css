@@ -149,18 +149,18 @@ textarea[type="text"] {
   color: white;
 }
 
-/* @keyframes flickerAnimation {
-  100% { 
-    transform: translateX(-66.6666%);  
+.animate-translateX {
+  animation: 20s scroll alternate-reverse infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
 
-} */
-
-.animate-translateX {
-  -webkit-animation: flickerAnimation 10s linear infinite;
-  -moz-animation: flickerAnimation 1s infinite;
-  -o-animation: flickerAnimation 1s infinite;
-  animation: flickerAnimation 10s infinite;
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 .photo-list {
