@@ -6,6 +6,31 @@ import FormData from "form-data";
 import { data } from "autoprefixer";
 
 const AddGalerry = () => {
+  let history = useHistory();
+
+  const [CategoryName, setCategoryName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange1 = (e) => setCategoryName(e.target.value);
+
+  const handleCategory = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const category = {
+      category_nama: CategoryName,
+    };
+    axios
+      .post("https://api.sarafdesign.com/category", category)
+      .then((res) => {
+        setTimeout(() => {
+          history.push("/");
+        }, 3000);
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -25,7 +50,7 @@ const AddGalerry = () => {
               </div>
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-              <form>
+              <form onSubmit={handleCategory}>
                 <div className="flex flex-col flex-wrap">
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
@@ -36,6 +61,7 @@ const AddGalerry = () => {
                         Gallery Name
                       </label>
                       <input
+                        onChange={handleChange1}
                         type="text"
                         name="gallery_name"
                         placeholder="insert image name...."
