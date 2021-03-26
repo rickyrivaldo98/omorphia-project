@@ -36,12 +36,14 @@ export default function CardWorks({ color }) {
               >
                 Gallery Works
               </h3>
-              <button
-                className="bg-green-500 text-white  font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                Add Gallery
-              </button>
+              <Link to={`/admin/addgallery`}>
+                <button
+                  className="bg-green-500 text-white  font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  Add Gallery
+                </button>
+              </Link>
             </div>
           </div>
         </div>
