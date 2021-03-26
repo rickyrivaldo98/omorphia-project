@@ -2,10 +2,12 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 // components
 
 export default function CardCategory({ color }) {
+  const alert = useAlert();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
@@ -21,7 +23,7 @@ export default function CardCategory({ color }) {
     setLoading(true);
     axios.delete(`https://api.sarafdesign.com/category/${e}`).then((res) => {
       setTimeout(() => {
-        alert("Kehapus");
+        alert.show("Category Successfully Deleted");
         window.location.reload();
       }, 5000);
 
