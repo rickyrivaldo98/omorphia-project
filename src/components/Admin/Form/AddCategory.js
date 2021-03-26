@@ -9,31 +9,24 @@ const AddCategory = () => {
   let history = useHistory();
 
   const [CategoryName, setCategoryName] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleChange1 = (e) => setCategoryName(e.target.value);
   console.log(CategoryName);
 
   const handleCategory = (e) => {
     e.preventDefault();
-    setLoading(true);
     const category = {
       category_nama: CategoryName,
     };
     axios
       .post("https://api.sarafdesign.com/category", category)
       .then((res) => {
-        console.log("Ini Hasil:");
-        console.log(res);
-        console.log("Berhasil Masuk");
         alert("Telah Dikirim ya");
         setTimeout(() => {
-          //   history.push("/admin/admincategory");
-          window.location.reload();
+          history.push("/admin/admincategory");
         }, 3000);
       })
       .catch((error) => {
-        setLoading(false);
         console.log(error);
       });
   };
@@ -76,7 +69,7 @@ const AddCategory = () => {
                     </div>
                     <button
                       className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button"
+                      type="submit"
                     >
                       Save
                     </button>
