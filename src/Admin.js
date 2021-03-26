@@ -6,12 +6,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./admin.css";
 import Dashboard from "./components/Admin/Dashboard";
 import AdminWorks from "./components/Admin/Admin_Works";
+import AdminCategory from "./components/Admin/Admin_Category";
+
 import CardDashboard from "./components/Admin/Cards/CardDashboard";
 import AdminContact from "./components/Admin/Admin_Contact";
 import AdminWorksDetail from "./components/Admin/Admin_WorksDetail";
 import AddImages from "./components/Admin/Form/AddImages";
 import styled from "styled-components";
 import AddGalerry from "./components/Admin/Form/AddGallery";
+import AddCategory from "./components/Admin/Form/AddCategory";
 
 const StyledAdmin = styled.div`
   font-family: "Nunito";
@@ -39,6 +42,12 @@ const Admin = () => {
               </Route>
               <Route path="/admin/addgallery">
                 <AddGalerry />
+              </Route>
+              <Route path="/admin/addcategory">
+                <AddCategory />
+              </Route>
+              <Route path="/admin/admincategory">
+                <AdminCategory />
               </Route>
               <Route path="/admin/adminworks">
                 <AdminWorks />
