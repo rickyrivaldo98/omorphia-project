@@ -7,6 +7,7 @@ import { data } from "autoprefixer";
 
 const AddImages = () => {
   let { id } = useParams();
+  let history = useHistory();
 
   const [ImageName, setImageName] = useState();
   const [Image, setImage] = useState("");
@@ -34,9 +35,11 @@ const AddImages = () => {
         console.log(res.data + "this is data after api call");
         alert("Tertambah");
         // setTimeout(() => {
-        //   window.location.reload();
+        // window.location.reload();
         // }, 2000);
+        history.push(`/admin/adminworksdetail/${id}`);
       })
+
       .catch((error) => {
         console.log(error);
         console.log(images);
