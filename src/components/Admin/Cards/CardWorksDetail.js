@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // components
 
 export default function CardWorksDetail({ color }) {
+  let history = useHistory();
   let { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-
+  console.log(data);
   useEffect(() => {
     setLoading(true);
     axios
       .get(`https://api.sarafdesign.com/images/gallery/${id}`)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
-        // console.log(data.slice(0, 1).map((x) => x.nama));
       });
     setLoading(false);
   }, []);
 
-  let handleDelete = (e) => {
-    // e.preventDefault();
-    // console.log(e);
+  let handleDelete = (e, x) => {
     setLoading(true);
     axios
-      .delete(`https://api.sarafdesign.com/images/gallery/${id}/${e}`)
+      .delete(`https://api.sarafdesign.com/images/gallery/${x}/${e}`)
       .then((res) => {
-        setTimeout(() => {
-          alert("Kehapus");
-          // window.location.reload();
-        }, 2000);
+        axios
+          .get(`https://api.sarafdesign.com/images/gallery/${id}`)
+          .then((res2) => {
+            setData(res2.data);
+            setTimeout(() => {
+              alert("Kehapus");
+              window.location.reload();
+            }, 5000);
+          });
       });
     setLoading(false);
+    // console.log(e, x);
   };
-  // console.log(data.map((x) => x.id_images));
-  // console.log(data[0].nama);
   return (
     <>
       <div
@@ -118,45 +119,52 @@ export default function CardWorksDetail({ color }) {
               </tr>
             </thead>
             <tbody>
-              {loading && <div>loading...</div>}
-              {!loading &&
-                data.map((x) => (
-                  <>
-                    <tr>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                        1.
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                        {x.images_nama}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <img
-                          src={`https://api.sarafdesign.com/${x.file}`}
-                          // src="https://api.sarafdesign.com/uploads/haloo.jpeg"
-                          alt=""
-                        />
-                      </td>
+              {data.length < 1 ? (
+                <div>Data Kosong</div>
+              ) : (
+                <>
+                  {loading && <div>loading...</div>}
+                  {!loading &&
+                    data.map((x) => (
+                      <>
+                        <tr>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                            {x.id_images}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                            {x.images_nama}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <img
+                              src={`https://api.sarafdesign.com/${x.file}`}
+                              alt=""
+                            />
+                          </td>
 
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                        <div className="flex">
-                          <button
-                            className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button"
-                            onClick={() => handleDelete(x.id_images)}
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  </>
-                ))}
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                            <div className="flex">
+                              <button
+                                className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="button"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="button"
+                                onClick={() =>
+                                  handleDelete(x.id_images, x.images_nama)
+                                }
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </>
+                    ))}
+                </>
+              )}
             </tbody>
           </table>
         </div>
