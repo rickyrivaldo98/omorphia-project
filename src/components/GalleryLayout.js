@@ -48,13 +48,42 @@ const GalleryLayout = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("http://localhost:3001/images/gallery").then((res) => {
+    axios.get("https://api.sarafdesign.com/images/gallery").then((res) => {
       setData(res.data);
     });
     setLoading(false);
   }, []);
   console.log(data.map((x) => x.file));
+  const Size = {
+    small: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 26",
+    },
+    medium: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 33",
+    },
+    large: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 45",
+    },
+  };
+  var myArray = [Size.small, Size.medium, Size.large];
 
+  var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
+  console.log(randomItem);
   return (
     <>
       <div style={styles.pin_container}>
@@ -62,32 +91,21 @@ const GalleryLayout = () => {
         {!loading &&
           data.map((x) => (
             <>
-              <Small
+              <div
+                key={x.nama_image}
                 style={{
-                  backgroundImage: `url(http://localhost:3001${x.file})`,
+                  ...myArray[Math.floor(Math.random() * myArray.length)],
+                  backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
                 }}
-              ></Small>
-              <Medium style={{ backgroundImage: `url(${Image7})` }}></Medium>
+              ></div>
+              {/* <Medium style={{ backgroundImage: `url(${Image7})` }}></Medium>
               <Large style={{ backgroundImage: `url(${Image4})` }}></Large>
-              <Medium style={{ backgroundImage: `url(${Image3})` }}></Medium>
+              <Medium style={{ backgroundImage: `url(${Image3})` }}></Medium> */}
             </>
           ))}
       </div>
     </>
   );
-};
-
-const Size = {
-  small: {
-    gridRowEnd: "span 26",
-    Background: "red",
-  },
-  medium: {
-    gridRowEnd: "span 33",
-  },
-  large: {
-    gridRowEnd: "span 45",
-  },
 };
 
 const styles = {
