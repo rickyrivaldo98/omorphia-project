@@ -10,6 +10,8 @@ import artstation from "../assets/image/artstation.svg";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
+var Recaptcha = require("react-recaptcha");
+
 const Footer = () => {
   let history = useHistory();
   const [name, setName] = useState("");
@@ -18,42 +20,71 @@ const Footer = () => {
   const [setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // specifying your onload callback function
+  // useEffect(() => {
+  // });
+  let callback = function () {
+    console.log("Done!!!!");
+  };
+  const [data, setData] = useState(false);
+
+  // specifying verify callback function
+  var verifyCallback = function (response) {
+    console.log(response);
+    if (response) {
+      setData(true);
+    } else {
+      alert("Coud not get recaptcha response");
+    }
+  };
+
   const handleChange1 = (e) => setName(e.target.value);
   const handleChange2 = (e) => setEmail(e.target.value);
   const handleChange3 = (e) => setMessage(e.target.value);
 
+  let captcha;
+  const resetCaptcha = () => {
+    // maybe set it till after is submitted
+    captcha.reset();
+  };
+
   const handleContact = (e) => {
     e.preventDefault();
-    // setError(null);
-    setLoading(true);
-    const contact = {
-      name: name,
-      email: email,
-      message: message,
-    };
-    axios
-      .post("http://api.sarafdesign.com/contact", contact)
-      .then((res) => {
-        // console.log("Ini Hasil:");
-        // console.log(res);
-        // console.log("Berhasil Masuk");
-        alert("Telah Dikirim");
-        setTimeout(() => {
-          history.push("/");
-        }, 3000);
-      })
-      .catch((error) => {
-        setLoading(false);
-        // console.log("salah");
-        // console.log(error);
-      });
+    if (data) {
+      // setError(null);
+      setLoading(true);
+      const contact = {
+        name: name,
+        email: email,
+        message: message,
+      };
+      axios
+        .post("http://api.sarafdesign.com/contact", contact)
+        .then((res) => {
+          // console.log("Ini Hasil:");
+          // console.log(res);
+          // console.log("Berhasil Masuk");
+          alert("Telah Dikirim");
+          setTimeout(() => {
+            history.push("/");
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          setLoading(false);
+          // console.log("salah");
+          // console.log(error);
+        });
+    } else {
+      alert("Please verify that you are human!");
+    }
   };
 
   return (
     <>
-      {console.log("Nama:" + name)}
+      {/* {console.log("Nama:" + name)}
       {console.log("Email:" + email)}
-      {console.log("Message:" + message)}
+      {console.log("Message:" + message)} */}
       <div className="footer-omorphia">
         <div data-aos="fade-down" className="contact text-white mb-32">
           <div className="md:flex md:container md:mx-auto">
@@ -93,6 +124,13 @@ const Footer = () => {
                     onChange={handleChange3}
                   ></textarea>
                 </div>
+                <Recaptcha
+                  sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
+                  render="explicit"
+                  verifyCallback={verifyCallback}
+                  onloadCallback={callback}
+                  onChange={() => resetCaptcha()}
+                />
                 <div className="flex flex-col justify-center items-center md:flex-none md:justify-start md:items-start">
                   <button
                     className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"

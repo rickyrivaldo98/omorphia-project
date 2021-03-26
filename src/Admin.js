@@ -11,6 +11,7 @@ import AdminContact from "./components/Admin/Admin_Contact";
 import AdminWorksDetail from "./components/Admin/Admin_WorksDetail";
 import AddImages from "./components/Admin/Form/AddImages";
 import styled from "styled-components";
+import AddGalerry from "./components/Admin/Form/AddGallery";
 
 const StyledAdmin = styled.div`
   font-family: "Nunito";
@@ -35,6 +36,9 @@ const Admin = () => {
               </Route>
               <Route path="/admin/addimages/:id">
                 <AddImages />
+              </Route>
+              <Route path="/admin/addgallery">
+                <AddGalerry />
               </Route>
               <Route path="/admin/adminworks">
                 <AdminWorks />
