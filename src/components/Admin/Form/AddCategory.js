@@ -6,6 +6,37 @@ import FormData from "form-data";
 import { data } from "autoprefixer";
 
 const AddCategory = () => {
+  let history = useHistory();
+
+  const [CategoryName, setCategoryName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange1 = (e) => setCategoryName(e.target.value);
+  console.log(CategoryName);
+
+  const handleCategory = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const category = {
+      category_nama: CategoryName,
+    };
+    axios
+      .post("https://api.sarafdesign.com/category", category)
+      .then((res) => {
+        console.log("Ini Hasil:");
+        console.log(res);
+        console.log("Berhasil Masuk");
+        alert("Telah Dikirim ya");
+        setTimeout(() => {
+          //   history.push("/admin/admincategory");
+          window.location.reload();
+        }, 3000);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -25,7 +56,7 @@ const AddCategory = () => {
               </div>
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-              <form>
+              <form onSubmit={handleCategory}>
                 <div className="flex flex-col flex-wrap">
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
@@ -40,6 +71,7 @@ const AddCategory = () => {
                         name="category_name"
                         placeholder="insert category name...."
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        onChange={handleChange1}
                       />
                     </div>
                     <button
