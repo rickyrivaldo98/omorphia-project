@@ -11,7 +11,7 @@ export default function CardCategory({ color }) {
 
   useEffect(() => {
     setLoading(true);
-    axios.get("https://api.sarafdesign.com/gallery").then((res) => {
+    axios.get("https://api.sarafdesign.com/category").then((res) => {
       setData(res.data);
     });
     setLoading(false);
@@ -62,16 +62,7 @@ export default function CardCategory({ color }) {
                 >
                   No
                 </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
-                  }
-                >
-                  Id Category
-                </th>
+
                 <th
                   className={
                     "px-6 align-middle border border-solid py-3 text-xs  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
@@ -102,9 +93,7 @@ export default function CardCategory({ color }) {
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
                       1
                     </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                      {x.category}
-                    </td>
+
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
                       {x.category_nama}
                     </td>
