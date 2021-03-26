@@ -130,49 +130,25 @@ export default function Sidebar() {
                   Gallery Works
                 </Link>
               </li>
-
               <li className="items-center">
                 <Link
                   className={
                     "text-xs  py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/admincontacts") !== -1
+                    (window.location.href.indexOf("/admin/admincategory") !== -1
                       ? "text-blue-500 hover:text-blue-600"
                       : "text-gray-800 hover:text-gray-600")
                   }
-                  to="/admin/admincontacts"
+                  to="/admin/admincategory"
                 >
                   <i
                     className={
                       "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/admincontacts") !==
+                      (window.location.href.indexOf("/admin/admincategory") !==
                       -1
                         ? "opacity-75"
                         : "text-gray-400")
                     }
-                  ></i>{" "}
-                  Add Gallery Works
-                </Link>
-              </li>
-
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs  py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/admincontacts") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/admincontacts"
-                >
-                  <i
-                    className={
-                      "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/admincontacts") !==
-                      -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
+                  ></i>
                   Category Gallery
                 </Link>
               </li>
