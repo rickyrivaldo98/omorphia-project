@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
 
-const AddGalerry = () => {
+const AddCategory = () => {
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -20,7 +20,7 @@ const AddGalerry = () => {
                   Back
                 </button>
                 <h6 className="text-blueGray-700 text-xl font-bold">
-                  Add Gallery
+                  Add Category
                 </h6>
               </div>
             </div>
@@ -33,43 +33,14 @@ const AddGalerry = () => {
                         className="block   text-blueGray-600 text-xs font-bold mb-2"
                         htmlFor="grid-password"
                       >
-                        Gallery Name
+                        Category Name
                       </label>
                       <input
                         type="text"
-                        name="gallery_name"
-                        placeholder="insert image name...."
+                        name="category_name"
+                        placeholder="insert category name...."
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block  text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        Description
-                      </label>
-                      <textarea
-                        type="text"
-                        name="description"
-                        placeholder="insert image name...."
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div>
-                  <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block  text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        Category Name
-                      </label>
-                      <select className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                        <option value="1">Large</option>
-                      </select>
                     </div>
                     <button
                       className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
@@ -88,4 +59,4 @@ const AddGalerry = () => {
   );
 };
 
-export default AddGalerry;
+export default AddCategory;
