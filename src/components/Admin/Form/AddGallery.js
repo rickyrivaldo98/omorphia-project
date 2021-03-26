@@ -4,9 +4,11 @@ import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
+import { useAlert } from "react-alert";
 
 const AddGalerry = () => {
   let history = useHistory();
+  const alert = useAlert();
 
   const [Nama, SetNama] = useState("");
   const [Deskripsi, setDeskripsi] = useState("");
@@ -27,11 +29,6 @@ const AddGalerry = () => {
     setLoading(false);
   }, []);
 
-  // console.log(data);
-  // console.log(Nama);
-  // console.log(Deskripsi);
-  // console.log(IdKategori);
-
   const handleGallery = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -43,7 +40,7 @@ const AddGalerry = () => {
     axios
       .post("https://api.sarafdesign.com/gallery", gallery)
       .then((res) => {
-        alert("berhasil masuk");
+        alert.show("Gallery Successfully Added!");
         setTimeout(() => {
           history.push("/");
         }, 3000);

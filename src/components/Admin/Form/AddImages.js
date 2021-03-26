@@ -4,11 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
+import { useAlert } from "react-alert";
 
 const AddImages = () => {
   let { id } = useParams();
   let history = useHistory();
-
+  const alert = useAlert();
   const [ImageName, setImageName] = useState();
   const [Image, setImage] = useState("");
 
@@ -33,11 +34,10 @@ const AddImages = () => {
       .post(`https://api.sarafdesign.com/images`, images, config)
       .then((res) => {
         console.log(res.data + "this is data after api call");
-        alert("Tertambah");
-        // setTimeout(() => {
-        // window.location.reload();
-        // }, 2000);
-        history.push(`/admin/adminworksdetail/${id}`);
+        alert.show("Images Successfully Added!");
+        setTimeout(() => {
+          history.push(`/admin/adminworksdetail/${id}`);
+        }, 2000);
       })
 
       .catch((error) => {

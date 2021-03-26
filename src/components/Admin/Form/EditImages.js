@@ -4,10 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
+import { useAlert } from "react-alert";
 
 const EditImages = () => {
   let { id } = useParams();
   let history = useHistory();
+  const alert = useAlert();
 
   const [ImageName, setImageName] = useState("");
   const [Image, setImage] = useState("");
@@ -61,7 +63,7 @@ const EditImages = () => {
       )
       .then((res) => {
         console.log(res.data + "this is data after api call");
-        alert("Teredit");
+        alert.show("Images Successfully Edited ! ");
         // setTimeout(() => {
         // window.location.reload();
         // }, 2000);

@@ -145,6 +145,7 @@ export default function CardWorksDetail({ color }) {
                           </td>
                           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                             <img
+                              className="w-32"
                               src={`https://api.sarafdesign.com/${x.file}`}
                               alt=""
                             />

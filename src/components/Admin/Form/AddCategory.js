@@ -4,8 +4,10 @@ import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
+import { useAlert } from "react-alert";
 
 const AddCategory = () => {
+  const alert = useAlert();
   let history = useHistory();
 
   const [CategoryName, setCategoryName] = useState("");
@@ -21,10 +23,10 @@ const AddCategory = () => {
     axios
       .post("https://api.sarafdesign.com/category", category)
       .then((res) => {
-        alert("Telah Dikirim ya");
+        alert.show("Category Succesfully Added!");
         setTimeout(() => {
           history.push("/admin/admincategory");
-        }, 3000);
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);

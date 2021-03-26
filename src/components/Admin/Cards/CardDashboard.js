@@ -15,10 +15,10 @@ const CardDashboard = () => {
                 <CardStats
                   statSubtitle="Messages Contact"
                   statTitle="350,897"
-                  statArrow="up"
-                  statPercent="3.48"
-                  statPercentColor="text-emerald-500"
-                  statDescripiron="Since last month"
+                  // statArrow="up"
+                  // statPercent="3.48"
+                  // statPercentColor="text-emerald-500"
+                  // statDescripiron="Since last month"
                   statIconName="far fa-chart-bar"
                   statIconColor="bg-red-500"
                 />
@@ -27,11 +27,11 @@ const CardDashboard = () => {
               <div className="w-full lg:w-6/12 xl:w-5/12 px-4">
                 <CardStats
                   statSubtitle="Work Images Uploaded"
-                  statTitle="924"
-                  statArrow="down"
-                  statPercent="1.10"
-                  statPercentColor="text-orange-500"
-                  statDescripiron="Since yesterday"
+                  // statTitle="924"
+                  // statArrow="down"
+                  // statPercent="1.10"
+                  // statPercentColor="text-orange-500"
+                  // statDescripiron="Since yesterday"
                   statIconName="fas fa-users"
                   statIconColor="bg-pink-500"
                 />
