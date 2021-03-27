@@ -43,7 +43,7 @@ export const App = () => {
         <Route path="/services">
           <Services />
         </Route>
-        <Route path="/detailworks">
+        <Route path="/detailworks/:imageId">
           <DetailWorks />
         </Route>
         <Route path="/servicesmobile">

@@ -3,17 +3,8 @@ import axios from "axios";
 import Pin from "./Pin.js";
 import Navbar from "../layout/Navbar.js";
 import Footer from "../layout/Footer.js";
-import Image1 from "../assets/image/gallery/1.png";
-import Image2 from "../assets/image/gallery/2.png";
-import Image3 from "../assets/image/gallery/3.png";
-import Image4 from "../assets/image/gallery/4.png";
-import Image5 from "../assets/image/gallery/5.png";
-import Image6 from "../assets/image/gallery/6.png";
-import Image7 from "../assets/image/gallery/7.png";
-import Image8 from "../assets/image/gallery/8.png";
-import Image9 from "../assets/image/gallery/9.png";
-import Image10 from "../assets/image/gallery/10.png";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const GalleryLayout = () => {
   const Small = styled.div`
@@ -91,16 +82,14 @@ const GalleryLayout = () => {
         {!loading &&
           data.map((x) => (
             <>
-              <div
+              <Link
+                to={`/detailworks/${x.id_images}`}
                 key={x.nama_image}
                 style={{
                   ...myArray[Math.floor(Math.random() * myArray.length)],
                   backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
                 }}
-              ></div>
-              {/* <Medium style={{ backgroundImage: `url(${Image7})` }}></Medium>
-              <Large style={{ backgroundImage: `url(${Image4})` }}></Large>
-              <Medium style={{ backgroundImage: `url(${Image3})` }}></Medium> */}
+              ></Link>
             </>
           ))}
       </div>
