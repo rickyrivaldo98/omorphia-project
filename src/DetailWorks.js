@@ -18,6 +18,7 @@ const DetailWorks = () => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
 
   // console.log("ini adalah" + id);
 
@@ -36,6 +37,15 @@ const DetailWorks = () => {
             )
             .then((res3) => {
               setData3(res3.data[0]);
+              // console.log(res3.data[0]);
+              axios
+                .get(
+                  `https://api.sarafdesign.com/images/gallery/${res2.data[0].id_gallery}`
+                )
+                .then((res4) => {
+                  setData4(res4.data);
+                  // console.log(res4.data);
+                });
             });
         });
     });
@@ -59,6 +69,20 @@ const DetailWorks = () => {
               {data.images_nama}
             </p>
             <p>{data2.deskripsi}</p>
+          </div>
+          <div className="flex flex-wrap absolute bottom-96 text-white bg-opacity-20  bg-gray-900">
+            {loading && <div>loading...</div>}
+            {!loading &&
+              data4.map((x) => (
+                <>
+                  <img
+                    className="w-32 p-3 box-image  "
+                    key={x.images_nama}
+                    src={`https://api.sarafdesign.com/${x.file}`}
+                    alt=""
+                  />
+                </>
+              ))}
           </div>
         </div>
         <div className="footer-works absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">
