@@ -56,8 +56,8 @@ const Login = () => {
 
   return (
     <>
-      {console.log("user:" + username)}
-      {console.log("pass:" + password)}
+      {/* {console.log("user:" + username)} */}
+      {/* {console.log("pass:" + password)} */}
       <div className="container mx-auto px-4 ">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">
