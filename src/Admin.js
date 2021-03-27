@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import Navbar_admin from "./components/Admin/Navbar_admin";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/Admin/Sidebar";
@@ -21,6 +23,35 @@ const StyledAdmin = styled.div`
 `;
 
 const Admin = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  let history = useHistory();
+
+  useEffect(() => {
+    // setLoading(true);
+    axios
+      .get("https://api.sarafdesign.com/checkUser")
+      .then((res) => {
+        history.push("/admin");
+      })
+      .catch((err) => {
+        if (err.response) {
+          history.push("/login");
+          // setTimeout(() => {
+          //   history.push("/login");
+          // }, 1000);
+          alert("Anda belum login");
+          // console.log(error);
+        }
+      });
+      setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div className="App"></div>;
+  }
+
   return (
     <>
       <StyledAdmin>
