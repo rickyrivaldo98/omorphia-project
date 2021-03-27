@@ -23,7 +23,7 @@ const Works = () => {
               and video games projects.
             </div>
             <div className="md:w-1/3"></div>
-            <div className="py-10">
+            {/* <div className="py-10">
               <button class="btn-filter bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full">
                 All
               </button>
@@ -45,7 +45,7 @@ const Works = () => {
               <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
                 Ect.
               </button>
-            </div>
+            </div> */}
           </div>
           <GalleryLayout />
         </div>
