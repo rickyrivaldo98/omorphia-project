@@ -34,7 +34,7 @@ const Admin = () => {
   useEffect(() => {
     // setLoading(true);
     axios
-      .get("https://localhost:3001/checkUser")
+      .get("https://api.sarafdesign.com/checkUser")
       .then((res) => {
         if (res.status === 403) {
           history.push("/login");
