@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import Navbar_admin from "./components/Admin/Navbar_admin";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/Admin/Sidebar";
@@ -6,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./admin.css";
 import Dashboard from "./components/Admin/Dashboard";
 import AdminWorks from "./components/Admin/Admin_Works";
+import { useAlert } from "react-alert";
 import AdminCategory from "./components/Admin/Admin_Category";
 
 import CardDashboard from "./components/Admin/Cards/CardDashboard";
@@ -24,6 +27,43 @@ const StyledAdmin = styled.div`
 `;
 
 const Admin = () => {
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  let history = useHistory();
+
+  useEffect(() => {
+    // setLoading(true);
+    axios
+      .get("https://api.sarafdesign.com/checkUser")
+      .then((res) => {
+        if (res.status === 403) {
+          history.push("/login");
+          // setTimeout(() => {
+          //   history.push("/login");
+          // }, 1000);
+          alert.show("Anda belum login");
+          // console.log(error);
+        }
+        history.push("/admin");
+      })
+      .catch((err) => {
+        // if (err.response) {
+        //   history.push("/login");
+        //   // setTimeout(() => {
+        //   //   history.push("/login");
+        //   // }, 1000);
+        //   alert("Anda belum login");
+        //   // console.log(error);
+        // }
+      });
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div className="App"></div>;
+  }
+
   return (
     <>
       <StyledAdmin>

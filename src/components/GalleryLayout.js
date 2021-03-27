@@ -53,7 +53,7 @@ const GalleryLayout = () => {
     });
     setLoading(false);
   }, []);
-  console.log(data.map((x) => x.file));
+  // console.log(data.map((x) => x.file));
   const Size = {
     small: {
       margin: "15px 10px",

@@ -20,18 +20,23 @@ import Testimonial from "./components/Testimonial";
 import Image from "./components/Image";
 import SimpleReactLightbox from "simple-react-lightbox";
 import Overlay from "./components/Overlay";
+import axios from "axios";
 
 export const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
 
   const [overlay, setOverlay] = useState(true);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  // console.log(data);
 
   useEffect(() => {
     const hideMenu = () => {
@@ -128,9 +133,7 @@ export const LandingPage = () => {
                 <ImageGallery />
               </div>
               <div data-aos="fade-left">
-                <SimpleReactLightbox>
-                  <Image />
-                </SimpleReactLightbox>
+                <Image />
               </div>
               <br />
               <br />
