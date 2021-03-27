@@ -35,10 +35,7 @@ const Admin = () => {
     axios
       .get("https://api.sarafdesign.com/checkUser")
       .then((res) => {
-        history.push("/admin");
-      })
-      .catch((err) => {
-        if (err.response) {
+        if (res.status(403)) {
           history.push("/login");
           // setTimeout(() => {
           //   history.push("/login");
@@ -46,7 +43,18 @@ const Admin = () => {
           alert("Anda belum login");
           // console.log(error);
         }
-      });
+        history.push("/admin");
+      })
+      // .catch((err) => {
+      //   if (err.response) {
+      //     history.push("/login");
+      //     // setTimeout(() => {
+      //     //   history.push("/login");
+      //     // }, 1000);
+      //     alert("Anda belum login");
+      //     // console.log(error);
+      //   }
+      // });
       setLoading(false);
   }, []);
 
