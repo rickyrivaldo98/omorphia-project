@@ -4,8 +4,34 @@ import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
+import { useAlert } from "react-alert";
 
 const AddCategory = () => {
+  const alert = useAlert();
+  let history = useHistory();
+
+  const [CategoryName, setCategoryName] = useState("");
+
+  const handleChange1 = (e) => setCategoryName(e.target.value);
+  console.log(CategoryName);
+
+  const handleCategory = (e) => {
+    e.preventDefault();
+    const category = {
+      category_nama: CategoryName,
+    };
+    axios
+      .post("https://api.sarafdesign.com/category", category)
+      .then((res) => {
+        alert.show("Category Succesfully Added!");
+        setTimeout(() => {
+          history.push("/admin/admincategory");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -25,7 +51,7 @@ const AddCategory = () => {
               </div>
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-              <form>
+              <form onSubmit={handleCategory}>
                 <div className="flex flex-col flex-wrap">
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
@@ -40,11 +66,12 @@ const AddCategory = () => {
                         name="category_name"
                         placeholder="insert category name...."
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        onChange={handleChange1}
                       />
                     </div>
                     <button
                       className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                      type="button"
+                      type="submit"
                     >
                       Save
                     </button>

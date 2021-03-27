@@ -86,7 +86,7 @@ const Footer = () => {
       {console.log("Email:" + email)}
       {console.log("Message:" + message)} */}
       <div className="footer-omorphia">
-        <div data-aos="fade-down" className="contact text-white mb-32">
+        <div className="contact text-white mb-32">
           <div className="md:flex md:container md:mx-auto">
             <div className="flex-auto 2xl:ml-40 2xl:mt-28 ml-8 mt-20">
               <h3 className="text-4xl mb-5">Get in Touch</h3>
@@ -124,13 +124,15 @@ const Footer = () => {
                     onChange={handleChange3}
                   ></textarea>
                 </div>
-                <Recaptcha
-                  sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
-                  render="explicit"
-                  verifyCallback={verifyCallback}
-                  onloadCallback={callback}
-                  onChange={() => resetCaptcha()}
-                />
+                <div className="md:w-full px-3 mb-6 md:mb-4">
+                  <Recaptcha
+                    sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
+                    render="explicit"
+                    verifyCallback={verifyCallback}
+                    onloadCallback={callback}
+                    onChange={() => resetCaptcha()}
+                  />
+                </div>
                 <div className="flex flex-col justify-center items-center md:flex-none md:justify-start md:items-start">
                   <button
                     className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
@@ -145,10 +147,7 @@ const Footer = () => {
         </div>
 
         <div className="section-footer">
-          <div
-            data-aos="fade-up"
-            className="flex flex-col justify-center items-center text-white"
-          >
+          <div className="flex flex-col justify-center items-center text-white">
             <h1 className="text-2xl">Catch us on</h1>
             <div className="icon-social grid grid-cols-7 p-10">
               <Link

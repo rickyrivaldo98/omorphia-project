@@ -15,8 +15,10 @@ import AdminContact from "./components/Admin/Admin_Contact";
 import AdminWorksDetail from "./components/Admin/Admin_WorksDetail";
 import AddImages from "./components/Admin/Form/AddImages";
 import styled from "styled-components";
-import AddGalerry from "./components/Admin/Form/AddGallery";
+import AddGallery from "./components/Admin/Form/AddGallery";
+import EditImages from "./components/Admin/Form/EditImages";
 import AddCategory from "./components/Admin/Form/AddCategory";
+import EditCategory from "./components/Admin/Form/EditCategory";
 
 const StyledAdmin = styled.div`
   font-family: "Nunito";
@@ -71,14 +73,20 @@ const Admin = () => {
               <Route path="/admin/addimages/:id">
                 <AddImages />
               </Route>
+              <Route path="/admin/editimages/:id">
+                <EditImages />
+              </Route>
               <Route path="/admin/addgallery">
-                <AddGalerry />
+                <AddGallery />
               </Route>
               <Route path="/admin/addcategory">
                 <AddCategory />
               </Route>
               <Route path="/admin/admincategory">
                 <AdminCategory />
+              </Route>
+              <Route path="/admin/editcategory/:id">
+                <EditCategory />
               </Route>
               <Route path="/admin/adminworks">
                 <AdminWorks />

@@ -238,7 +238,7 @@ const Services = () => {
               </div>
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </>

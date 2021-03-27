@@ -13,7 +13,7 @@ import Services_mobile from "./Services_mobile";
 import styled from "styled-components";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
-
+import { useAlert } from "react-alert";
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
