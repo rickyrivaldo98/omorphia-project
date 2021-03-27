@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     axios
-      .post(`http://api.sarafdesign.com`, user)
+      .post(`https://api.sarafdesign.com/signin`, user)
       .then((res) => {
         // console.log(res);
         // setUserSession(res.data.token, res.data.id, res.data.fullName);

@@ -47,14 +47,14 @@ const Admin = () => {
         history.push("/admin");
       })
       .catch((err) => {
-        if (err.response) {
-          history.push("/login");
-          // setTimeout(() => {
-          //   history.push("/login");
-          // }, 1000);
-          alert("Anda belum login");
-          // console.log(error);
-        }
+        // if (err.response) {
+        //   history.push("/login");
+        //   // setTimeout(() => {
+        //   //   history.push("/login");
+        //   // }, 1000);
+        //   alert("Anda belum login");
+        //   // console.log(error);
+        // }
       });
     setLoading(false);
   }, []);
