@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 import { Link, useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const alert = useAlert();
 
   const handleChange1 = (e) => setUsername(e.target.value);
   const handleChange2 = (e) => setPassword(e.target.value);
@@ -18,34 +20,44 @@ const Login = () => {
     setError(null);
     setLoading(true);
     const user = {
-      email: username,
+      nama_user: username,
       password: password,
     };
 
     axios
-      .post(`http://api.sarafdesign.com/signin`, user)
+      .post(`http://localhost:3001/signin`, user)
       .then((res) => {
         // console.log(res);
         // setUserSession(res.data.token, res.data.id, res.data.fullName);
-        alert("Login Berhasil");
+        // console.log(user);
+        alert.show("Login Berhasil");
         setTimeout(() => {
           history.push("/admin");
         }, 3000);
+        // console.log(res);
         // history.push("/sidemenu/dashboard");
       })
-      .catch((error) => {
+
+      .catch((err) => {
+        // if (res.data.status === "false") {
+        //   setTimeout(() => {
+        //     setLoading(false);
+        //   }, 1000);
+        //   alert.show("Akun tidak ditemukan");
+        //   console.log(err.response);
+        // }
         setTimeout(() => {
           setLoading(false);
         }, 1000);
-        alert("Akun Tidak Ditemukan");
-        // console.log(error);
+        alert.show("Akun Tidak Ditemukan");
+        // console.log(err);
       });
   };
 
   return (
     <>
       {console.log("user:" + username)}
-      {console.log("Pass:" + password)}
+      {console.log("pass:" + password)}
       <div className="container mx-auto px-4 ">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">

@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./admin.css";
 import Dashboard from "./components/Admin/Dashboard";
 import AdminWorks from "./components/Admin/Admin_Works";
+import { useAlert } from "react-alert";
 import AdminCategory from "./components/Admin/Admin_Category";
 
 import CardDashboard from "./components/Admin/Cards/CardDashboard";
@@ -33,9 +34,20 @@ const Admin = () => {
   useEffect(() => {
     // setLoading(true);
     axios
-      .get("https://api.sarafdesign.com/checkUser")
+      .get("https://localhost:3001/checkUser")
       .then((res) => {
-        if (res.status(403)) {
+        if (res.status === 403) {
+          history.push("/login");
+          // setTimeout(() => {
+          //   history.push("/login");
+          // }, 1000);
+          alert.show("Anda belum login");
+          // console.log(error);
+        }
+        history.push("/admin");
+      })
+      .catch((err) => {
+        if (err.response) {
           history.push("/login");
           // setTimeout(() => {
           //   history.push("/login");
@@ -43,19 +55,8 @@ const Admin = () => {
           alert("Anda belum login");
           // console.log(error);
         }
-        history.push("/admin");
-      })
-      // .catch((err) => {
-      //   if (err.response) {
-      //     history.push("/login");
-      //     // setTimeout(() => {
-      //     //   history.push("/login");
-      //     // }, 1000);
-      //     alert("Anda belum login");
-      //     // console.log(error);
-      //   }
-      // });
-      setLoading(false);
+      });
+    setLoading(false);
   }, []);
 
   if (loading) {
