@@ -17,6 +17,17 @@ export default function CardWorks({ color }) {
     setLoading(false);
   }, []);
 
+  let handleDelete = (e) => {
+    setLoading(true);
+    axios.delete(`https://api.sarafdesign.com/gallery/${e}`).then((res) => {
+      setTimeout(() => {
+        alert("Kehapus");
+        window.location.reload();
+      }, 5000);
+    });
+    setLoading(false);
+    // console.log(e, x);
+  };
   return (
     <>
       <div
@@ -131,6 +142,21 @@ export default function CardWorks({ color }) {
                             Details
                           </button>
                         </Link>
+                        <Link to={`/admin/editgallery/${x.id_gallery}`}>
+                          <button
+                            className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                            type="button"
+                          >
+                            Edit
+                          </button>
+                        </Link>
+                        <button
+                          className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                          type="button"
+                          onClick={() => handleDelete(x.id_gallery)}
+                        >
+                          Delete
+                        </button>
                       </div>
                     </td>
                   </tr>

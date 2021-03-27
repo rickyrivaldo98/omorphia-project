@@ -2,19 +2,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import FormData from "form-data";
+import { data } from "autoprefixer";
 
-const EditCategory = () => {
+const EditGallery = () => {
   let { id } = useParams();
   let history = useHistory();
 
-  const [CategoryName, setCategoryName] = useState("");
+  const [GalleryName, setGalleryName] = useState("");
+  const [Deskripsi, setDeskripsi] = useState("");
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   // console.log(data);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://api.sarafdesign.com/category/${id}`).then((res) => {
+    axios.get(`https://api.sarafdesign.com/gallery/${id}`).then((res) => {
       setData(res.data[0]);
       // console.log(data);
     });
@@ -23,15 +27,16 @@ const EditCategory = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    const category = {
-      category_nama: CategoryName,
+    const gallery = {
+      nama: GalleryName,
+      deskripsi: Deskripsi,
     };
     axios
-      .put(`https://api.sarafdesign.com/category/${id}`, category)
+      .put(`https://api.sarafdesign.com/gallery/${id}`, gallery)
       .then((res) => {
         alert("Teredit");
         setTimeout(() => {
-          history.push(`/admin/admincategory`);
+          history.push(`/admin/adminworks`);
         }, 2000);
       })
 
@@ -40,8 +45,10 @@ const EditCategory = () => {
       });
   };
 
-  const handleCategoryName = (e) => setCategoryName(e.target.value);
-  console.log(CategoryName);
+  const handleGalleryName = (e) => setGalleryName(e.target.value);
+  const handleDeskripsi = (e) => setDeskripsi(e.target.value);
+
+  console.log(GalleryName);
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -56,7 +63,7 @@ const EditCategory = () => {
                   Back
                 </button>
                 <h6 className="text-blueGray-700 text-xl font-bold">
-                  Edit Category
+                  Edit Gallery
                 </h6>
               </div>
             </div>
@@ -72,15 +79,34 @@ const EditCategory = () => {
                             className="block  text-blueGray-600 text-xs font-bold mb-2"
                             htmlFor="grid-password"
                           >
-                            Category Name
+                            Gallery Name
                           </label>
-
                           <input
+                            // value={data.images_nama}
                             onChange={(e) => {
-                              handleCategoryName(e);
+                              handleGalleryName(e);
                             }}
                             type="text"
-                            placeholder={data.category_nama}
+                            placeholder={data.nama}
+                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          />
+                        </div>
+                      </div>
+                      <div className="w-full lg:w-6/12 px-4">
+                        <div className="relative w-full mb-3">
+                          <label
+                            className="block  text-blueGray-600 text-xs font-bold mb-2"
+                            htmlFor="grid-password"
+                          >
+                            Deksripsi Gallery
+                          </label>
+                          <input
+                            // value={data.images_nama}
+                            onChange={(e) => {
+                              handleDeskripsi(e);
+                            }}
+                            type="text"
+                            placeholder={data.deskripsi}
                             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           />
                         </div>
@@ -88,7 +114,6 @@ const EditCategory = () => {
                       <div className="w-full lg:w-6/12 px-4">
                         <button
                           className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                          type="button"
                           type="submit"
                         >
                           Edit
@@ -106,4 +131,4 @@ const EditCategory = () => {
   );
 };
 
-export default EditCategory;
+export default EditGallery;
