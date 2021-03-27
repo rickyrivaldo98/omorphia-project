@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 import { Link, useHistory } from "react-router-dom";
+import { setUserSession } from "../utils/common";
+
 
 const Login = () => {
   let history = useHistory();
@@ -28,7 +30,7 @@ const Login = () => {
       .post(`https://api.sarafdesign.com/signin`, user)
       .then((res) => {
         // console.log(res);
-        // setUserSession(res.data.token, res.data.id, res.data.fullName);
+        setUserSession(res.data.accessToken, res.data.nama_user);
         // console.log(user);
         alert.show("Login Berhasil");
         setTimeout(() => {

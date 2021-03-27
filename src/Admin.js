@@ -20,6 +20,7 @@ import AddGallery from "./components/Admin/Form/AddGallery";
 import EditImages from "./components/Admin/Form/EditImages";
 import AddCategory from "./components/Admin/Form/AddCategory";
 import EditCategory from "./components/Admin/Form/EditCategory";
+import EditGallery from "./components/Admin/Form/EditGallery";
 
 const StyledAdmin = styled.div`
   font-family: "Nunito";
@@ -28,15 +29,25 @@ const StyledAdmin = styled.div`
 const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const alert = useAlert();
 
   let history = useHistory();
 
   useEffect(() => {
     // setLoading(true);
     axios
-      .get("https://api.sarafdesign.com/checkUser")
+      .get("https://api.sarafdesign.com/checkUser", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
-        if (res.status === 403) {
+        // history.push("/admin");
+        setLoading(false);
+      })
+      .catch((err) => {
+        // console.log(err);
+        if (err.response.status === 401) {
           history.push("/login");
           // setTimeout(() => {
           //   history.push("/login");
@@ -44,24 +55,10 @@ const Admin = () => {
           alert.show("Anda belum login");
           // console.log(error);
         }
-        history.push("/admin");
-      })
-      .catch((err) => {
-        // if (err.response) {
-        //   history.push("/login");
-        //   // setTimeout(() => {
-        //   //   history.push("/login");
-        //   // }, 1000);
-        //   alert("Anda belum login");
-        //   // console.log(error);
-        // }
+        // alert.show("Anda belum login");
+        // console.log(err);
       });
-    setLoading(false);
   }, []);
-
-  if (loading) {
-    return <div className="App"></div>;
-  }
 
   return (
     <>
@@ -96,6 +93,9 @@ const Admin = () => {
               </Route>
               <Route path="/admin/editcategory/:id">
                 <EditCategory />
+              </Route>
+              <Route path="/admin/editgallery/:id">
+                <EditGallery />
               </Route>
               <Route path="/admin/adminworks">
                 <AdminWorks />
