@@ -6,6 +6,7 @@ import instagram from "../assets/image/Instagram.svg";
 import inprnt from "../assets/image/inprnt.svg";
 import kofi from "../assets/image/mug.svg";
 import artstation from "../assets/image/artstation.svg";
+import { useAlert } from "react-alert";
 
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
@@ -14,6 +15,7 @@ var Recaptcha = require("react-recaptcha");
 
 const Footer = () => {
   let history = useHistory();
+  const alert = useAlert()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -34,7 +36,7 @@ const Footer = () => {
     if (response) {
       setData(true);
     } else {
-      alert("Coud not get recaptcha response");
+      alert.show("Coud not get recaptcha response");
     }
   };
 
@@ -64,7 +66,7 @@ const Footer = () => {
           // console.log("Ini Hasil:");
           // console.log(res);
           // console.log("Berhasil Masuk");
-          alert("Telah Dikirim");
+          alert.show("Telah Dikirim");
           setTimeout(() => {
             history.push("/");
             window.location.reload();
@@ -76,7 +78,7 @@ const Footer = () => {
           // console.log(error);
         });
     } else {
-      alert("Please verify that you are human!");
+      alert.show("Please verify that you are human!");
     }
   };
 
