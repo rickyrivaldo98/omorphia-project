@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SimpleReactLightbox from "simple-react-lightbox";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "react-router-dom";
@@ -8,143 +9,76 @@ import Image3 from "../assets/image/gallery/2.png";
 import Image4 from "../assets/image/gallery/4.png";
 
 const Mycomponent = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get("https://api.sarafdesign.com/images/gallery").then((res) => {
+      setData(res.data);
+    });
+    setLoading(false);
+  }, []);
+
+  const Size = {
+    square: {
+      position: "relative",
+      width: "300px",
+      height: "300px",
+      backgroundColor: "aqua",
+    },
+    long: {
+      position: "relative",
+      width: "670px",
+      height: "300px",
+      backgroundColor: "aqua",
+    },
+  };
+
+  console.log(data);
+  var randomSize = [Size.square, Size.long];
+
   return (
-    <SRLWrapper>
-      <div style={{ transform: "rotate(-2deg)" }}>
-        <div className="animate-translateX">
-          <div className="popup-gallery pb-5 flex">
-            <div className="px-3 items-center">
-              <Link to={Image1}>
+    <div style={{ transform: "rotate(-2deg)" }}>
+      <div className="animate-translateX">
+        <div className="popup-gallery pb-5 flex">
+          {loading && <div>loading...</div>}
+          {!loading &&
+            data.slice(0, 10).map((x) => (
+              <div className="px-3 items-center">
                 <div
-                  className="gallery-container gallery "
-                  style={{ backgroundImage: `url(${Image1})` }}
-                >
-                  <img
-                    className="gallery-container gallery "
-                    alt="bedroom"
-                    src={Image1}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image2}>
+                  key={x.nama_image}
+                  className="gallery"
+                  style={{
+                    ...randomSize[
+                      Math.floor(Math.random() * randomSize.length)
+                    ],
+                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                  }}
+                ></div>
+              </div>
+            ))}
+        </div>
+        <div className="popup-gallery transform -translate-x-60 relative flex flex-nowrap">
+          {loading && <div>loading...</div>}
+          {!loading &&
+            data.slice(-10, -1).map((x) => (
+              <div className="px-3 items-center">
                 <div
-                  className="gallery-container2 gallery "
-                  style={{ backgroundImage: `url(${Image2})` }}
-                >
-                  <img
-                    className="gallery-container2 gallery"
-                    src={Image2}
-                    alt="classroom"
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className="px-3 items-center">
-              <Link to={Image1}>
-                <div
-                  className="gallery-container gallery "
-                  style={{ backgroundImage: `url(${Image1})` }}
-                >
-                  <img
-                    className="gallery-container gallery "
-                    alt="bedroom"
-                    src={Image1}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image2}>
-                <div
-                  className="gallery-container2 gallery "
-                  style={{ backgroundImage: `url(${Image2})` }}
-                >
-                  <img
-                    className="gallery-container2 gallery"
-                    src={Image2}
-                    alt="classroom"
-                  />
-                </div>
-              </Link>
-            </div>
-          </div>
-          <div className="popup-gallery transform -translate-x-60 relative flex flex-nowrap">
-            <div className=" px-3 items-center">
-              <Link to={Image2}>
-                <div
-                  className="gallery-container gallery "
-                  style={{ backgroundImage: `url(${Image2})` }}
-                >
-                  <img
-                    className="gallery-container gallery"
-                    alt="classroom"
-                    src={Image2}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image3}>
-                <div
-                  className="gallery-container2 gallery  "
-                  style={{ backgroundImage: `url(${Image3})` }}
-                >
-                  <img
-                    className="gallery-container2 gallery  "
-                    alt="bar room"
-                    src={Image3}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image4}>
-                <div
-                  className="gallery-container gallery "
-                  style={{ backgroundImage: `url(${Image4})` }}
-                >
-                  <img
-                    className="gallery-container gallery  "
-                    alt="working space"
-                    src={Image4}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image3}>
-                <div
-                  className="gallery-container2 gallery "
-                  style={{ backgroundImage: `url(${Image3})` }}
-                >
-                  <img
-                    className="gallery-container2 gallery  "
-                    alt="bar room"
-                    src={Image3}
-                  />
-                </div>
-              </Link>
-            </div>
-            <div className=" px-3 items-center">
-              <Link to={Image4}>
-                <div
-                  className="gallery-container gallery  "
-                  style={{ backgroundImage: `url(${Image4})` }}
-                >
-                  <img
-                    className="gallery-container gallery  "
-                    alt="working space"
-                    src={Image4}
-                  />
-                </div>
-              </Link>
-            </div>
-          </div>
+                  key={x.nama_image}
+                  className="gallery"
+                  style={{
+                    ...randomSize[
+                      Math.floor(Math.random() * randomSize.length)
+                    ],
+                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                  }}
+                ></div>
+              </div>
+            ))}
         </div>
       </div>
-    </SRLWrapper>
+    </div>
   );
 };
 

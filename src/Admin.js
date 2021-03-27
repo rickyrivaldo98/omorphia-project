@@ -20,6 +20,7 @@ import AddGallery from "./components/Admin/Form/AddGallery";
 import EditImages from "./components/Admin/Form/EditImages";
 import AddCategory from "./components/Admin/Form/AddCategory";
 import EditCategory from "./components/Admin/Form/EditCategory";
+import EditGallery from "./components/Admin/Form/EditGallery";
 
 const StyledAdmin = styled.div`
   font-family: "Nunito";
@@ -92,6 +93,9 @@ const Admin = () => {
               </Route>
               <Route path="/admin/editcategory/:id">
                 <EditCategory />
+              </Route>
+              <Route path="/admin/editgallery/:id">
+                <EditGallery />
               </Route>
               <Route path="/admin/adminworks">
                 <AdminWorks />

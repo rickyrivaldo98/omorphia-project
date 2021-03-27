@@ -110,7 +110,7 @@ body {
   background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
 } */
 
-.gallery-container {
+/* .gallery-container {
   position: relative;
   width: 670px;
   height: 300px;
@@ -121,8 +121,8 @@ body {
   width: 300px;
   height: 300px;
   background-color: aqua;
-}
-
+} */
+/* 
 @media (max-width: 768px) {
   .gallery-container {
     width: 570px;
@@ -132,13 +132,15 @@ body {
     width: 200px;
     height: 200px;
   }
-}
+} */
+
 .gallery {
   object-fit: cover;
   background-size: cover;
   background-position: center;
   border-radius: 30px;
 }
+
 /* footer bagian send message */
 
 .section-footer {
