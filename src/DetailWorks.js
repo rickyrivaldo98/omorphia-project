@@ -14,18 +14,22 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 const DetailWorks = () => {
   let { imageId } = useParams();
+  const [loadingFull, setLoadingFull] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
   const [data4, setData4] = useState([]);
+  const [data5, setData5] = useState([]);
+  const [imageBG, setImageBG] = useState();
 
-  // console.log("ini adalah" + id);
+  let history = useHistory();
 
   useEffect(() => {
-    setLoading(true);
+    setLoadingFull(true);
     axios.get(`https://api.sarafdesign.com/images/${imageId}`).then((res) => {
       setData(res.data[0]);
+      setImageBG(res.data[0].file);
       axios
         .get(`https://api.sarafdesign.com/gallery/${res.data[0].id_gallery}`)
         .then((res2) => {
@@ -41,17 +45,20 @@ const DetailWorks = () => {
                 .then((res4) => {
                   setData4(res4.data);
                   // console.log(res3.data[0]);
-                  // axios
-                  //   .get(
-                  //     `https://api.sarafdesign.com/images/gallery/${res2.data[0].id_gallery}`
-                  //   )
-                  //   .then((res4) => {
-                  //     setData4(res4.data);
-                  //     console.log(res4.data);
+                  axios
+                    .get(
+                      `https://api.sarafdesign.com/images/gallery/${res2.data[0].id_gallery}`
+                    )
+                    .then((res5) => {
+                      setData5(res5.data);
+                      // console.log(res4.data);
+                    });
                 });
             });
         });
-      setLoading(false);
+      setTimeout(() => {
+        setLoadingFull(false);
+      }, 2000);
     });
   }, []);
 
@@ -98,112 +105,133 @@ const DetailWorks = () => {
   };
   var myArray = [Size.small, Size.medium, Size.large];
 
-  var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
-  console.log("ini " + data4);
+  const clickHandle = (e) => {
+    history.push(`/detailworks/${e}`);
+    window.location.reload();
+  };
+  // var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
+  // console.log("ini " + data4);
+  console.log("isi " + imageBG);
+  console.log("isi api " + data.file);
   return (
     <>
-      <div
-        className="bg-detailWorks relative"
-        style={{
-          backgroundImage: `url(https://api.sarafdesign.com/${data.file})`,
-        }}
-      >
-        <div className="container mx-auto">
-          <div className="transform translate-y-64">
-            <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-center px-8 py-2">
-              {data3.category_nama}
-            </p>
-            <p className="text-white text-5xl mt-2 font-semibold">
-              {data.images_nama}
-            </p>
-            <p>{data2.deskripsi}</p>
+      {loadingFull ? (
+        <div>loading...</div>
+      ) : (
+        <>
+          <div
+            className="bg-detailWorks relative"
+            style={{
+              backgroundImage: `url(https://api.sarafdesign.com/${imageBG})`,
+            }}
+          >
+            <div className="container mx-auto">
+              <div className="transform translate-y-64">
+                <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-center px-8 py-2">
+                  {data3.category_nama}
+                </p>
+                <p className="text-white text-5xl mt-2 font-semibold">
+                  {data.images_nama}
+                </p>
+                <p>{data2.deskripsi}</p>
+              </div>
+              <div className="flex flex-wrap absolute bottom-96 text-white bg-opacity-20  bg-gray-900">
+                {loading && <div>loading...</div>}
+                {!loading &&
+                  data5.map((x) => (
+                    <>
+                      <img
+                        className="w-32 p-3 box-image  "
+                        onClick={() => setImageBG(x.file)}
+                        key={x.images_nama}
+                        src={`https://api.sarafdesign.com/${x.file}`}
+                        alt=""
+                      />
+                    </>
+                  ))}
+              </div>
+            </div>
+            <div className="footer-works absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">
+              <p>© Copyright 2020 Omorphia Visual All rights reserved.</p>
+              <div className="icon-social flex float-right">
+                <Link
+                  to={{
+                    pathname: "https://www.instagram.com/omorphiavisual/",
+                  }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={instagram} alt="" />
+                </Link>
+                <Link
+                  to={{ pathname: "https://twitter.com/omorphia1 " }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={twitter} alt="" />
+                </Link>
+                <Link to={{ pathname: "" }} target="_blank">
+                  <img className="px-1 md:px-3" src={facebook} alt="" />
+                </Link>
+                <Link
+                  to={{
+                    pathname: "https://www.fiverr.com/omorphiavisual",
+                  }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={fiverr} alt="" />
+                </Link>
+                <Link
+                  to={{
+                    pathname: "https://www.inprnt.com/gallery/omorphia/#",
+                  }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={inprnt} alt="" />
+                </Link>
+                <Link
+                  to={{ pathname: "https://ko-fi.com/omorphia" }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={kofi} alt="" />
+                </Link>
+                <Link
+                  to={{
+                    pathname: "https://www.artstation.com/omorphia ",
+                  }}
+                  target="_blank"
+                >
+                  <img className="px-1 md:px-3" src={artstation} alt="" />
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap absolute bottom-96 text-white bg-opacity-20  bg-gray-900">
+          <div style={styles.pin_container}>
             {loading && <div>loading...</div>}
             {!loading &&
-              data4.map((x) => (
-                <>
-                  <img
-                    className="w-32 p-3 box-image  "
-                    key={x.images_nama}
-                    src={`https://api.sarafdesign.com/${x.file}`}
-                    alt=""
-                  />
-                </>
-              ))}
-          </div>
-        </div>
-        <div className="footer-works absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">
-          <p>© Copyright 2020 Omorphia Visual All rights reserved.</p>
-          <div className="icon-social flex float-right">
-            <Link
-              to={{
-                pathname: "https://www.instagram.com/omorphiavisual/",
-              }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={instagram} alt="" />
-            </Link>
-            <Link
-              to={{ pathname: "https://twitter.com/omorphia1 " }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={twitter} alt="" />
-            </Link>
-            <Link to={{ pathname: "" }} target="_blank">
-              <img className="px-1 md:px-3" src={facebook} alt="" />
-            </Link>
-            <Link
-              to={{
-                pathname: "https://www.fiverr.com/omorphiavisual",
-              }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={fiverr} alt="" />
-            </Link>
-            <Link
-              to={{
-                pathname: "https://www.inprnt.com/gallery/omorphia/#",
-              }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={inprnt} alt="" />
-            </Link>
-            <Link
-              to={{ pathname: "https://ko-fi.com/omorphia" }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={kofi} alt="" />
-            </Link>
-            <Link
-              to={{
-                pathname: "https://www.artstation.com/omorphia ",
-              }}
-              target="_blank"
-            >
-              <img className="px-1 md:px-3" src={artstation} alt="" />
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div style={styles.pin_container}>
-        {loading && <div>loading...</div>}
-        {!loading &&
-          data4
-            .filter((y) => y.id_category === data3.id_category)
-            .map((x) => (
-              <>
-                <Link
+              data4
+                .filter((y) => y.id_category === data3.id_category)
+                .map((x) => (
+                  <>
+                    {/* <Link
                   to={`/detailworks/${x.id_images}`}
                   key={x.nama_image}
                   style={{
                     ...myArray[Math.floor(Math.random() * myArray.length)],
                     backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
                   }}
-                ></Link>
-              </>
-            ))}
-      </div>
+                ></Link> */}
+                    <div
+                      onClick={() => clickHandle(x.id_images)}
+                      key={x.nama_image}
+                      style={{
+                        ...myArray[Math.floor(Math.random() * myArray.length)],
+                        backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                      }}
+                    ></div>
+                  </>
+                ))}
+          </div>
+        </>
+      )}
     </>
   );
 };
