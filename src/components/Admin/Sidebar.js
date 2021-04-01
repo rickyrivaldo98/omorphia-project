@@ -127,7 +127,7 @@ export default function Sidebar() {
                         : "text-gray-300")
                     }
                   ></i>{" "}
-                  Gallery Works
+                  Project Works
                 </Link>
               </li>
               <li className="items-center">
@@ -149,7 +149,7 @@ export default function Sidebar() {
                         : "text-gray-400")
                     }
                   ></i>
-                  Category Gallery
+                  Category Project
                 </Link>
               </li>
             </ul>

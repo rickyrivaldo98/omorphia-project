@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import CardStats from "./CardStats";
 
 const CardDashboard = () => {
+  const [data, setData] = useState([]);
+  const [data2, setData2] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://api.sarafdesign.com/contact").then((res) => {
+      setData(res.data);
+      axios.get("https://api.sarafdesign.com/images/gallery").then((res2) => {
+        setData2(res2.data);
+      });
+    });
+  }, []);
+  console.log(data.length);
   return (
     <>
       {/* Header */}
@@ -14,7 +27,7 @@ const CardDashboard = () => {
               <div className="w-full lg:w-6/12 xl:w-5/12 px-4">
                 <CardStats
                   statSubtitle="Messages Contact"
-                  statTitle="350,897"
+                  statTitle={data.length}
                   // statArrow="up"
                   // statPercent="3.48"
                   // statPercentColor="text-emerald-500"
@@ -27,7 +40,7 @@ const CardDashboard = () => {
               <div className="w-full lg:w-6/12 xl:w-5/12 px-4">
                 <CardStats
                   statSubtitle="Work Images Uploaded"
-                  // statTitle="924"
+                  statTitle={data2.length}
                   // statArrow="down"
                   // statPercent="1.10"
                   // statPercentColor="text-orange-500"

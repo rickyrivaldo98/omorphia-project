@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import PropTypes from "prop-types";
 
 export default function CardStats({
@@ -43,7 +45,7 @@ export default function CardStats({
 
 CardStats.defaultProps = {
   statSubtitle: "Traffic",
-  statTitle: "350,897",
+  // statTitle: "10",
   // statArrow: "up",
   // statPercent: "3.48",
   // statPercentColor: "text-emerald-500",
