@@ -173,45 +173,72 @@ const Footer = () => {
           <div className="flex flex-col justify-center items-center text-white">
             <h1 className="text-2xl">Catch us on</h1>
             <div className="icon-social grid grid-cols-7 p-10">
-              <Link
+              {/* <Link
                 to={{ pathname: "https://www.instagram.com/omorphiavisual/" }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={instagram} alt="" />
-              </Link>
-              <Link
+              </Link> */}
+              <a
+                href="https://www.instagram.com/omorphiavisual/"
+                target="_blank"
+              >
+                <img className="px-1 md:px-3" src={instagram} alt="" />
+              </a>
+              {/* <Link
                 to={{ pathname: "https://twitter.com/omorphia1 " }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={twitter} alt="" />
-              </Link>
-              <Link to={{ pathname: "" }} target="_blank">
+              </Link> */}
+              <a href="https://twitter.com/omorphia1" target="_blank">
+                <img className="px-1 md:px-3" src={twitter} alt="" />
+              </a>
+              {/* <Link to={{ pathname: "" }} target="_blank">
                 <img className="px-1 md:px-3" src={facebook} alt="" />
-              </Link>
-              <Link
+              </Link> */}
+              <a href="https://facebook.com" target="_blank">
+                <img className="px-1 md:px-3" src={facebook} alt="" />
+              </a>
+              {/* <Link
                 to={{ pathname: "https://www.fiverr.com/omorphiavisual" }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={fiverr} alt="" />
-              </Link>
-              <Link
+              </Link> */}
+              <a href="https://www.fiverr.com/omorphiavisual" target="_blank">
+                <img className="px-1 md:px-3" src={fiverr} alt="" />
+              </a>
+              {/* <Link
                 to={{ pathname: "https://www.inprnt.com/gallery/omorphia/#" }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={inprnt} alt="" />
-              </Link>
-              <Link
+              </Link> */}
+              <a
+                href="https://www.inprnt.com/gallery/omorphia/#"
+                target="_blank"
+              >
+                <img className="px-1 md:px-3" src={inprnt} alt="" />
+              </a>
+              {/* <Link
                 to={{ pathname: "https://ko-fi.com/omorphia" }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={kofi} alt="" />
-              </Link>
-              <Link
+              </Link> */}
+              <a href="https://ko-fi.com/omorphia" target="_blank">
+                <img className="px-1 md:px-3" src={kofi} alt="" />
+              </a>
+              {/* <Link
                 to={{ pathname: "https://www.artstation.com/omorphia " }}
                 target="_blank"
               >
                 <img className="px-1 md:px-3" src={artstation} alt="" />
-              </Link>
+              </Link> */}
+              <a href="https://www.artstation.com/omorphia " target="_blank">
+                <img className="px-1 md:px-3" src={artstation} alt="" />
+              </a>
             </div>
             <footer className="font-semibold  pb-10">
               <h2>© 2020 Omorphia Visual</h2>
