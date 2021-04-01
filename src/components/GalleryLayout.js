@@ -37,7 +37,9 @@ const GalleryLayout = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
-  const [data3, setData3] = useState([]);
+  const [data3, setData3] = useState("");
+  const [activeCat, setActiveCat] = useState("");
+  const [activeAll, setActiveAll] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -56,7 +58,6 @@ const GalleryLayout = () => {
     setLoading(false);
   }, []);
 
-  console.log("isi category" + data3.map((x) => x.id_category));
   // console.log(data.map((x) => x.file));
   const Size = {
     small: {
@@ -88,51 +89,56 @@ const GalleryLayout = () => {
 
   var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
   console.log(randomItem);
+
+  const isActivecat = (e) => {
+    // e.preventDefault(e);
+    setData3(e);
+    setActiveCat(e);
+    setActiveAll(false);
+  };
+
+  const isActiveall = (e) => {
+    // e.preventDefault(e);
+    setData3("");
+    setActiveCat("");
+    setActiveAll(true);
+  };
+  console.log("isi category: " + data3);
+
+  console.log("nilai data 3: " + data3);
   return (
     <>
       <div className="flex flex-col justify-center items-center text-white ">
         <div className="py-10">
-          <button class="btn-filter bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full">
+          <button
+            onClick={() => isActiveall()}
+            class={
+              activeAll
+                ? "btn-filter bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full"
+                : "btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded"
+            }
+          >
             All
           </button>
           {data2.map((x) => (
-            <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
+            <button
+              key={x.id_category}
+              onClick={() => isActivecat(x.id_category)}
+              class={
+                activeCat === x.id_category
+                  ? "btn-filter bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full"
+                  : "btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded"
+              }
+            >
               {x.category_nama}
             </button>
           ))}
-          {/* <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Large Space
-          </button>
-          <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Small Space
-          </button>
-          <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Project Commission
-          </button>
-          <button class="btn-filterbg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Project Non Commission
-          </button>
-          <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Games
-          </button>
-          <button class="btn-filter bg-transparent hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-full border border-white-500 hover:border-transparent rounded">
-            Ect.
-          </button> */}
         </div>
       </div>
       <div style={styles.pin_container}>
         {loading && <div>loading...</div>}
-        {!loading &&
-          data
-            //           .filter((y)=>{
-            //             for (let i = 0; i < data2.length; i++) {
-            //             if (data.id_category[i].includes(y.)) {
-            //               return articles.id;
-            //             }
-            //           }
-            //           }
-            // )
-            .map((x) => (
+        {!loading && data3 === ""
+          ? data.map((x) => (
               <>
                 <Link
                   to={`/detailworks/${x.id_images}`}
@@ -143,7 +149,29 @@ const GalleryLayout = () => {
                   }}
                 ></Link>
               </>
-            ))}
+            ))
+          : data
+              // .filter((y) => {
+              //   //   for (let i = 0; i < data2.length; i++) {
+              //   // if (data.id_category[i].includes(y.)) {
+              //   //   return articles.id;
+              //   // }
+              //   // }
+              //   y.id_category === data3;
+              // })
+              .filter((y) => y.id_category === data3)
+              .map((x) => (
+                <>
+                  <Link
+                    to={`/detailworks/${x.id_images}`}
+                    key={x.nama_image}
+                    style={{
+                      ...myArray[Math.floor(Math.random() * myArray.length)],
+                      backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                    }}
+                  ></Link>
+                </>
+              ))}
       </div>
     </>
   );

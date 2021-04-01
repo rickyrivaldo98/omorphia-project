@@ -18,6 +18,7 @@ const DetailWorks = () => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
 
   // console.log("ini adalah" + id);
 
@@ -25,7 +26,6 @@ const DetailWorks = () => {
     setLoading(true);
     axios.get(`https://api.sarafdesign.com/images/${imageId}`).then((res) => {
       setData(res.data[0]);
-
       axios
         .get(`https://api.sarafdesign.com/gallery/${res.data[0].id_gallery}`)
         .then((res2) => {
@@ -36,12 +36,62 @@ const DetailWorks = () => {
             )
             .then((res3) => {
               setData3(res3.data[0]);
+              axios
+                .get("https://api.sarafdesign.com/images/gallery")
+                .then((res4) => {
+                  setData4(res4.data);
+                });
             });
         });
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
-  // console.log(data);
+
+  const styles = {
+    pin_container: {
+      margin: 0,
+      padding: 0,
+      width: "80vw",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, 250px)",
+      gridAutoRows: "10px",
+      position: "relative",
+      left: "50%",
+      transform: "translateX(-50%)",
+      justifyContent: "center",
+      // backgroundColor: 'black'
+    },
+  };
+  const Size = {
+    small: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 26",
+    },
+    medium: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 33",
+    },
+    large: {
+      margin: "15px 10px",
+      padding: "0",
+      borderRadius: "16px",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      gridRowEnd: "span 45",
+    },
+  };
+  var myArray = [Size.small, Size.medium, Size.large];
+
+  var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
+  console.log("ini " + data4);
   return (
     <>
       <div
@@ -113,6 +163,24 @@ const DetailWorks = () => {
             </Link>
           </div>
         </div>
+      </div>
+      <div style={styles.pin_container}>
+        {loading && <div>loading...</div>}
+        {!loading &&
+          data4
+            .filter((y) => y.id_category === data3.id_category)
+            .map((x) => (
+              <>
+                <Link
+                  to={`/detailworks/${x.id_images}`}
+                  key={x.nama_image}
+                  style={{
+                    ...myArray[Math.floor(Math.random() * myArray.length)],
+                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                  }}
+                ></Link>
+              </>
+            ))}
       </div>
     </>
   );
