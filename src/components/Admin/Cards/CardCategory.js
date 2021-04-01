@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
+import Loader from "react-loader-spinner";
 
 // components
 
@@ -15,8 +16,8 @@ export default function CardCategory({ color }) {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/category").then((res) => {
       setData(res.data);
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
 
   let handleDelete = (e) => {
@@ -110,7 +111,17 @@ export default function CardCategory({ color }) {
               </tr>
             </thead>
             <tbody>
-              {loading && <div>loading...</div>}
+              {loading && (
+                <div>
+                  <Loader
+                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                    type="Oval"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                  />
+                </div>
+              )}
               {!loading &&
                 data.map((x) => (
                   <tr>

@@ -7,7 +7,9 @@ import inprnt from "../assets/image/inprnt.svg";
 import kofi from "../assets/image/mug.svg";
 import artstation from "../assets/image/artstation.svg";
 import { useAlert } from "react-alert";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
@@ -15,13 +17,21 @@ var Recaptcha = require("react-recaptcha");
 
 const Footer = () => {
   let history = useHistory();
-  const alert = useAlert()
+  const alert = useAlert();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const schema = yup.object().shape({
+    Name: yup.string().max(20, "Max 20 chars").required(),
+    Email: yup.string().email().required(),
+    Message: yup.string().required(),
+  });
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
   // specifying your onload callback function
   // useEffect(() => {
   // });
@@ -51,7 +61,7 @@ const Footer = () => {
   };
 
   const handleContact = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (data) {
       // setError(null);
       setLoading(true);
@@ -98,15 +108,20 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex-auto lg:mr-40">
-              <form onSubmit={handleContact} className="mt-6">
+              <form onSubmit={handleSubmit(handleContact)} className="mt-6">
                 <div className="md:w-full px-3 mb-6 md:mb-4">
                   <input
                     className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-3"
                     type="text"
                     placeholder="Your Name*"
                     id="name"
+                    name="Name"
                     onChange={handleChange1}
+                    ref={register}
                   />
+                  {errors.Name?.message && (
+                    <p style={{ color: "red" }}>{errors.Name?.message}</p>
+                  )}
                 </div>
                 <div className="md:w-full px-3 mb-6 md:mb-4">
                   <input
@@ -114,8 +129,11 @@ const Footer = () => {
                     type="text"
                     placeholder="Your Email*"
                     id="email"
+                    name="Email"
                     onChange={handleChange2}
+                    ref={register}
                   />
+                  <p style={{ color: "red" }}>{errors.Email?.message}</p>
                 </div>
                 <div className="md:w-full px-3 mb-6 md:mb-4">
                   <textarea
@@ -123,8 +141,11 @@ const Footer = () => {
                     type="text"
                     placeholder="Message*"
                     id="message"
+                    name="Message"
                     onChange={handleChange3}
+                    ref={register}
                   ></textarea>
+                  <p style={{ color: "red" }}>{errors.Message?.message}</p>
                 </div>
                 <div className="md:w-full px-3 mb-6 md:mb-4">
                   <Recaptcha

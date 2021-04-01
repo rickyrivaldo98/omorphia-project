@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Loader from "react-loader-spinner";
 
 // components
 
@@ -12,8 +13,8 @@ export default function CardTable({ color }) {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/contact").then((res) => {
       setData(res.data);
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
 
   return (
@@ -87,7 +88,17 @@ export default function CardTable({ color }) {
               </tr>
             </thead>
             <tbody>
-              {loading && <div>Loading...</div>}
+              {loading && (
+                <div>
+                  <Loader
+                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                    type="Oval"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                  />
+                </div>
+              )}
               {!loading &&
                 data.map((x) => (
                   <>

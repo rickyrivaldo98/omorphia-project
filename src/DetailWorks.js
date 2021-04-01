@@ -68,7 +68,7 @@ const DetailWorks = () => {
             <p className="text-white text-5xl mt-2 font-semibold">
               {data.images_nama}
             </p>
-            <p>{data2.deskripsi}</p>
+            <p className="text-white">{data2.deskripsi}</p>
           </div>
           <div className="flex flex-wrap absolute bottom-96 text-white bg-opacity-20  bg-gray-900">
             {loading && <div>loading...</div>}

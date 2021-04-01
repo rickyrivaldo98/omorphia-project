@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
 import { useAlert } from "react-alert";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const AddImages = () => {
   let { id } = useParams();
@@ -17,7 +20,7 @@ const AddImages = () => {
   console.log(Image);
 
   let save = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let images = new FormData();
     images.set("id_gallery", id);
     images.set("images_nama", ImageName);
@@ -47,6 +50,28 @@ const AddImages = () => {
   };
   const handleImageName = (e) => setImageName(e.target.value);
   const handleImage = (e) => setImage(e.target.files[0]);
+
+  // validation form
+  const schema = yup.object().shape({
+    ImageName: yup.string().required(),
+    picture: yup
+      .mixed()
+      .required("You need to provide a file")
+      .test("fileSize", "The file is too large please resize", (value) => {
+        return value && value[0].size <= 6000000;
+      })
+      .test("type", "We only support jpeg,jpg,gif, or png.", (value) => {
+        return (
+          value && value[0].type === "image/jpeg",
+          "image/jpeg",
+          "image/gif",
+          "image/png"
+        );
+      }),
+  });
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -66,26 +91,8 @@ const AddImages = () => {
               </div>
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-              <form onSubmit={(e) => save(e)}>
+              <form onSubmit={handleSubmit((e) => save(e))}>
                 <div className="flex flex-col flex-wrap">
-                  {/* <div className="w-full lg:w-6/12 px-4">
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block   text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                      >
-                        Id Gallery
-                      </label>
-                      <input
-                        type="text"
-                        name="id_gallery"
-                        value={id}
-                        placeholder="insert image name...."
-                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      />
-                    </div>
-                  </div> */}
-
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
                       <label
@@ -98,8 +105,13 @@ const AddImages = () => {
                         onChange={handleImageName}
                         type="text"
                         placeholder="insert image name...."
+                        name="ImageName"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        ref={register}
                       />
+                      <p style={{ color: "red" }}>
+                        {errors.ImageName?.message}
+                      </p>
                     </div>
                   </div>
                   <div className="w-full lg:w-6/12 px-4">
@@ -113,9 +125,14 @@ const AddImages = () => {
                       <input
                         onChange={handleImage}
                         type="file"
+                        name="picture"
                         placeholder="input file image"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        ref={register}
                       />
+                      {errors.picture && (
+                        <p style={{ color: "red" }}>{errors.picture.message}</p>
+                      )}
                     </div>
                     <button
                       className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"

@@ -7,6 +7,8 @@ const Hero = (props) => {
   const [image1, setImage] = useState(false);
   const [image2, setImage2] = useState(false);
   const [image3, setImage3] = useState(false);
+  const [image4, setImage4] = useState(false);
+  const [image5, setImage5] = useState(false);
 
   let changeImage = (e) => {
     e.preventDefault();
@@ -39,38 +41,38 @@ const Hero = (props) => {
         <img
           src={star1}
           alt=""
-          className="absolute transform w-10 z-50 xl:right-40 xl:top-64 lg:right-40 md:top-3 md:right-20 md:w-20 right-10 top-44"
+          className="star-click star-hover absolute transform w-10 z-50 xl:right-40 xl:top-64 lg:right-40 md:top-3 md:right-20 md:w-20 right-10 top-44"
           onClick={changeImage}
         />
         <img
           src={star2}
           alt=""
-          className="absolute w-12 md:right-1/3 right-10 top-80 lg:top-32 md:w-20 md:top-28"
+          className="star-click star-hover absolute w-12 md:right-1/3 right-10 top-80 lg:top-32 md:w-20 md:top-28"
           onClick={changeImage2}
         />
         <img
           src={star3}
           alt=""
-          className="absolute xl:right-1/3 xl:top-1/3 lg:top-72 lg:w-12 md:w-12 md:top-40 md:right-32 right-24 w-12"
+          className="star-click star-hover absolute xl:right-1/3 xl:top-1/3 lg:top-72 lg:w-12 md:w-12 md:top-40 md:right-32 right-24 w-12"
           onClick={changeImage3}
         />
 
         <img
           src={star1}
           alt=""
-          className="absolute transform rotate-90 xl:left-40 xl:top-64 lg:right-40 md:top-3 md:left-20 md:w-20 w-12 top-72 left-10"
+          className="star-click star-hover absolute transform rotate-90 xl:left-40 xl:top-64 lg:right-40 md:top-3 md:left-20 md:w-20 w-12 top-72 left-10"
           onClick={changeImage}
         />
         <img
           src={star2}
           alt=""
-          className="absolute left-1/3 top-60 lg:top-10 md:w-20 md:top-10 w-12"
+          className="star-click star-hover absolute left-1/3 top-60 lg:top-10 md:w-20 md:top-10 w-12"
           onClick={changeImage2}
         />
         <img
           src={star3}
           alt=""
-          className="absolute lg:left-1/4 xl:top-32 lg:top-44 lg:w-12 md:w-12 md:top-32 md:right-32 left-14 w-12 top-10"
+          className="star-click star-hover absolute lg:left-1/4 xl:top-32 lg:top-44 lg:w-12 md:w-12 md:top-32 md:right-32 left-14 w-12 top-10"
           onClick={changeImage3}
         />
 

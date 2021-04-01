@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import FormData from "form-data";
 import { data } from "autoprefixer";
 import { useAlert } from "react-alert";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const AddGalerry = () => {
   let history = useHistory();
@@ -29,8 +32,18 @@ const AddGalerry = () => {
     setLoading(false);
   }, []);
 
+  //validation form
+  const schema = yup.object().shape({
+    gallery_name: yup.string().required(),
+    description: yup.string().required(),
+    category_name: yup.string().required(),
+  });
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const handleGallery = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setLoading(true);
     const gallery = {
       nama: Nama,
@@ -42,7 +55,7 @@ const AddGalerry = () => {
       .then((res) => {
         alert.show("Gallery Successfully Added!");
         setTimeout(() => {
-          history.push("/");
+          history.push("/admin/adminworks");
         }, 3000);
       })
       .catch((error) => {
@@ -64,12 +77,12 @@ const AddGalerry = () => {
                   Back
                 </button>
                 <h6 className="text-blueGray-700 text-xl font-bold">
-                  Add Gallery
+                  Add Project
                 </h6>
               </div>
             </div>
             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-              <form onSubmit={handleGallery}>
+              <form onSubmit={handleSubmit(handleGallery)}>
                 <div className="flex flex-col flex-wrap">
                   <div className="w-full lg:w-6/12 px-4">
                     <div className="relative w-full mb-3">
@@ -77,7 +90,7 @@ const AddGalerry = () => {
                         className="block   text-blueGray-600 text-xs font-bold mb-2"
                         htmlFor="grid-password"
                       >
-                        Gallery Name
+                        Project Name
                       </label>
                       <input
                         onChange={handleChange1}
@@ -85,7 +98,11 @@ const AddGalerry = () => {
                         name="gallery_name"
                         placeholder="insert image name...."
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        ref={register}
                       />
+                      <p style={{ color: "red" }}>
+                        {errors.gallery_name?.message}
+                      </p>
                     </div>
                   </div>
                   <div className="w-full lg:w-6/12 px-4">
@@ -102,7 +119,11 @@ const AddGalerry = () => {
                         name="description"
                         placeholder="insert image name...."
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        ref={register}
                       />
+                      <p style={{ color: "red" }}>
+                        {errors.description?.message}
+                      </p>
                     </div>
                   </div>
                   <div className="w-full lg:w-6/12 px-4">
@@ -115,7 +136,9 @@ const AddGalerry = () => {
                       </label>
                       <select
                         onChange={handleChange3}
+                        name="category_name"
                         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        ref={register}
                       >
                         <option value="">Not Selected</option>
                         {loading && <div>loading...</div>}
@@ -126,6 +149,9 @@ const AddGalerry = () => {
                             </option>
                           ))}
                       </select>
+                      <p style={{ color: "red" }}>
+                        {errors.category_name?.message}
+                      </p>
                     </div>
                     <button
                       className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"

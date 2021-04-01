@@ -1,3 +1,6 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+@import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 body {
   transition: all 1s;
 }
@@ -33,6 +36,10 @@ body {
   background-position: center;
   opacity: 0.3;
 }
+
+.star-click {
+  cursor: pointer;
+}
 .react-3d-carousel
   .slider-container
   .slider-content
@@ -58,7 +65,13 @@ body {
   /* right: 85% !important; */
   border: none !important;
 }
+.fa.fa-arrow-right::before {
+  content: "\f054";
+}
 
+.fa.fa-arrow-left::before {
+  content: "\f053";
+}
 @media screen and (max-width: 768px) {
   .star-image {
     height: 80vh;
@@ -90,26 +103,55 @@ body {
   border-radius: 20px;
 }
 
+.Test {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .variable-width {
+    width: 250px;
+  }
+}
+
+.slide {
+  transform: scale(0.8);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.activeSlide {
+  transform: scale(1);
+  opacity: 1;
+  display: unset !important;
+}
+
 .fa {
   font-size: 30px !important;
   font-weight: 100 !important;
 }
-.fa.fa-arrow-right::before {
-  content: "\f054";
+.arrow {
+  font-size: 30px !important;
+  font-weight: 100 !important;
+  /* background-color: #fff; */
+  color: #fff;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
 }
 
-.fa.fa-arrow-left::before {
-  content: "\f053";
+.arrow svg {
+  transition: color 300ms;
 }
 
-/* .section-testi {
-  background: linear-gradient(196.12deg, #14203f 16.77%, #011ef4 248.81%);
+.next {
+  right: 30%;
+  top: 50%;
 }
 
-.section-gallery {
-  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
-} */
-
+.prev {
+  left: 30%;
+  top: 50%;
+}
 /* .gallery-container {
   position: relative;
   width: 670px;
@@ -133,6 +175,26 @@ body {
     height: 200px;
   }
 } */
+
+.star-hover {
+  transition: ease-in-out 0.2s;
+}
+.star-hover:hover {
+  animation: ease-in-out 0.2s;
+
+  filter: invert(66%) sepia(41%) saturate(622%) hue-rotate(339deg)
+    brightness(200%) contrast(98%);
+}
+
+.heading-card {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex 1 1 100%; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+}
+.heading-card img {
+  flex: 1;
+}
 
 .gallery {
   object-fit: cover;

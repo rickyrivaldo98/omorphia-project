@@ -11,17 +11,18 @@ import Rhys from "../assets/image/testimonial/rhys.jpg";
 import Mumu from "../assets/image/testimonial/mumu.jpg";
 import Jae from "../assets/image/testimonial/jae.jpg";
 import Arven from "../assets/image/testimonial/arven.jpg";
-import seo from "../assets/image/testimonial/seo.png";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "../App.css";
 
 const Testimonial = () => {
   const card = (
-    <div className=" bg-white rounded-lg w-full md:w-2/3  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
+    <div className=" bg-white rounded-lg w-full md:w-3/5 md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialAria} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="flex pb-4 md:flex-none">
+          <div className="heading-card pb-4  md:flex-none">
             <img
               src={Aria}
               className=" photo-testiomonial w-10 rounded-full md:w-14 "
@@ -44,11 +45,11 @@ const Testimonial = () => {
     </div>
   );
   const card2 = (
-    <div className=" bg-white rounded-lg w-full md:w-2/3  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
+    <div className=" bg-white rounded-lg w-full md:w-3/5 md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialRhys} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="flex pb-4 md:flex-none">
+          <div className="heading-card pb-4 md:flex-none">
             <img
               src={Rhys}
               className=" photo-testiomonial w-10 rounded-full md:w-14 "
@@ -71,11 +72,11 @@ const Testimonial = () => {
     </div>
   );
   const card3 = (
-    <div className=" bg-white rounded-lg w-full md:w-2/3  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
+    <div className=" bg-white rounded-lg w-full md:w-3/5  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialMumu} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="flex pb-4 md:flex-none">
+          <div className="heading-card pb-4 md:flex-none">
             <img
               src={Mumu}
               className=" photo-testiomonial w-10 rounded-full md:w-14 "
@@ -100,11 +101,11 @@ const Testimonial = () => {
     </div>
   );
   const card4 = (
-    <div className=" bg-white rounded-lg w-full md:w-2/3  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
+    <div className=" bg-white rounded-lg w-full md:w-3/5  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialJae} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="flex pb-4 md:flex-none">
+          <div className="heading-card pb-4 md:flex-none">
             <img
               src={Jae}
               className=" photo-testiomonial w-10 rounded-full md:w-14 "
@@ -130,11 +131,11 @@ const Testimonial = () => {
   );
 
   const card5 = (
-    <div className=" bg-white rounded-lg w-full md:w-2/3  md:px-4 lg:px-6 p-1 md:py-5 mb-20">
+    <div className=" bg-white rounded-lg w-full md:w-3/5   md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialArven} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="flex pb-4 md:flex-none">
+          <div className="heading-card pb-4 md:flex-none">
             <img
               src={Arven}
               className=" photo-testiomonial w-10 rounded-full md:w-14 "
@@ -157,10 +158,34 @@ const Testimonial = () => {
     </div>
   );
 
-  let slides = [card, card2, card3, card4, card5];
+  let cards = [card, card2, card3, card4, card5];
+  const images = [
+    testimonialAria,
+    testimonialArven,
+    testimonialMumu,
+    testimonialMumu,
+    testimonialMumu,
+  ];
+
+  const NextArrow = ({ onClick }) => {
+    return (
+      <div className="arrow next" onClick={onClick}>
+        <FaChevronRight />
+      </div>
+    );
+  };
+
+  const PrevArrow = ({ onClick }) => {
+    return (
+      <div className="arrow prev" onClick={onClick}>
+        <FaChevronLeft />
+      </div>
+    );
+  };
 
   return (
     <>
+      {/* before revision */}
       <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
@@ -173,11 +198,24 @@ const Testimonial = () => {
         </p>
       </div>
       <div className=" md:mx-auto md:px-4 md:pb-36">
-        <Carousel slides={slides} interval={1000} />
-        {/* <div className="flex flex-nowrap ">
-                 
-                </div> */}
+        <Carousel slides={cards} interval={1000} />
       </div>
+
+      {/* after revision */}
+      {/* <div className="flex flex-col justify-center items-center text-white">
+        <p className="lg:text-4xl py-20 text-center">
+          What our clients <br /> say about us
+        </p>
+      </div>
+      <div className="md:mx-auto md:px-4 md:pb-36">
+        <Slider {...settings}>
+          {cards.map((card, idx) => (
+            <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
+              <div className="slider variable-width">{card}</div>
+            </div>
+          ))}
+        </Slider>
+      </div> */}
     </>
   );
 };

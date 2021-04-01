@@ -7,42 +7,91 @@ import inprnt from "../assets/image/inprnt.svg";
 import kofi from "../assets/image/mug.svg";
 import artstation from "../assets/image/artstation.svg";
 import Star from "../assets/image/contact-star.png";
+import { useAlert } from "react-alert";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import axios from "axios";
+
 import { Link, useHistory } from "react-router-dom";
+var Recaptcha = require("react-recaptcha");
 
 const Contactinfo = () => {
   let history = useHistory();
+  const alert = useAlert();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const schema = yup.object().shape({
+    Name: yup.string().required(),
+    Email: yup.string().email().required(),
+    Message: yup.string().required(),
+  });
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  // specifying your onload callback function
+
+  let callback = function () {
+    console.log("Done!!!!");
+  };
+  const [data, setData] = useState(false);
+
+  // specifying verify callback function
+  var verifyCallback = function (response) {
+    console.log(response);
+    if (response) {
+      setData(true);
+    } else {
+      alert.show("Coud not get recaptcha response");
+    }
+  };
+
   const handleChange1 = (e) => setName(e.target.value);
   const handleChange2 = (e) => setEmail(e.target.value);
   const handleChange3 = (e) => setMessage(e.target.value);
 
+  let captcha;
+  const resetCaptcha = () => {
+    // maybe set it till after is submitted
+    captcha.reset();
+  };
+
   const handleContact = (e) => {
-    e.preventDefault();
-    // setError(null);
-    setLoading(true);
-    const contact = {
-      name: name,
-      email: email,
-      message: message,
-    };
-    axios
-      .post("https://api.sarafdesign.com/contact", contact)
-      .then((res) => {
-        alert("Telah Dikirim");
-        setTimeout(() => {
-          history.push("/");
-        }, 3000);
-      })
-      .catch((error) => {
-        setLoading(false);
-      });
+    // e.preventDefault();
+    if (data) {
+      // setError(null);
+      setLoading(true);
+      const contact = {
+        name: name,
+        email: email,
+        message: message,
+      };
+      axios
+        .post("http://api.sarafdesign.com/contact", contact)
+        .then((res) => {
+          // console.log("Ini Hasil:");
+          // console.log(res);
+          // console.log("Berhasil Masuk");
+          alert.show("Telah Dikirim");
+          setTimeout(() => {
+            history.push("/");
+            window.location.reload();
+          }, 3000);
+        })
+        .catch((error) => {
+          setLoading(false);
+          // console.log("salah");
+          // console.log(error);
+        });
+    } else {
+      alert.show("Please verify that you are human!");
+    }
   };
 
   return (
@@ -52,7 +101,7 @@ const Contactinfo = () => {
       {/* {console.log("Message:" + message)} */}
       <div className="">
         <div className="contact text-white mb-32 ">
-          <div className="w-full justify-center items-center flex flex-col ">
+          <div className="w-full justify-center items-center flex flex-col p-5 ">
             <div data-aos="fade-down" className="">
               <img className="mx-auto" src={Star} alt="" />
               <h3 className="text-4xl text-center mb-5">Get in Touch</h3>
@@ -64,29 +113,48 @@ const Contactinfo = () => {
               </div>
             </div>
             <div data-aos="fade-down" className="flex-auto mt-14">
-              <form onSubmit={handleContact}>
+              <form onSubmit={handleSubmit(handleContact)}>
                 <input
                   className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
                   type="text"
                   placeholder="Your Name*"
                   id="name"
+                  name="Name"
                   onChange={handleChange1}
+                  ref={register}
                 />
+                <p>{errors.Name?.message}</p>
                 <input
                   className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
                   type="text"
                   placeholder="Your Email*"
                   id="email"
+                  name="Email"
                   onChange={handleChange2}
+                  ref={register}
                 />
+                <p>{errors.Email?.message}</p>
 
                 <textarea
                   className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
                   type="text"
                   placeholder="Message*"
                   id="message"
+                  name="Message"
                   onChange={handleChange3}
+                  ref={register}
                 ></textarea>
+                <p>{errors.Message?.message}</p>
+
+                <div className="md:w-full px-3 mb-6 md:mb-4">
+                  <Recaptcha
+                    sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
+                    render="explicit"
+                    verifyCallback={verifyCallback}
+                    onloadCallback={callback}
+                    onChange={() => resetCaptcha()}
+                  />
+                </div>
                 <div className="flex flex-col justify-center items-center ">
                   <button
                     className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"

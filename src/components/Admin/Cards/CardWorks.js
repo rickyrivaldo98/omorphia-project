@@ -2,19 +2,21 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import { css } from "@emotion/core";
+import Loader from "react-loader-spinner";
 // components
 
 export default function CardWorks({ color }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  let [colorLoading, setColorLoading] = useState("#ffffff");
 
   useEffect(() => {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/gallery").then((res) => {
       setData(res.data);
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
 
   let handleDelete = (e) => {
@@ -45,14 +47,14 @@ export default function CardWorks({ color }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Gallery Works
+                Project Works
               </h3>
               <Link to={`/admin/addgallery`}>
                 <button
                   className="bg-green-500 text-white  font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
                 >
-                  Add Gallery
+                  Add Project
                 </button>
               </Link>
             </div>
@@ -81,7 +83,7 @@ export default function CardWorks({ color }) {
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
                 >
-                  Name
+                  Project Name
                 </th>
                 <th
                   className={
@@ -116,7 +118,17 @@ export default function CardWorks({ color }) {
               </tr>
             </thead>
             <tbody>
-              {loading && <div>loading...</div>}
+              {loading && (
+                <div>
+                  <Loader
+                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                    type="Oval"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                  />
+                </div>
+              )}
               {!loading &&
                 data.map((x) => (
                   <tr>

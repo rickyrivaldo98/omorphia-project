@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useParams, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 // components
 
@@ -129,7 +130,15 @@ export default function CardWorksDetail({ color }) {
             </thead>
             <tbody>
               {data.length < 1 ? (
-                <div>Data Kosong</div>
+                <div>
+                  <Loader
+                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                    type="Oval"
+                    color="#00BFFF"
+                    height={80}
+                    width={80}
+                  />
+                </div>
               ) : (
                 <>
                   {loading && <div>loading...</div>}

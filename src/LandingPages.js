@@ -9,9 +9,12 @@ import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Bgatas1 from "./assets/image/bg1.png";
 import Bgatas2 from "./assets/image/bg2(1).png";
-import Pic1 from "./assets/image/pic1.jpg";
-import Pic2 from "./assets/image/pic2.png";
-import Pic3 from "./assets/image/pic3.jpg";
+import Pic1 from "./assets/image/hoverbintang1.png";
+import Pic2 from "./assets/image/hoverbintang2.jpg";
+import Pic3 from "./assets/image/hoverbintang3.png";
+import Pic4 from "./assets/image/hoverbintang4.png";
+import Pic5 from "./assets/image/hoverbintang5.png";
+
 import Logo from "./assets/image/logo.png";
 
 import bgmobile from "./assets/image/bg_mobile.png";
