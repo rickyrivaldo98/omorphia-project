@@ -30,6 +30,9 @@ export const LandingPage = () => {
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
+  const [image5, setImage5] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
@@ -67,6 +70,12 @@ export const LandingPage = () => {
   let handleCallback3 = (data) => {
     setImage3(data);
   };
+  let handleCallback4 = (data) => {
+    setImage4(data);
+  };
+  let handleCallback5 = (data) => {
+    setImage5(data);
+  };
   return (
     <>
       <div className="bg-all">
@@ -103,6 +112,24 @@ export const LandingPage = () => {
                 src={Pic3}
                 alt=""
               />
+            ) : image4 ? (
+              <img
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-back"
+                className="star-image absolute -z-1 w-full"
+                src={Pic4}
+                alt=""
+              />
+            ) : image5 ? (
+              <img
+                data-aos="zoom-in"
+                data-aos-duration="300"
+                data-aos-easing="ease-in-back"
+                className="star-image absolute -z-1 w-full"
+                src={Pic5}
+                alt=""
+              />
             ) : (
               <>
                 <img className="absolute -z-1 w-full" src={Bgatas1} alt="" />
@@ -124,6 +151,8 @@ export const LandingPage = () => {
               callImage1={handleCallback}
               callImage2={handleCallback2}
               callImage3={handleCallback3}
+              callImage4={handleCallback4}
+              callImage5={handleCallback5}
             />
             <div className=" overflow-hidden 2xl:pt-px xl:pt-28">
               <Timeslide />

@@ -15,6 +15,8 @@ const Hero = (props) => {
     setImage(!image1);
     setImage2(false);
     setImage3(false);
+    setImage4(false);
+    setImage5(false);
   };
 
   let changeImage2 = (e) => {
@@ -22,10 +24,32 @@ const Hero = (props) => {
     setImage2(!image2);
     setImage(false);
     setImage3(false);
+    setImage5(false);
+    setImage4(false);
   };
   let changeImage3 = (e) => {
     e.preventDefault();
     setImage3(!image3);
+    setImage(false);
+    setImage2(false);
+    setImage5(false);
+    setImage4(false);
+  };
+
+  let changeImage4 = (e) => {
+    e.preventDefault();
+    setImage4(!image4);
+    setImage3(false);
+    setImage5(false);
+    setImage(false);
+    setImage2(false);
+  };
+
+  let changeImage5 = (e) => {
+    e.preventDefault();
+    setImage5(!image5);
+    setImage4(false);
+    setImage3(false);
     setImage(false);
     setImage2(false);
   };
@@ -34,6 +58,8 @@ const Hero = (props) => {
     props.callImage1(image1);
     props.callImage2(image2);
     props.callImage3(image3);
+    props.callImage4(image4);
+    props.callImage5(image5);
   });
   return (
     <>
@@ -45,7 +71,7 @@ const Hero = (props) => {
           onClick={changeImage}
         />
         <img
-          src={star2}
+          src={star1}
           alt=""
           className="star-click star-hover absolute w-12 md:right-1/3 right-10 top-80 lg:top-32 md:w-20 md:top-28"
           onClick={changeImage2}
@@ -61,20 +87,20 @@ const Hero = (props) => {
           src={star1}
           alt=""
           className="star-click star-hover absolute transform rotate-90 xl:left-40 xl:top-64 lg:right-40 md:top-3 md:left-20 md:w-20 w-12 top-72 left-10"
-          onClick={changeImage}
-        />
-        <img
-          src={star2}
-          alt=""
-          className="star-click star-hover absolute left-1/3 top-60 lg:top-10 md:w-20 md:top-10 w-12"
-          onClick={changeImage2}
+          onClick={changeImage4}
         />
         <img
           src={star3}
           alt=""
+          className="star-click star-hover absolute left-1/3 top-60 lg:top-10 md:w-20 md:top-10 w-12"
+          onClick={changeImage5}
+        />
+        {/* <img
+          src={star3}
+          alt=""
           className="star-click star-hover absolute lg:left-1/4 xl:top-32 lg:top-44 lg:w-12 md:w-12 md:top-32 md:right-32 left-14 w-12 top-10"
           onClick={changeImage3}
-        />
+        /> */}
 
         <div className="h-auto flex flex-col text-white ">
           <div
