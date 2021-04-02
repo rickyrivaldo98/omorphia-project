@@ -3,10 +3,6 @@ import axios from "axios";
 import SimpleReactLightbox from "simple-react-lightbox";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Link } from "react-router-dom";
-import Image1 from "../assets/image/gallery/10.png";
-import Image2 from "../assets/image/gallery/9.png";
-import Image3 from "../assets/image/gallery/2.png";
-import Image4 from "../assets/image/gallery/4.png";
 
 const Mycomponent = () => {
   const [loading, setLoading] = useState(false);
