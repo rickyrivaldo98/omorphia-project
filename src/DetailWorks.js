@@ -26,6 +26,7 @@ const DetailWorks = () => {
   const [data4, setData4] = useState([]);
   const [data5, setData5] = useState([]);
   const [imageBG, setImageBG] = useState();
+  const [namaImage, setNamaImage] = useState();
 
   let history = useHistory();
 
@@ -42,6 +43,7 @@ const DetailWorks = () => {
     axios.get(`https://api.sarafdesign.com/images/${imageId}`).then((res) => {
       setData(res.data[0]);
       setImageBG(res.data[0].file);
+      setNamaImage(res.data[0].images_nama);
       axios
         .get(`https://api.sarafdesign.com/gallery/${res.data[0].id_gallery}`)
         .then((res2) => {
@@ -175,7 +177,7 @@ const DetailWorks = () => {
                     {data3.category_nama}
                   </p>
                   <p className="text-white text-5xl mt-2 font-semibold">
-                    {data.images_nama}
+                    {namaImage}
                   </p>
                   <p className="text-white  mt-6 font-normal">
                     {data2.deskripsi}
@@ -187,8 +189,15 @@ const DetailWorks = () => {
                       data5.map((x) => (
                         <>
                           <img
-                            className="w-32 p-3 box-image  "
-                            onClick={() => setImageBG(x.file)}
+                            className={
+                              namaImage === x.images_nama
+                                ? "w-32 p-2 box-image visited"
+                                : "w-32 p-3 box-image "
+                            }
+                            onClick={() => {
+                              setImageBG(x.file);
+                              setNamaImage(x.images_nama);
+                            }}
                             key={x.images_nama}
                             src={`https://api.sarafdesign.com/uploads/${x.file}`}
                             alt=""

@@ -37,17 +37,17 @@ const EditImages = () => {
       // images.set("images_nama", ImageName);
       // images.set("file", Image);
 
-      if (ImageName === "") {
+      if (ImageName == "") {
         images.set("images_nama", data.images_nama);
       } else {
         images.set("images_nama", ImageName);
       }
-      if (Image === "") {
-        images.set("file", data.file);
+      if (Image == "") {
+        images.set("file", "https://api.sarafdesign.com/uploads/" + data.file);
       } else {
         images.set("file", Image);
       }
-
+      console.log(images);
       const config = {
         headers: {
           accept: "application/json",
@@ -58,7 +58,7 @@ const EditImages = () => {
       // console.log(images);
       axios
         .put(
-          `https://api.sarafdesign.com/images/gallery/${data.images_nama}/${data.id_images}`,
+          `https://api.sarafdesign.com/images/gallery/${data.id_images}/${data.file}`,
           images,
           config
         )
@@ -153,7 +153,9 @@ const EditImages = () => {
                           )} */}
 
                           <input
-                            // value={data.images_nama}
+                            // value={
+                            //   ImageName === "" ? data.images_nama : ImageName
+                            // }
                             onChange={(e) => {
                               handleImageName(e);
                             }}
@@ -172,7 +174,7 @@ const EditImages = () => {
                             Image
                           </label>
                           <img
-                            src={`https://api.sarafdesign.com/${data.file}`}
+                            src={`https://api.sarafdesign.com/uploads/${data.file}`}
                             alt=""
                           />
                           <input
