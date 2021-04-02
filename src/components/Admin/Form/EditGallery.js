@@ -27,22 +27,25 @@ const EditGallery = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    const gallery = {
-      nama: GalleryName,
-      deskripsi: Deskripsi,
-    };
-    axios
-      .put(`https://api.sarafdesign.com/gallery/${id}`, gallery)
-      .then((res) => {
-        alert("Teredit");
-        setTimeout(() => {
-          history.push(`/admin/adminworks`);
-        }, 2000);
-      })
+    if (window.confirm("Apakah anda yakin ingin mengedit?")) {
+      const gallery = {
+        nama: GalleryName,
+        deskripsi: Deskripsi,
+      };
+      axios
+        .put(`https://api.sarafdesign.com/gallery/${id}`, gallery)
+        .then((res) => {
+          alert("Teredit");
+          setTimeout(() => {
+            history.push(`/admin/adminworks`);
+          }, 2000);
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
   };
 
   const handleGalleryName = (e) => setGalleryName(e.target.value);

@@ -23,21 +23,24 @@ const EditCategory = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    const category = {
-      category_nama: CategoryName,
-    };
-    axios
-      .put(`https://api.sarafdesign.com/category/${id}`, category)
-      .then((res) => {
-        alert("Teredit");
-        setTimeout(() => {
-          history.push(`/admin/admincategory`);
-        }, 2000);
-      })
+    if (window.confirm("Apakah anda yakin ingin mengedit?")) {
+      const category = {
+        category_nama: CategoryName,
+      };
+      axios
+        .put(`https://api.sarafdesign.com/category/${id}`, category)
+        .then((res) => {
+          alert("Teredit");
+          setTimeout(() => {
+            history.push(`/admin/admincategory`);
+          }, 2000);
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
   };
 
   const handleCategoryName = (e) => setCategoryName(e.target.value);
