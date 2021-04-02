@@ -15,6 +15,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import Navbar from "./layout/Navbar";
 import Dropdown from "./components/Dropdown";
 import Loader from "react-loader-spinner";
+import { css } from "glamor";
 
 const DetailWorks = () => {
   let { imageId } = useParams();
@@ -142,6 +143,25 @@ const DetailWorks = () => {
     beforeChange: (current, next) => setImageIndex(next),
   };
   // selesai fungsi tampilan detail gambar mobile
+
+  // style untuk hover image
+  var content = "belum bisa untuk hover tulisan, kemungkinan malam mas";
+
+  const styleHover = css({
+    ":hover::after": {
+      content: `${content}`,
+      color: "white",
+      position: "absolute",
+      // background: "red",
+      top: "0",
+      left: "0",
+      height: "100%",
+      width: " 100%",
+      // background: radial-gradient(90.94% 80.15% at 50.13% 7.12%,#5d27ab 0%,#0d1632 100%),
+      borderRadius: "16px",
+      opacity: " 0.8",
+    },
+  });
 
   return (
     <>
@@ -311,6 +331,7 @@ const DetailWorks = () => {
                   }}
                 ></Link> */}
                       <div
+                        className={`${styleHover} relative ImageWorks`}
                         onClick={() => clickHandle(x.id_images)}
                         key={x.nama_image}
                         style={{
