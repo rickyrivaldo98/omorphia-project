@@ -165,8 +165,12 @@ const DetailWorks = () => {
                 backgroundImage: `url(https://api.sarafdesign.com/uploads/${imageBG})`,
               }}
             >
+              <div className="hidden lg:block">
+                <Navbar toggle={toggle} />
+                <Dropdown isOpen={isOpen} toggle={toggle} />
+              </div>
               <div className="container p-3 mx-auto">
-                <div className="transform md:translate-x-24 translate-y-64">
+                <div className="transform  mt-32 ml-32  ">
                   <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-white text-center px-8 py-2">
                     {data3.category_nama}
                   </p>
@@ -176,22 +180,22 @@ const DetailWorks = () => {
                   <p className="text-white  mt-6 font-normal">
                     {data2.deskripsi}
                   </p>
-                </div>
-                <div className="flex flex-wrap absolute md:bottom-48 lg:bottom-96 text-white bg-opacity-20  bg-gray-900">
-                  {loading && <div>loading...</div>}
-                  {!loading &&
-                    // menampilkan semua gambar pada project
-                    data5.map((x) => (
-                      <>
-                        <img
-                          className="w-32 p-3 box-image  "
-                          onClick={() => setImageBG(x.file)}
-                          key={x.images_nama}
-                          src={`https://api.sarafdesign.com/uploads/${x.file}`}
-                          alt=""
-                        />
-                      </>
-                    ))}
+                  <div className="flex flex-nowrap w-1/3 overflow-x-scroll  text-white bg-opacity-20  bg-gray-900">
+                    {loading && <div>loading...</div>}
+                    {!loading &&
+                      // menampilkan semua gambar pada project
+                      data5.map((x) => (
+                        <>
+                          <img
+                            className="w-32 p-3 box-image  "
+                            onClick={() => setImageBG(x.file)}
+                            key={x.images_nama}
+                            src={`https://api.sarafdesign.com/uploads/${x.file}`}
+                            alt=""
+                          />
+                        </>
+                      ))}
+                  </div>
                 </div>
               </div>
               <div className="footer-works h-screen mb-auto absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">
