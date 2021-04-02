@@ -57,13 +57,13 @@ const AddImages = () => {
     picture: yup
       .mixed()
       .required("You need to provide a file")
-      .test("fileSize", "The file is too large please resize", (value) => {
+      .test("fileSize", "The file is too large, max 6 mb", (value) => {
         return value && value[0].size <= 6000000;
       })
       .test("type", "We only support jpeg,jpg,gif, or png.", (value) => {
         return (
           value && value[0].type === "image/jpeg",
-          "image/jpeg",
+          "image/jpg",
           "image/gif",
           "image/png"
         );

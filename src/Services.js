@@ -12,6 +12,7 @@ import Large from "./assets/image/services/large.jpg";
 import Large2 from "./assets/image/services/large2.jpg";
 import Large3 from "./assets/image/services/large3.jpg";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 import "./services.css";
 
@@ -68,9 +69,11 @@ const Services = () => {
                 style={{ backgroundImage: `url(${Small3})` }}
               >
                 <div>
-                  <button className="button-services bg-transparent hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 border border-black  rounded-full hover:border-transparent rounded absolute bottom-10 right-10">
-                    See Related Works
-                  </button>
+                  <Link className="" to="/works">
+                    <button className="button-services bg-transparent hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 border border-black  rounded-full hover:border-transparent rounded absolute bottom-10 right-10">
+                      See Related Works
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -123,9 +126,11 @@ const Services = () => {
                 style={{ backgroundImage: `url(${Large2})` }}
               >
                 <div>
-                  <button className="button-services bg-transparent hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 border border-black  rounded-full hover:border-transparent rounded absolute bottom-10 left-10">
-                    See Related Works
-                  </button>
+                  <Link className="" to="/works">
+                    <button className="button-services bg-transparent hover:bg-blue-500 text-black font-semibold hover:text-white py-2 px-4 border border-black  rounded-full hover:border-transparent rounded absolute bottom-10 left-10">
+                      See Related Works
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -200,9 +205,11 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="w-full  justify-center items-center flex flex-col">
-                    <button className="button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded ">
-                      See Related Works
-                    </button>
+                    <Link className="" to="/works">
+                      <button className="button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded ">
+                        See Related Works
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -242,9 +249,11 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="w-full  justify-center items-center flex flex-col">
-                    <button className=" button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded">
-                      See Related Works
-                    </button>
+                    <Link className="" to="/works">
+                      <button className=" button-services bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full hover:border-transparent rounded">
+                        See Related Works
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

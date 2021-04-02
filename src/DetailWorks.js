@@ -189,33 +189,60 @@ const DetailWorks = () => {
                 <Navbar toggle={toggle} />
                 <Dropdown isOpen={isOpen} toggle={toggle} />
               </div>
-              <div className="container p-3 mx-auto">
-                <div className="transform  mt-32 ml-32  ">
-                  <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-white text-center px-8 py-2">
+              <div className="container p-3 mx-auto ">
+                <div className="  mt-32 ml-32  ">
+                  <button
+                    style={{ cursor: "context-menu" }}
+                    disabled
+                    className="category-display  text-white text-center px-8 py-2"
+                  >
                     {data3.category_nama}
-                  </p>
-                  <p className="text-white text-5xl mt-2 font-semibold">
+                  </button>
+                  <p className="text-shadow text-shadow-md text-white text-5xl mt-2 font-semibold">
                     {data.images_nama}
                   </p>
-                  <p className="text-white  mt-6 font-normal">
+                  <p className="text-shadow text-shadow-md text-white w-1/3 mt-6 font-normal">
                     {data2.deskripsi}
                   </p>
-                  <div className="flex flex-nowrap w-1/3 overflow-x-scroll  text-white bg-opacity-20  bg-gray-900">
-                    {loading && <div>loading...</div>}
-                    {!loading &&
-                      // menampilkan semua gambar pada project
-                      data5.map((x) => (
-                        <>
-                          <img
-                            className="w-32 p-3 box-image  "
-                            onClick={() => setImageBG(x.file)}
-                            key={x.images_nama}
-                            src={`https://api.sarafdesign.com/uploads/${x.file}`}
-                            alt=""
-                          />
-                        </>
-                      ))}
-                  </div>
+                  {data5.length < 3 ? (
+                    <button
+                      style={{ cursor: "context-menu" }}
+                      disabled
+                      className="flex flex-nowrap overflow-x-scroll  xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20  bg-gray-900"
+                    >
+                      {loading && <div>loading...</div>}
+                      {!loading &&
+                        // menampilkan semua gambar pada project
+                        data5.map((x) => (
+                          <>
+                            <img
+                              className="w-32 p-3 box-image  "
+                              onClick={() => setImageBG(x.file)}
+                              key={x.images_nama}
+                              src={`https://api.sarafdesign.com/uploads/${x.file}`}
+                              alt=""
+                            />
+                          </>
+                        ))}
+                    </button>
+                  ) : (
+                    <div className="flex flex-nowrap overflow-x-scroll md:w-1/4 xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20  bg-gray-900">
+                      {loading && <div>loading...</div>}
+                      {!loading &&
+                        // menampilkan semua gambar pada project
+                        data5.map((x) => (
+                          <>
+                            <img
+                              className="w-32 p-3 box-image  "
+                              onClick={() => setImageBG(x.file)}
+                              key={x.images_nama}
+                              src={`https://api.sarafdesign.com/uploads/${x.file}`}
+                              alt=""
+                            />
+                          </>
+                        ))}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="footer-works h-screen mb-auto absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">

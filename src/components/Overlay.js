@@ -1,49 +1,71 @@
 // import "../App.css";
 import React, { useState, useEffect } from "react";
-import OverlayStart from "../assets/image/overlays/overlay-start.svg";
-import OverlayLoad from "../assets/image/overlays/overlay.svg";
-import OverlayEnd from "../assets/image/overlays/overlay-end.svg";
-import EndOverlay from "../assets/image/overlays/endof-overlay.svg";
-import "../overlay.css";
+import OverlayStart from "../assets/image/overlays/loading.gif";
 
-const Overlay = () => {
+import "../overlay.css";
+import { Transition } from "react-transition-group";
+const Overlay = ({ in: inProp }) => {
   const [isOverlayStart, setOverlayStart] = useState(true);
   const [isOverlayEnd, setOverlayEnd] = useState(false);
   const [isOverlayLoad, setOverlayLoad] = useState(false);
   const [isOverlayOver, setOverlayOver] = useState(false);
 
+  // useEffect(() => {
+  //   const loading1 = setTimeout(() => {
+  //     setOverlayStart(true);
+  //     // setOverlayEnd(true);
+  //   }, 2000);
+  //   return () => clearTimeout(loading1);
+  // });
+
+  // useEffect(() => {
+  //   const loading2 = setTimeout(() => {
+  //     setOverlayStart(false);
+
+  //     setOverlayEnd(true);
+  //   }, 2000);
+  //   return () => clearTimeout(loading2);
+  // });
+
+  // useEffect(() => {
+  //   const loading3 = setTimeout(() => {
+  //     setOverlayLoad(true);
+  //     // setOverlayOver(true);
+  //     setOverlayEnd(false);
+  //   }, 2000);
+  //   return () => clearTimeout(loading3);
+  // });
+
+  // useEffect(() => {
+  //   const loading4 = setTimeout(() => {
+  //     setOverlayLoad(false);
+  //     setOverlayEnd(true);
+  //   }, 2000);
+  //   return () => clearTimeout(loading4);
+  // });
+
   useEffect(() => {
     const loading1 = setTimeout(() => {
       setOverlayStart(false);
-      setOverlayEnd(true);
-    }, 2000);
+      // setOverlayEnd(true);
+    }, 6000);
     return () => clearTimeout(loading1);
-  });
-
-  useEffect(() => {
-    const loading2 = setTimeout(() => {
-      setOverlayEnd(false);
-      setOverlayOver(true);
-    }, 2000);
-    return () => clearTimeout(loading2);
-  });
-
-  useEffect(() => {
-    const loading3 = setTimeout(() => {
-      setOverlayOver(false);
-      setOverlayLoad(true);
-    }, 2000);
-    return () => clearTimeout(loading3);
   });
 
   return (
     <>
       {isOverlayStart && (
-        <div className="overlay-start">
-          <img src={OverlayStart} alt="" />
-        </div>
+        <Transition in={true} timeout={6000} appear>
+          {(status) => (
+            <div
+              className={`overlay-${status} fixed bottom-0 top-0 left-0 right-0 flex h-screen`}
+            >
+              <img className="m-auto" src={OverlayStart} alt="" />
+            </div>
+          )}
+        </Transition>
       )}
-      {isOverlayEnd && (
+      {/* {isOverlayEnd && (
         <div className="overlay-end">
           <img src={OverlayEnd} alt="" />
         </div>
@@ -57,7 +79,7 @@ const Overlay = () => {
         <div className="overlay-over">
           <img src={EndOverlay} alt="" />
         </div>
-      )}
+      )} */}
     </>
   );
 };

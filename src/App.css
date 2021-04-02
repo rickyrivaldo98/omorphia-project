@@ -67,6 +67,7 @@ body {
 
 .star-click {
   cursor: pointer;
+  z-index: 99;
 }
 .react-3d-carousel
   .slider-container

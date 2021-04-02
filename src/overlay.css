@@ -1,0 +1,30 @@
+.overlay-entered {
+  opacity: 1;
+}
+
+.overlay-entering {
+  animation-name: example;
+  animation-duration: 6s;
+}
+
+@keyframes example {
+  0% {
+    background-color: #fff;
+  }
+  25% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #fff;
+  }
+  80% {
+    background: white;
+  }
+  90% {
+    background: #14203e url("./assets/image/overlays/bg-blue.png") no-repeat
+      fixed center;
+  }
+  100% {
+    background: none;
+  }
+}

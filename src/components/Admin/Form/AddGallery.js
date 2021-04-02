@@ -35,7 +35,7 @@ const AddGalerry = () => {
   //validation form
   const schema = yup.object().shape({
     gallery_name: yup.string().required(),
-    description: yup.string().required(),
+    description: yup.string().max(280, "Max 280 chars").required(),
     category_name: yup.string().required(),
   });
   const { register, handleSubmit, errors } = useForm({
