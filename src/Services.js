@@ -15,12 +15,22 @@ import "./App.css";
 
 import "./services.css";
 
+import Dropdown from "./components/Dropdown";
+
 const Services = () => {
+  // fungsi navbar untuk dibuka di mobile
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  // akhir fungsi navbar
   return (
     <>
       <div className="bg-stars">
         <div className="services-bg hidden lg:block">
-          <Navbar />
+          <Navbar toggle={toggle} />
+          <Dropdown isOpen={isOpen} toggle={toggle} />
+
           <div className="mt-56 w-full justify-center items-center flex flex-col">
             {/* <img src={LogoAbout} alt="" className="mb-5" /> */}
             <div>
@@ -138,7 +148,9 @@ const Services = () => {
         </div>
 
         <div className="services-bg block lg:hidden">
-          <Navbar />
+          <Navbar toggle={toggle} />
+          <Dropdown isOpen={isOpen} toggle={toggle} />
+
           <div className="mt-56 w-full justify-center items-center flex flex-col">
             {/* <img src={LogoAbout} alt="" className="mb-5" /> */}
             <div>

@@ -36,7 +36,7 @@ const Mycomponent = () => {
   var randomSize = [Size.square, Size.long];
 
   return (
-    <div style={{ transform: "rotate(-2deg)" }}>
+    <div className=" " style={{ transform: "rotate(-2deg)" }}>
       <div className="animate-translateX">
         <div className="popup-gallery pb-5 flex">
           {loading && <div>loading...</div>}

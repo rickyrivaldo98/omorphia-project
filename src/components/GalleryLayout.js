@@ -5,6 +5,7 @@ import Navbar from "../layout/Navbar.js";
 import Footer from "../layout/Footer.js";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { css } from "glamor";
 
 const GalleryLayout = () => {
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,6 @@ const GalleryLayout = () => {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/images/gallery").then((res) => {
       setData(res.data);
-      console.log("isi gallery" + res.data);
       axios.get("https://api.sarafdesign.com/category").then((res2) => {
         setData2(res2.data);
         // axios
@@ -79,7 +79,36 @@ const GalleryLayout = () => {
     setActiveCat("");
     setActiveAll(true);
   };
+  // style untuk hover image
+  var content = "belum bisa untuk hover tulisan, kemungkinan malam mas";
 
+  const styleHover = css({
+    ":hover::after": {
+      content: `${content}`,
+      color: "white",
+      position: "absolute",
+      // background: "red",
+      top: "0",
+      left: "0",
+      height: "100%",
+      width: " 100%",
+      // background: radial-gradient(90.94% 80.15% at 50.13% 7.12%,#5d27ab 0%,#0d1632 100%),
+      borderRadius: "16px",
+      opacity: " 0.8",
+    },
+  });
+  const Testis = styled.div`
+    &:hover::after {
+      content: "hehehehe";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 16px;
+      opacity: 0.8;
+    }
+  `;
   return (
     <>
       <div className="flex flex-col justify-center items-center text-white ">
@@ -115,6 +144,7 @@ const GalleryLayout = () => {
           ? data.map((x) => (
               <>
                 <Link
+                  className={`${styleHover} relative ImageWorks`}
                   to={`/detailworks/${x.id_images}`}
                   key={x.nama_image}
                   style={{
