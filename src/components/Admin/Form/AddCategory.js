@@ -8,6 +8,7 @@ import { useAlert } from "react-alert";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { FaWindows } from "react-icons/fa";
 const AddCategory = () => {
   const alert = useAlert();
   let history = useHistory();
@@ -28,8 +29,8 @@ const AddCategory = () => {
         alert.show("Category Succesfully Added!");
         setTimeout(() => {
           history.push("/admin/admincategory");
-        }, 2000);
-      })
+        }, 3000);
+      }, [])
       .catch((error) => {
         console.log(error);
       });
@@ -52,6 +53,7 @@ const AddCategory = () => {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>

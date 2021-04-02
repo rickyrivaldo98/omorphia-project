@@ -12,33 +12,40 @@ export default function CardWorksDetail({ color }) {
   let { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  console.log(data);
+  const [empty, setEmpty] = useState(false);
+
+  // console.log(data);
   useEffect(() => {
     setLoading(true);
     axios
       .get(`https://api.sarafdesign.com/images/gallery/${id}`)
       .then((res) => {
         setData(res.data);
+      })
+      .catch((error) => {
+        setData([]);
+        setEmpty(true);
       });
     setLoading(false);
-  }, []);
+  }, [data]);
+  console.log("ini hasil data " + data);
 
   let handleDelete = (e, x) => {
-    setLoading(true);
-    axios
-      .delete(`https://api.sarafdesign.com/images/gallery/${x}/${e}`)
-      .then((res) => {
-        axios
-          .get(`https://api.sarafdesign.com/images/gallery/${id}`)
-          .then((res2) => {
-            setData(res2.data);
-            setTimeout(() => {
+    if (window.confirm("Apakah anda yakin ingin menghapus?")) {
+      setLoading(true);
+      axios
+        .delete(`https://api.sarafdesign.com/images/gallery/${e}/${x}`)
+        .then((res) => {
+          axios
+            .get(`https://api.sarafdesign.com/images/gallery/${id}`)
+            .then((res2) => {
+              setData(res2.data);
               alert("Kehapus");
-              window.location.reload();
-            }, 5000);
-          });
-      });
-    setLoading(false);
+            });
+        });
+      setLoading(false);
+    } else {
+    }
     // console.log(e, x);
   };
   return (
@@ -56,6 +63,7 @@ export default function CardWorksDetail({ color }) {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>
@@ -129,61 +137,69 @@ export default function CardWorksDetail({ color }) {
               </tr>
             </thead>
             <tbody>
-              {data.length < 1 ? (
-                <div>
-                  <Loader
-                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
-                    type="Oval"
-                    color="#00BFFF"
-                    height={80}
-                    width={80}
-                  />
+              {empty ? (
+                <div className="w-full justify-center items-center flex flex-col p-5">
+                  data kosong
                 </div>
               ) : (
                 <>
-                  {loading && <div>loading...</div>}
-                  {!loading &&
-                    data.map((x) => (
-                      <>
-                        <tr>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                            {x.id_images}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                            {x.images_nama}
-                          </td>
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <img
-                              className="w-32"
-                              src={`https://api.sarafdesign.com/${x.file}`}
-                              alt=""
-                            />
-                          </td>
+                  {data.length < 1 ? (
+                    <div>
+                      <Loader
+                        className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                        type="Oval"
+                        color="#00BFFF"
+                        height={80}
+                        width={80}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      {loading && <div>loading...</div>}
+                      {!loading &&
+                        data.map((x) => (
+                          <>
+                            <tr>
+                              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                                {x.id_images}
+                              </td>
+                              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                                {x.images_nama}
+                              </td>
+                              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                <img
+                                  className="w-32"
+                                  src={`https://api.sarafdesign.com/uploads/${x.file}`}
+                                  alt=""
+                                />
+                              </td>
 
-                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                            <div className="flex">
-                              <Link to={`/admin/editimages/${x.id_images}`}>
-                                <button
-                                  className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                                  type="button"
-                                >
-                                  Edit
-                                </button>
-                              </Link>
-                              <button
-                                className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                                type="button"
-                                onClick={() =>
-                                  handleDelete(x.id_images, x.images_nama)
-                                }
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      </>
-                    ))}
+                              <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                                <div className="flex">
+                                  <Link to={`/admin/editimages/${x.id_images}`}>
+                                    <button
+                                      className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                      type="button"
+                                    >
+                                      Edit
+                                    </button>
+                                  </Link>
+                                  <button
+                                    className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                    type="button"
+                                    onClick={() =>
+                                      handleDelete(x.id_images, x.images_nama)
+                                    }
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </>
+                        ))}
+                    </>
+                  )}
                 </>
               )}
             </tbody>

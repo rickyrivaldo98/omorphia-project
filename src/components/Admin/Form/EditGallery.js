@@ -27,22 +27,25 @@ const EditGallery = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    const gallery = {
-      nama: GalleryName,
-      deskripsi: Deskripsi,
-    };
-    axios
-      .put(`https://api.sarafdesign.com/gallery/${id}`, gallery)
-      .then((res) => {
-        alert("Teredit");
-        setTimeout(() => {
-          history.push(`/admin/adminworks`);
-        }, 2000);
-      })
+    if (window.confirm("Apakah anda yakin ingin mengedit?")) {
+      const gallery = {
+        nama: GalleryName,
+        deskripsi: Deskripsi,
+      };
+      axios
+        .put(`https://api.sarafdesign.com/gallery/${id}`, gallery)
+        .then((res) => {
+          alert("Teredit");
+          setTimeout(() => {
+            history.push(`/admin/adminworks`);
+          }, 2000);
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
   };
 
   const handleGalleryName = (e) => setGalleryName(e.target.value);
@@ -59,6 +62,7 @@ const EditGallery = () => {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>

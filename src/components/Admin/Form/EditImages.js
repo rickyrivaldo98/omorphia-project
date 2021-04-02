@@ -31,49 +31,52 @@ const EditImages = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    let images = new FormData();
-    images.set("id_gallery", data.id_gallery);
-    // images.set("images_nama", ImageName);
-    // images.set("file", Image);
+    if (window.confirm("Apakah anda yakin ingin mengedit?")) {
+      let images = new FormData();
+      images.set("id_gallery", data.id_gallery);
+      // images.set("images_nama", ImageName);
+      // images.set("file", Image);
 
-    if (ImageName === "") {
-      images.set("images_nama", data.images_nama);
+      if (ImageName === "") {
+        images.set("images_nama", data.images_nama);
+      } else {
+        images.set("images_nama", ImageName);
+      }
+      if (Image === "") {
+        images.set("file", data.file);
+      } else {
+        images.set("file", Image);
+      }
+
+      const config = {
+        headers: {
+          accept: "application/json",
+          "Accept-Language": "en-US,en;q=0.8",
+          "content-type": `multipart/form-data;boundary=${images._boundary}`,
+        },
+      };
+      // console.log(images);
+      axios
+        .put(
+          `https://api.sarafdesign.com/images/gallery/${data.images_nama}/${data.id_images}`,
+          images,
+          config
+        )
+        .then((res) => {
+          console.log(res.data + "this is data after api call");
+          alert.show("Images Successfully Edited ! ");
+          // setTimeout(() => {
+          // window.location.reload();
+          // }, 2000);
+          history.push(`/admin/adminworksdetail/${data.id_gallery}`);
+        })
+
+        .catch((error) => {
+          console.log(error);
+          console.log(images);
+        });
     } else {
-      images.set("images_nama", ImageName);
     }
-    if (Image === "") {
-      images.set("file", data.file);
-    } else {
-      images.set("file", Image);
-    }
-
-    const config = {
-      headers: {
-        accept: "application/json",
-        "Accept-Language": "en-US,en;q=0.8",
-        "content-type": `multipart/form-data;boundary=${images._boundary}`,
-      },
-    };
-    // console.log(images);
-    axios
-      .put(
-        `https://api.sarafdesign.com/images/gallery/${data.images_nama}/${data.id_images}`,
-        images,
-        config
-      )
-      .then((res) => {
-        console.log(res.data + "this is data after api call");
-        alert.show("Images Successfully Edited ! ");
-        // setTimeout(() => {
-        // window.location.reload();
-        // }, 2000);
-        history.push(`/admin/adminworksdetail/${data.id_gallery}`);
-      })
-
-      .catch((error) => {
-        console.log(error);
-        console.log(images);
-      });
   };
   const handleImageName = (e) => setImageName(e.target.value);
 
@@ -88,6 +91,7 @@ const EditImages = () => {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>

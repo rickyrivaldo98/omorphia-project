@@ -23,21 +23,24 @@ const EditCategory = () => {
 
   let edit = (e) => {
     e.preventDefault();
-    const category = {
-      category_nama: CategoryName,
-    };
-    axios
-      .put(`https://api.sarafdesign.com/category/${id}`, category)
-      .then((res) => {
-        alert("Teredit");
-        setTimeout(() => {
-          history.push(`/admin/admincategory`);
-        }, 2000);
-      })
+    if (window.confirm("Apakah anda yakin ingin mengedit?")) {
+      const category = {
+        category_nama: CategoryName,
+      };
+      axios
+        .put(`https://api.sarafdesign.com/category/${id}`, category)
+        .then((res) => {
+          alert("Teredit");
+          setTimeout(() => {
+            history.push(`/admin/admincategory`);
+          }, 2000);
+        })
 
-      .catch((error) => {
-        console.log(error);
-      });
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
   };
 
   const handleCategoryName = (e) => setCategoryName(e.target.value);
@@ -52,6 +55,7 @@ const EditCategory = () => {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>

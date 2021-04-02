@@ -9,26 +9,33 @@ import Loader from "react-loader-spinner";
 export default function CardWorks({ color }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [empty, setEmpty] = useState(false);
+
   let [colorLoading, setColorLoading] = useState("#ffffff");
 
   useEffect(() => {
     setLoading(true);
-    axios.get("https://api.sarafdesign.com/gallery").then((res) => {
-      setData(res.data);
-      setLoading(false);
-    });
-  }, []);
+    axios
+      .get("https://api.sarafdesign.com/gallery")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((error) => {
+        setData([]);
+        setEmpty(true);
+      });
+    setLoading(false);
+  }, [data]);
 
   let handleDelete = (e) => {
-    setLoading(true);
-    axios.delete(`https://api.sarafdesign.com/gallery/${e}`).then((res) => {
-      setTimeout(() => {
+    if (window.confirm("Apakah anda yakin ingin menghapus?")) {
+      setLoading(true);
+      axios.delete(`https://api.sarafdesign.com/gallery/${e}`).then((res) => {
         alert("Kehapus");
-        window.location.reload();
-      }, 5000);
-    });
-    setLoading(false);
-    // console.log(e, x);
+      });
+      setLoading(false);
+    } else {
+    }
   };
   return (
     <>
@@ -118,61 +125,71 @@ export default function CardWorks({ color }) {
               </tr>
             </thead>
             <tbody>
-              {loading && (
-                <div>
-                  <Loader
-                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
-                    type="Oval"
-                    color="#00BFFF"
-                    height={80}
-                    width={80}
-                  />
+              {empty ? (
+                <div className="w-full justify-center items-center flex flex-col p-5">
+                  data kosong
                 </div>
+              ) : (
+                <>
+                  {loading && (
+                    <div>
+                      <Loader
+                        className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                        type="Oval"
+                        color="#00BFFF"
+                        height={80}
+                        width={80}
+                      />
+                    </div>
+                  )}
+                  {!loading &&
+                    data.map((x) => (
+                      <tr>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                          {x.id_gallery}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                          {x.nama}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                          {x.category_nama}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                          {x.deskripsi}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                          <div className="flex">
+                            <Link
+                              to={`/admin/adminworksdetail/${x.id_gallery}`}
+                            >
+                              <button
+                                className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="button"
+                              >
+                                Details
+                              </button>
+                            </Link>
+                            <Link to={`/admin/editgallery/${x.id_gallery}`}>
+                              <button
+                                className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                type="button"
+                              >
+                                Edit
+                              </button>
+                            </Link>
+                            <button
+                              className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                              type="button"
+                              onClick={() => handleDelete(x.id_gallery)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                </>
               )}
-              {!loading &&
-                data.map((x) => (
-                  <tr>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                      {x.id_gallery}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                      {x.nama}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {x.category_nama}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                      {x.deskripsi}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                      <div className="flex">
-                        <Link to={`/admin/adminworksdetail/${x.id_gallery}`}>
-                          <button
-                            className="bg-blue-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button"
-                          >
-                            Details
-                          </button>
-                        </Link>
-                        <Link to={`/admin/editgallery/${x.id_gallery}`}>
-                          <button
-                            className="bg-yellow-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                            type="button"
-                          >
-                            Edit
-                          </button>
-                        </Link>
-                        <button
-                          className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                          type="button"
-                          onClick={() => handleDelete(x.id_gallery)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
             </tbody>
           </table>
         </div>
