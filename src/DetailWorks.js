@@ -16,6 +16,7 @@ import Navbar from "./layout/Navbar";
 import Dropdown from "./components/Dropdown";
 import Loader from "react-loader-spinner";
 import { css } from "glamor";
+import Footer from "./layout/Footer";
 
 const DetailWorks = () => {
   let { imageId } = useParams();
@@ -235,7 +236,7 @@ const DetailWorks = () => {
                         ))}
                     </button>
                   ) : (
-                    <div className="flex flex-nowrap overflow-x-scroll md:w-1/4 xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20  bg-gray-900">
+                    <div className="flex flex-nowrap overflow-x-scroll md:w-1/4 xl:mt-20 mt-32 rounded-lg p-3  text-white bg-opacity-20  bg-gray-900">
                       {loading && <div>loading...</div>}
                       {!loading &&
                         // menampilkan semua gambar pada project
@@ -264,53 +265,39 @@ const DetailWorks = () => {
               <div className="footer-works h-screen mb-auto absolute bottom-0 text-white bg-white w-full bg-opacity-50 p-5 flex items-center justify-between ">
                 <p>© Copyright 2020 Omorphia Visual All rights reserved.</p>
                 <div className="icon-social flex float-right">
-                  <Link
-                    to={{
-                      pathname: "https://www.instagram.com/omorphiavisual/",
-                    }}
+                  <a
+                    href="https://www.instagram.com/omorphiavisual/"
                     target="_blank"
                   >
                     <img className="px-1 md:px-3" src={instagram} alt="" />
-                  </Link>
-                  <Link
-                    to={{ pathname: "https://twitter.com/omorphia1 " }}
-                    target="_blank"
-                  >
+                  </a>
+                  <a href="https://twitter.com/omorphia1 " target="_blank">
                     <img className="px-1 md:px-3" src={twitter} alt="" />
-                  </Link>
-                  <Link to={{ pathname: "" }} target="_blank">
+                  </a>
+                  <a to={{ pathname: "" }} target="_blank">
                     <img className="px-1 md:px-3" src={facebook} alt="" />
-                  </Link>
-                  <Link
-                    to={{
-                      pathname: "https://www.fiverr.com/omorphiavisual",
-                    }}
+                  </a>
+                  <a
+                    href="https://www.fiverr.com/omorphiavisual"
                     target="_blank"
                   >
                     <img className="px-1 md:px-3" src={fiverr} alt="" />
-                  </Link>
-                  <Link
-                    to={{
-                      pathname: "https://www.inprnt.com/gallery/omorphia/#",
-                    }}
+                  </a>
+                  <a
+                    href="https://www.inprnt.com/gallery/omorphia/#"
                     target="_blank"
                   >
                     <img className="px-1 md:px-3" src={inprnt} alt="" />
-                  </Link>
-                  <Link
-                    to={{ pathname: "https://ko-fi.com/omorphia" }}
-                    target="_blank"
-                  >
+                  </a>
+                  <a href="https://ko-fi.com/omorphia" target="_blank">
                     <img className="px-1 md:px-3" src={kofi} alt="" />
-                  </Link>
-                  <Link
-                    to={{
-                      pathname: "https://www.artstation.com/omorphia ",
-                    }}
+                  </a>
+                  <a
+                    href="https://www.artstation.com/omorphia "
                     target="_blank"
                   >
                     <img className="px-1 md:px-3" src={artstation} alt="" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -386,6 +373,9 @@ const DetailWorks = () => {
                       ></div>
                     </>
                   ))}
+            </div>
+            <div className="mt-10">
+              <Footer />
             </div>
           </div>
         </>

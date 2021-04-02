@@ -105,54 +105,54 @@ const Contactinfo = () => {
       {/* {console.log("Nama:" + name)} */}
       {/* {console.log("Email:" + email)} */}
       {/* {console.log("Message:" + message)} */}
-      <div className="">
-        <div className="contact text-white mb-32 ">
-          <div className="w-full justify-center items-center flex flex-col p-5 ">
-            <div data-aos="fade-down" className="">
-              <img className="mx-auto" src={Star} alt="" />
-              <h3 className="text-4xl text-center mb-5">Get in Touch</h3>
-              <div className="w-full">
-                <p className="text-2xl  text-center max-w-sm">
-                  If you find our works interesting, and want to collaborate,
-                  don't hesitate to contact us.
-                </p>
-              </div>
+      <div className="contact text-white mb-32 ">
+        <div className="w-full justify-center items-center flex flex-col  ">
+          <div data-aos="fade-down" className="">
+            <img className="mx-auto" src={Star} alt="" />
+            <h3 className="text-4xl text-center mb-5">Get in Touch</h3>
+            <div className="w-full">
+              <p className="text-2xl  text-center max-w-md">
+                If you find our works interesting, and want to collaborate,
+                don't hesitate to contact us.
+              </p>
             </div>
-            <div data-aos="fade-down" className="flex-auto mt-14">
-              <form onSubmit={handleSubmit(handleContact)}>
-                <input
-                  className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
-                  type="text"
-                  placeholder="Your Name*"
-                  id="name"
-                  name="Name"
-                  onChange={handleChange1}
-                  ref={register}
-                />
-                <p>{errors.Name?.message}</p>
-                <input
-                  className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
-                  type="text"
-                  placeholder="Your Email*"
-                  id="email"
-                  name="Email"
-                  onChange={handleChange2}
-                  ref={register}
-                />
-                <p>{errors.Email?.message}</p>
+          </div>
+          <div data-aos="fade-down" className="md:w-1/3 flex-auto mt-14">
+            <form onSubmit={handleSubmit(handleContact)}>
+              <input
+                className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
+                type="text"
+                placeholder="Your Name*"
+                id="name"
+                name="Name"
+                onChange={handleChange1}
+                ref={register}
+              />
+              <p>{errors.Name?.message}</p>
+              <input
+                className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
+                type="text"
+                placeholder="Your Email*"
+                id="email"
+                name="Email"
+                onChange={handleChange2}
+                ref={register}
+              />
+              <p>{errors.Email?.message}</p>
 
-                <textarea
-                  className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
-                  type="text"
-                  placeholder="Message*"
-                  id="message"
-                  name="Message"
-                  onChange={handleChange3}
-                  ref={register}
-                ></textarea>
-                <p>{errors.Message?.message}</p>
+              <textarea
+                className="w-full bg-white bg-opacity-20 text-black border-b-4 border-white-600 rounded-t-lg py-3 px-4 mb-10"
+                type="text"
+                placeholder="Message*"
+                id="message"
+                name="Message"
+                onChange={handleChange3}
+                ref={register}
+              ></textarea>
+              <p>{errors.Message?.message}</p>
 
-                <div className="md:w-full px-3 mb-6 md:mb-4">
+              <div className="flex flex-col justify-center items-center ">
+                <div className=" px-3 mb-6 md:mb-4">
                   <Recaptcha
                     sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
                     render="explicit"
@@ -161,70 +161,65 @@ const Contactinfo = () => {
                     onChange={() => resetCaptcha()}
                   />
                 </div>
-                <div className="flex flex-col justify-center items-center ">
-                  <button
-                    className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                    type="submit"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
+                <button
+                  className="button-message bg-gradient-to-b from-blue-nebula to-nebula hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                  type="submit"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
 
-        <div className="section-footer">
-          <div className="flex flex-col justify-center items-center text-white">
-            <h1 className="text-2xl">Catch us on</h1>
-            <div
-              data-aos="fade-up"
-              className="icon-social grid grid-cols-7 p-10"
+      <div className="section-footer">
+        <div className="flex flex-col justify-center items-center text-white">
+          <h1 className="text-2xl">Catch us on</h1>
+          <div data-aos="fade-up" className="icon-social grid grid-cols-7 p-10">
+            <Link
+              to={{ pathname: "https://www.instagram.com/omorphiavisual/" }}
+              target="_blank"
             >
-              <Link
-                to={{ pathname: "https://www.instagram.com/omorphiavisual/" }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={instagram} alt="" />
-              </Link>
-              <Link
-                to={{ pathname: "https://twitter.com/omorphia1 " }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={twitter} alt="" />
-              </Link>
-              <Link to={{ pathname: "" }} target="_blank">
-                <img className="px-1 md:px-3" src={facebook} alt="" />
-              </Link>
-              <Link
-                to={{ pathname: "https://www.fiverr.com/omorphiavisual" }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={fiverr} alt="" />
-              </Link>
-              <Link
-                to={{ pathname: "https://www.inprnt.com/gallery/omorphia/#" }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={inprnt} alt="" />
-              </Link>
-              <Link
-                to={{ pathname: "https://ko-fi.com/omorphia" }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={kofi} alt="" />
-              </Link>
-              <Link
-                to={{ pathname: "https://www.artstation.com/omorphia " }}
-                target="_blank"
-              >
-                <img className="px-1 md:px-3" src={artstation} alt="" />
-              </Link>
-            </div>
-            <footer className="font-semibold  pb-10">
-              <h2>© 2020 Omorphia Visual</h2>
-            </footer>
+              <img className="px-1 md:px-3" src={instagram} alt="" />
+            </Link>
+            <Link
+              to={{ pathname: "https://twitter.com/omorphia1 " }}
+              target="_blank"
+            >
+              <img className="px-1 md:px-3" src={twitter} alt="" />
+            </Link>
+            <Link to={{ pathname: "" }} target="_blank">
+              <img className="px-1 md:px-3" src={facebook} alt="" />
+            </Link>
+            <Link
+              to={{ pathname: "https://www.fiverr.com/omorphiavisual" }}
+              target="_blank"
+            >
+              <img className="px-1 md:px-3" src={fiverr} alt="" />
+            </Link>
+            <Link
+              to={{ pathname: "https://www.inprnt.com/gallery/omorphia/#" }}
+              target="_blank"
+            >
+              <img className="px-1 md:px-3" src={inprnt} alt="" />
+            </Link>
+            <Link
+              to={{ pathname: "https://ko-fi.com/omorphia" }}
+              target="_blank"
+            >
+              <img className="px-1 md:px-3" src={kofi} alt="" />
+            </Link>
+            <Link
+              to={{ pathname: "https://www.artstation.com/omorphia " }}
+              target="_blank"
+            >
+              <img className="px-1 md:px-3" src={artstation} alt="" />
+            </Link>
           </div>
+          <footer className="font-semibold  pb-10">
+            <h2>© 2020 Omorphia Visual</h2>
+          </footer>
         </div>
       </div>
     </>
