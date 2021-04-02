@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 // import Image1 from "./assets/image/gallery/4.png";
-import LogoServices from "./assets/image/services/services-logo.png";
+import LogoServices from "./assets/image/services/servicesicon.png";
 import Star from "./assets/image/services/Star2.png";
 
 import Small from "./assets/image/services/small.jpg";

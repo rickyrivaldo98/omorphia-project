@@ -6,7 +6,7 @@ import instagram from "../assets/image/Instagram.svg";
 import inprnt from "../assets/image/inprnt.svg";
 import kofi from "../assets/image/mug.svg";
 import artstation from "../assets/image/artstation.svg";
-import Star from "../assets/image/contact-star.png";
+import Star from "../assets/image/contacticon.png";
 import { useAlert } from "react-alert";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
