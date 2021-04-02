@@ -16,6 +16,15 @@
   border-radius: 30px;
 }
 
+.visited {
+  background: linear-gradient(
+      139.67deg,
+      #f7e23b 4.7%,
+      rgba(255, 255, 255, 0) 122.62%
+    ),
+    #ff2128;
+}
+
 .box-image {
   border-radius: 20px;
 }

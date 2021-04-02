@@ -21,14 +21,16 @@ export default function CardWorksDetail({ color }) {
       .get(`https://api.sarafdesign.com/images/gallery/${id}`)
       .then((res) => {
         setData(res.data);
+        console.log(res);
       })
       .catch((error) => {
+        console.log(error);
         setData([]);
         setEmpty(true);
       });
     setLoading(false);
   }, [data]);
-  console.log("ini hasil data " + data);
+  // console.log("ini hasil data " + data);
 
   let handleDelete = (e, x) => {
     if (window.confirm("Apakah anda yakin ingin menghapus?")) {
@@ -188,7 +190,7 @@ export default function CardWorksDetail({ color }) {
                                     className="bg-red-500 text-white active:bg-blue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                     type="button"
                                     onClick={() =>
-                                      handleDelete(x.id_images, x.images_nama)
+                                      handleDelete(x.id_images, x.file)
                                     }
                                   >
                                     Delete
