@@ -8,13 +8,21 @@ import Loader from "react-loader-spinner";
 export default function CardTable({ color }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    axios.get("https://api.sarafdesign.com/contact").then((res) => {
-      setData(res.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://api.sarafdesign.com/contact")
+      .then((res) => {
+        setData(res.data);
+        console.log("ini res " + res);
+      })
+      .catch((error) => {
+        setData([]);
+        setEmpty(true);
+      });
+    setLoading(false);
   }, []);
 
   return (
@@ -87,38 +95,49 @@ export default function CardTable({ color }) {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {loading && (
-                <div>
-                  <Loader
-                    className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
-                    type="Oval"
-                    color="#00BFFF"
-                    height={80}
-                    width={80}
-                  />
-                </div>
-              )}
-              {!loading &&
-                data.map((x) => (
-                  <>
-                    <tr>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                        {x.id}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                        {x.name}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {x.email}
-                      </td>
-                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
-                        {x.message}
-                      </td>
-                    </tr>
-                  </>
-                ))}
-            </tbody>
+
+            {empty ? (
+              <div className="w-full justify-center items-center flex flex-col p-5">
+                data kosong
+              </div>
+            ) : (
+              <>
+                {loading && (
+                  <tbody>
+                    <div>
+                      <Loader
+                        className="flex items-center justify-center mx-auto text-center mt-10 mb-10"
+                        type="Oval"
+                        color="#00BFFF"
+                        height={80}
+                        width={80}
+                      />
+                    </div>
+                  </tbody>
+                )}
+                {!loading &&
+                  data.map((x) => (
+                    <>
+                      <tbody>
+                        <tr>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                            {x.id}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
+                            {x.name}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {x.email}
+                          </td>
+                          <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4">
+                            {x.message}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </>
+                  ))}
+              </>
+            )}
           </table>
         </div>
       </div>

@@ -31,7 +31,7 @@ const GalleryLayout = () => {
     });
     setLoading(false);
   }, []);
-
+  console.log(data.map((x) => x.id_gallery));
   // fungsi untuk set container pada gambar size small medium large
   const Size = {
     small: {

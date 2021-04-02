@@ -54,9 +54,7 @@ const AddGalerry = () => {
       .post("https://api.sarafdesign.com/gallery", gallery)
       .then((res) => {
         alert.show("Gallery Successfully Added!");
-        setTimeout(() => {
-          history.push("/admin/adminworks");
-        }, 3000);
+        history.push("/admin/adminworks");
       })
       .catch((error) => {
         setLoading(false);
@@ -73,6 +71,7 @@ const AddGalerry = () => {
                 <button
                   className="bg-blue-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={() => window.history.back()}
                 >
                   Back
                 </button>

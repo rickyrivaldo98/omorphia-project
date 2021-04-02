@@ -7,14 +7,25 @@ const CardDashboard = () => {
   const [data2, setData2] = useState([]);
 
   useEffect(() => {
-    axios.get("https://api.sarafdesign.com/contact").then((res) => {
-      setData(res.data);
-      axios.get("https://api.sarafdesign.com/images/gallery").then((res2) => {
-        setData2(res2.data);
+    axios
+      .get("https://api.sarafdesign.com/contact")
+      .then((res) => {
+        setData(res.data);
+        axios.get("https://api.sarafdesign.com/images/gallery").then((res2) => {
+          setData2(res2.data);
+          console.log(res2.data.length);
+        });
+      })
+      .catch((error) => {
+        axios.get("https://api.sarafdesign.com/images/gallery").then((res2) => {
+          setData2(res2.data);
+          console.log(res2.data.length);
+        });
       });
-    });
   }, []);
   console.log(data.length);
+  console.log(data2.length);
+
   return (
     <>
       {/* Header */}
