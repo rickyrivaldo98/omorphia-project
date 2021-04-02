@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GalleryLayout from "./components/GalleryLayout";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
-import star from "./assets/image/star-works.svg";
+import star from "./assets/image/worksicon.png";
 import "./App.css";
 import Dropdown from "./components/Dropdown";
 
