@@ -119,7 +119,7 @@ const GalleryLayout = () => {
                   key={x.nama_image}
                   style={{
                     ...myArray[Math.floor(Math.random() * myArray.length)],
-                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                    backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                   }}
                 ></Link>
               </>
@@ -141,7 +141,7 @@ const GalleryLayout = () => {
                     key={x.nama_image}
                     style={{
                       ...myArray[Math.floor(Math.random() * myArray.length)],
-                      backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                      backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                     }}
                   ></Link>
                 </>

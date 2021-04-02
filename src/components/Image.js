@@ -51,9 +51,11 @@ const Mycomponent = () => {
                     ...randomSize[
                       Math.floor(Math.random() * randomSize.length)
                     ],
-                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                    backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                   }}
-                ></div>
+                >
+                  {console.log("gambar " + x.file)}
+                </div>
               </div>
             ))}
         </div>
@@ -69,7 +71,7 @@ const Mycomponent = () => {
                     ...randomSize[
                       Math.floor(Math.random() * randomSize.length)
                     ],
-                    backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                    backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                   }}
                 ></div>
               </div>

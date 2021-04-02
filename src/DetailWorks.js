@@ -162,7 +162,7 @@ const DetailWorks = () => {
               className="hidden lg:block bg-detailWorks relative overflow-hidden"
               // menampilkan gambar ketika di klik
               style={{
-                backgroundImage: `url(https://api.sarafdesign.com/${imageBG})`,
+                backgroundImage: `url(https://api.sarafdesign.com/uploads/${imageBG})`,
               }}
             >
               <div className="container p-3 mx-auto">
@@ -187,7 +187,7 @@ const DetailWorks = () => {
                           className="w-32 p-3 box-image  "
                           onClick={() => setImageBG(x.file)}
                           key={x.images_nama}
-                          src={`https://api.sarafdesign.com/${x.file}`}
+                          src={`https://api.sarafdesign.com/uploads/${x.file}`}
                           alt=""
                         />
                       </>
@@ -270,7 +270,7 @@ const DetailWorks = () => {
                           key={img.images_nama}
                           className="bg-mobileDetail"
                           style={{
-                            backgroundImage: `url(https://api.sarafdesign.com/${img.file})`,
+                            backgroundImage: `url(https://api.sarafdesign.com/uploads/${img.file})`,
                           }}
                         ></div>
                       </div>
@@ -313,7 +313,7 @@ const DetailWorks = () => {
                           ...myArray[
                             Math.floor(Math.random() * myArray.length)
                           ],
-                          backgroundImage: `url(https://api.sarafdesign.com/${x.file})`,
+                          backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                         }}
                       ></div>
                     </>
