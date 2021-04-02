@@ -12,6 +12,7 @@ const Mycomponent = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
+  // fungsi untuk memunculkan gambar di hlaman landing page menggunakan API
   useEffect(() => {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/images/gallery").then((res) => {
@@ -20,6 +21,7 @@ const Mycomponent = () => {
     setLoading(false);
   }, []);
 
+  // fungsi untuk set setiap container gambar pada landing page
   const Size = {
     square: {
       position: "relative",
@@ -35,7 +37,6 @@ const Mycomponent = () => {
     },
   };
 
-  console.log(data);
   var randomSize = [Size.square, Size.long];
 
   return (
@@ -44,6 +45,7 @@ const Mycomponent = () => {
         <div className="popup-gallery pb-5 flex">
           {loading && <div>loading...</div>}
           {!loading &&
+            // memunculkan data gambar hanya 10 gambar saja yang terdapat pada API
             data.slice(0, 10).map((x) => (
               <div className="px-3 items-center">
                 <div

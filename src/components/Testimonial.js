@@ -17,6 +17,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "../App.css";
 
 const Testimonial = () => {
+  // membuat fungsi untuk card testimonial
   const card = (
     <div className=" bg-white rounded-lg w-full md:w-3/5 md:px-4 lg:px-6 p-1 md:py-5 mb-20">
       <img src={testimonialAria} className="w-full" alt="" />
@@ -158,15 +159,10 @@ const Testimonial = () => {
     </div>
   );
 
+  // memasukkan card ke dalam variable card agar bisa dipanggil dalam array
   let cards = [card, card2, card3, card4, card5];
-  const images = [
-    testimonialAria,
-    testimonialArven,
-    testimonialMumu,
-    testimonialMumu,
-    testimonialMumu,
-  ];
 
+  // fungsi untuk next
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -174,7 +170,7 @@ const Testimonial = () => {
       </div>
     );
   };
-
+  // fungsi untuk previous
   const PrevArrow = ({ onClick }) => {
     return (
       <div className="arrow prev" onClick={onClick}>
@@ -197,7 +193,7 @@ const Testimonial = () => {
           What our clients <br /> say about us
         </p>
       </div>
-      <div className=" md:mx-auto md:px-4 md:pb-36">
+      <div className=" md:mx-auto md:px-4 mt-10 md:pb-36">
         <Carousel slides={cards} interval={1000} />
       </div>
 

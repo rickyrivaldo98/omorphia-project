@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import Image1 from "./assets/image/gallery/4.png";
@@ -12,12 +13,21 @@ import Large3 from "./assets/image/services/large3.jpg";
 import "./App.css";
 
 import "./services.css";
+import Dropdown from "./components/Dropdown";
 
 const Services_mobile = () => {
+  // fungsi navbar untuk dibuka di mobile
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  // akhir fungsi navbar
+
   return (
     <>
       <div className="services-bg">
-        <Navbar />
+        <Navbar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
         <div className="mt-56 w-full justify-center items-center flex flex-col">
           {/* <img src={LogoAbout} alt="" className="mb-5" /> */}
           <div>

@@ -47,7 +47,9 @@ body {
   height: 100%;
   position: absolute;
   z-index: -1;
-  background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
+  /* background: linear-gradient(149.33deg, #1c2732 14.92%, #011ef4 239.54%);
+   */
+  background: linear-gradient(152.57deg, #14203e 60.25%, #011ef4 244.83%);
 }
 .bg-stars::after {
   content: "";
@@ -245,8 +247,11 @@ body {
     #051df4;
 }
 
-input[type="text"],
+.footer-omorphia input[type="text"],
 textarea[type="text"] {
+  color: white;
+}
+.footer-omorphia textarea[type="text"] {
   color: white;
 }
 

@@ -3,6 +3,7 @@ import ReactCompareImage from "react-compare-image";
 import Compare1 from "../assets/image/compare1.png";
 import Compare2 from "../assets/image/compare2.png";
 
+// halaman ini berfungsi untuk memperlihatkan perbandingan antara gambar day and night
 const Timeslide = () => {
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./layout/Footer";
 import Navbar from "./layout/Navbar";
 import LogoAbout from "./assets/image/logoabout.svg";
@@ -14,12 +14,19 @@ import Mumu from "./assets/image/testimonial/mumu.jpg";
 import Jae from "./assets/image/testimonial/jae.jpg";
 import Arven from "./assets/image/testimonial/arven.jpg";
 import testingImage from "./assets/image/testimonial/testimoni_arven.jpg";
+import Dropdown from "./components/Dropdown";
 
 const About = () => {
+  // ini fungsi untuk navbar
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <div className="bg-stars">
-        <Navbar />
+        <Navbar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
         <div className="section-about mt-36  mb-20">
           <div className="w-full px-5 py-12 justify-center items-center flex flex-col">
             <img src={LogoAbout} alt="" className="mb-5" />

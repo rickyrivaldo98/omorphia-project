@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import OnePiece from "../src/assets/image/works/onepiece.png";
+// import OnePiece from "../src/assets/image/works/onepiece.png";
 import "./works.css";
 import axios from "axios";
 import Slider from "react-slick";
@@ -29,11 +29,14 @@ const DetailWorks = () => {
 
   let history = useHistory();
 
+  // fungsi navbar untuk dibuka di mobile
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+  // akhir fungsi navbar
 
+  //mendapatkan value dari api, urutan gambar detail setelah di klik, id gallery, id category, gallery untuk detail
   useEffect(() => {
     setLoadingFull(true);
     axios.get(`https://api.sarafdesign.com/images/${imageId}`).then((res) => {
@@ -70,7 +73,9 @@ const DetailWorks = () => {
       }, 2000);
     });
   }, []);
+  // selesai API
 
+  // style untuk container tampilan gambar medium large small
   const styles = {
     pin_container: {
       margin: 0,
@@ -112,33 +117,18 @@ const DetailWorks = () => {
       gridRowEnd: "span 45",
     },
   };
+  // akhir dari membuat container gambar
+
+  // set variable untuk random size image
   var myArray = [Size.small, Size.medium, Size.large];
 
+  // ketika di klik setiap gambar akan reload
   const clickHandle = (e) => {
     history.push(`/detailworks/${e}`);
     window.location.reload();
   };
-  // var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
-  // console.log("ini " + data4);
-  // console.log("isi " + imageBG);
-  // console.log("isi api " + data.file);
 
-  const NextArrow = ({ onClick }) => {
-    return (
-      <div className="arrow next" onClick={onClick}>
-        <FaArrowRight />
-      </div>
-    );
-  };
-
-  const PrevArrow = ({ onClick }) => {
-    return (
-      <div className="arrow prev" onClick={onClick}>
-        <FaArrowLeft />
-      </div>
-    );
-  };
-
+  // fungsi untuk tampilan detail gambar saat mobile
   const [imageIndex, setImageIndex] = useState(0);
   const settings = {
     infinite: true,
@@ -151,6 +141,7 @@ const DetailWorks = () => {
 
     beforeChange: (current, next) => setImageIndex(next),
   };
+  // selesai fungsi tampilan detail gambar mobile
 
   return (
     <>
@@ -169,6 +160,7 @@ const DetailWorks = () => {
           <div className="bg-stars">
             <div
               className="hidden lg:block bg-detailWorks relative overflow-hidden"
+              // menampilkan gambar ketika di klik
               style={{
                 backgroundImage: `url(https://api.sarafdesign.com/${imageBG})`,
               }}
@@ -188,6 +180,7 @@ const DetailWorks = () => {
                 <div className="flex flex-wrap absolute md:bottom-48 lg:bottom-96 text-white bg-opacity-20  bg-gray-900">
                   {loading && <div>loading...</div>}
                   {!loading &&
+                    // menampilkan semua gambar pada project
                     data5.map((x) => (
                       <>
                         <img
@@ -258,10 +251,13 @@ const DetailWorks = () => {
               <Navbar toggle={toggle} />
               <Dropdown isOpen={isOpen} toggle={toggle} />
             </div>
-            <div className="lg:hidden mt-10">
+
+            {/*t tampilan untuk mobile  */}
+            <div className="lg:hidden mt-10 overflow-hidden">
               <Slider {...settings}>
                 {loading && <div>loading...</div>}
                 {!loading &&
+                  // menampilkan gambar mobile satu per satu
                   data5.map((img, idx) => (
                     <>
                       <div
@@ -277,12 +273,6 @@ const DetailWorks = () => {
                             backgroundImage: `url(https://api.sarafdesign.com/${img.file})`,
                           }}
                         ></div>
-                        {/* <img
-                        onClick={() => setImageBG(img.file)}
-                        key={img.images_nama}
-                        src={`https://api.sarafdesign.com/${img.file}`}
-                        alt=""
-                      /> */}
                       </div>
                     </>
                   ))}
@@ -300,6 +290,7 @@ const DetailWorks = () => {
               </div>
             </div>
 
+            {/* ini untuk menampilkan gambar container yang berhubungan dengan gambar yang sudah di klik */}
             <div style={styles.pin_container}>
               {loading && <div>loading...</div>}
               {!loading &&

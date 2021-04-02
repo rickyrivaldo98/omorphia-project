@@ -26,6 +26,7 @@ const Contactinfo = () => {
   const [setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // fungsi untuk validasi form contact
   const schema = yup.object().shape({
     Name: yup.string().required(),
     Email: yup.string().email().required(),
@@ -34,9 +35,10 @@ const Contactinfo = () => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
+  // akhir fungsi validasi
 
   // specifying your onload callback function
-
+  // fungsi untuk captcha
   let callback = function () {
     console.log("Done!!!!");
   };
@@ -51,7 +53,9 @@ const Contactinfo = () => {
       alert.show("Coud not get recaptcha response");
     }
   };
+  // akhir fungsi captcha
 
+  // fungsi untuk mendapatkan nilai dari setiap inputan form contact
   const handleChange1 = (e) => setName(e.target.value);
   const handleChange2 = (e) => setEmail(e.target.value);
   const handleChange3 = (e) => setMessage(e.target.value);
@@ -62,6 +66,7 @@ const Contactinfo = () => {
     captcha.reset();
   };
 
+  // fungsi untuk kirim data contact ke dalam API
   const handleContact = (e) => {
     // e.preventDefault();
     if (data) {
@@ -93,6 +98,7 @@ const Contactinfo = () => {
       alert.show("Please verify that you are human!");
     }
   };
+  // akhir dari fungsi kirim data ke API contact
 
   return (
     <>

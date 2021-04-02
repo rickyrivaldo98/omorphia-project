@@ -11,6 +11,8 @@ import Image8 from "../assets/image/gallery/8.png";
 import Image9 from "../assets/image/gallery/9.png";
 import Image10 from "../assets/image/gallery/10.png";
 
+// udah ga kepake lagi halaman ini !!!!
+
 const Pin = (props) => {
   // const [loading, setLoading] = useState(false);
   // const [data, setData] = useState([]);
@@ -45,40 +47,6 @@ const Pin = (props) => {
     large: {
       gridRowEnd: "span 45",
     },
-
-    // ImageBackground: {
-    //   backgroundImage: `url(${Image1})`,
-    // },
-    // ImageBackground: {
-    //   backgroundImage: `url(${Image1})`,
-    // },
-    // ImageBackground2: {
-    //   backgroundImage: `url(${Image2})`,
-    // },
-    // ImageBackground3: {
-    //   backgroundImage: `url(${Image3})`,
-    // },
-    // ImageBackground4: {
-    //   backgroundImage: `url(${Image4})`,
-    // },
-    // ImageBackground5: {
-    //   backgroundImage: `url(${Image5})`,
-    // },
-    // ImageBackground6: {
-    //   backgroundImage: `url(${Image6})`,
-    // },
-    // ImageBackground7: {
-    //   backgroundImage: `url(${Image7})`,
-    // },
-    // ImageBackground8: {
-    //   backgroundImage: `url(${Image8})`,
-    // },
-    // ImageBackground9: {
-    //   backgroundImage: `url(${Image9})`,
-    // },
-    // ImageBackground10: {
-    //   backgroundImage: `url(${Image10})`,
-    // },
   };
   return (
     <>

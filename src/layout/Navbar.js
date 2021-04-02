@@ -6,7 +6,7 @@ const Navbar = ({ toggle }) => {
   return (
     <>
       <nav className="flex justify-between items-center h-16 bg-transparent text-white relative pt-10 ">
-        <Link to="/" className="2xl:pl-72 xl:pl-64 lg:pl-28 md:pl-20 pl-10">
+        <Link to="/" className="2xl:pl-72 xl:pl-42 lg:pl-28 md:pl-20 pl-10">
           <img src={Logo} alt="" />
         </Link>
         <div className="px-10 cursor-pointer md:hidden" onClick={toggle}>
@@ -25,7 +25,7 @@ const Navbar = ({ toggle }) => {
             />
           </svg>
         </div>
-        <div className="pr-10 hidden md:block 2xl:pr-72 xl:pr-64 lg:pr-28">
+        <div className="pr-10 hidden md:block 2xl:pr-72 xl:pr-42 lg:pr-24">
           <Link
             className=" text-base lg:text-xl font-medium 
           2xl:mr-10 xl:mr-5 lg:mr-3"

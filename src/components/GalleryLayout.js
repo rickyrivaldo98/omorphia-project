@@ -7,33 +7,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const GalleryLayout = () => {
-  const Small = styled.div`
-    margin: 15px 10px;
-    padding: 0;
-    border-radius: 16px;
-    background-size: cover;
-    background-position: center;
-    grid-row-end: span 26;
-  `;
-
-  const Medium = styled.div`
-    margin: 15px 10px;
-    padding: 0;
-    border-radius: 16px;
-    background-size: cover;
-    background-position: center;
-    grid-row-end: span 33;
-  `;
-
-  const Large = styled.div`
-    margin: 15px 10px;
-    padding: 0;
-    border-radius: 16px;
-    background-size: cover;
-    background-position: center;
-    grid-row-end: span 45;
-  `;
-
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
@@ -41,6 +14,7 @@ const GalleryLayout = () => {
   const [activeCat, setActiveCat] = useState("");
   const [activeAll, setActiveAll] = useState(true);
 
+  // fungsi mendapatkan data dari API dimulai dari gambar, dan category
   useEffect(() => {
     setLoading(true);
     axios.get("https://api.sarafdesign.com/images/gallery").then((res) => {
@@ -58,7 +32,7 @@ const GalleryLayout = () => {
     setLoading(false);
   }, []);
 
-  // console.log(data.map((x) => x.file));
+  // fungsi untuk set container pada gambar size small medium large
   const Size = {
     small: {
       margin: "15px 10px",
@@ -90,6 +64,7 @@ const GalleryLayout = () => {
   var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
   console.log(randomItem);
 
+  // fungsi untuk klik per category
   const isActivecat = (e) => {
     // e.preventDefault(e);
     setData3(e);
@@ -97,15 +72,14 @@ const GalleryLayout = () => {
     setActiveAll(false);
   };
 
+  // fungsi untuk semua category
   const isActiveall = (e) => {
     // e.preventDefault(e);
     setData3("");
     setActiveCat("");
     setActiveAll(true);
   };
-  console.log("isi category: " + data3);
 
-  console.log("nilai data 3: " + data3);
   return (
     <>
       <div className="flex flex-col justify-center items-center text-white ">
