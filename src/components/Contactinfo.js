@@ -78,7 +78,7 @@ const Contactinfo = () => {
         message: message,
       };
       axios
-        .post("http://api.sarafdesign.com/contact", contact)
+        .post("https://api.sarafdesign.com/contact", contact)
         .then((res) => {
           // console.log("Ini Hasil:");
           // console.log(res);
@@ -154,7 +154,7 @@ const Contactinfo = () => {
               <div className="flex flex-col justify-center items-center ">
                 <div className=" px-3 mb-6 md:mb-4">
                   <Recaptcha
-                    sitekey="6LezuY4aAAAAAHRdlqMgHS7Wf3Z2ng7lX22Z_1C0"
+                    sitekey="6LeTZZoaAAAAAHmfeetEFmlPEYFKIxGFhbJyi8A_"
                     render="explicit"
                     verifyCallback={verifyCallback}
                     onloadCallback={callback}
