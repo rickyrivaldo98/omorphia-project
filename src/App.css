@@ -5,6 +5,42 @@ body {
   transition: all 1s;
 }
 
+/* width */
+body::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  /* border-radius: 10px; */
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+      139.67deg,
+      #f7e23b 4.7%,
+      rgba(255, 255, 255, 0) 122.62%
+    ),
+    #ff2128;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+      139.67deg,
+      #f7e23b 4.7%,
+      rgba(255, 255, 255, 0) 122.62%
+    ),
+    #ff2128;
+}
+
 .loading-screen {
   height: 100%;
   width: 100%;

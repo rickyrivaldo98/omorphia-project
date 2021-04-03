@@ -211,7 +211,7 @@ const DetailWorks = () => {
                     <button
                       style={{ cursor: "context-menu" }}
                       disabled
-                      className="flex flex-nowrap overflow-x-scroll  xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20  bg-gray-900"
+                      className="flex flex-nowrap   xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20 p-3  bg-gray-900"
                     >
                       {loading && <div>loading...</div>}
                       {!loading &&
@@ -320,28 +320,27 @@ const DetailWorks = () => {
                         }
                       >
                         <div
-                          onClick={() => setImageBG(img.file)}
                           key={img.images_nama}
                           className="bg-mobileDetail"
                           style={{
                             backgroundImage: `url(https://api.sarafdesign.com/uploads/${img.file})`,
                           }}
                         ></div>
+                        <div className="container mx-auto mt-10 p-10">
+                          <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-white text-center px-8 py-2">
+                            {data3.category_nama}
+                          </p>
+                          <p className="text-white text-5xl mt-2 font-semibold">
+                            {img.images_nama}
+                          </p>
+                          <p className="text-white  mt-6 font-normal">
+                            {img.deskripsi}
+                          </p>
+                        </div>
                       </div>
                     </>
                   ))}
               </Slider>
-              <div className="container mx-auto mt-10 p-10">
-                <p className="category-display xs:w-2/3 md:w-1/3 lg:w-1/6 text-white text-center px-8 py-2">
-                  {data3.category_nama}
-                </p>
-                <p className="text-white text-5xl mt-2 font-semibold">
-                  {data.images_nama}
-                </p>
-                <p className="text-white  mt-6 font-normal">
-                  {data2.deskripsi}
-                </p>
-              </div>
             </div>
 
             {/* ini untuk menampilkan gambar container yang berhubungan dengan gambar yang sudah di klik */}
@@ -361,7 +360,7 @@ const DetailWorks = () => {
                   }}
                 ></Link> */}
                       <div
-                        className="relative ImageWorks"
+                        className="relative ImageWorks cursor-pointer"
                         onClick={() => clickHandle(x.id_images)}
                         key={x.nama_image}
                         style={{
