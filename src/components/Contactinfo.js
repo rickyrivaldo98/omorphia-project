@@ -111,7 +111,7 @@ const Contactinfo = () => {
             <img className="mx-auto" src={Star} alt="" />
             <h3 className="text-4xl text-center mb-5">Get in Touch</h3>
             <div className="w-full">
-              <p className="text-2xl  text-center max-w-md">
+              <p className="text-xl md:text-2xl  text-center max-w-xs md:max-w-md">
                 If you find our works interesting, and want to collaborate,
                 don't hesitate to contact us.
               </p>
