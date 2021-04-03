@@ -361,7 +361,7 @@ const DetailWorks = () => {
                   }}
                 ></Link> */}
                       <div
-                        className={`${styleHover} relative ImageWorks`}
+                        className="relative ImageWorks"
                         onClick={() => clickHandle(x.id_images)}
                         key={x.nama_image}
                         style={{
@@ -370,7 +370,17 @@ const DetailWorks = () => {
                           ],
                           backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                         }}
-                      ></div>
+                      >
+                        <div className="text-center test">
+                          <div className="mt-5 font-extrabold">
+                            {x.category_nama}
+                          </div>
+                          <div className="absolute bottom-0 test2">
+                            <div className="font-bold">{x.images_nama}</div>
+                            <div>{x.nama}</div>
+                          </div>
+                        </div>
+                      </div>
                     </>
                   ))}
             </div>

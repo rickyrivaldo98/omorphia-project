@@ -16,6 +16,7 @@ const EditCategory = () => {
     setLoading(true);
     axios.get(`https://api.sarafdesign.com/category/${id}`).then((res) => {
       setData(res.data[0]);
+      setCategoryName(res.data[0].category_nama);
       // console.log(data);
     });
     setLoading(false);
@@ -80,11 +81,12 @@ const EditCategory = () => {
                           </label>
 
                           <input
+                            value={CategoryName}
                             onChange={(e) => {
                               handleCategoryName(e);
                             }}
                             type="text"
-                            placeholder={data.category_nama}
+                            // placeholder={data.category_nama}
                             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           />
                         </div>
