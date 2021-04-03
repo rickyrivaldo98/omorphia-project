@@ -10,9 +10,9 @@ const EditGallery = () => {
   let history = useHistory();
 
   const [GalleryName, setGalleryName] = useState("");
-  const [Deskripsi, setDeskripsi] = useState("");
 
   const [data, setData] = useState([]);
+  const [Deskripsi, setDeskripsi] = useState("");
   const [loading, setLoading] = useState(false);
   // console.log(data);
 
@@ -20,6 +20,8 @@ const EditGallery = () => {
     setLoading(true);
     axios.get(`https://api.sarafdesign.com/gallery/${id}`).then((res) => {
       setData(res.data[0]);
+      setDeskripsi(res.data[0].deskripsi);
+      setGalleryName(res.data[0].nama);
       // console.log(data);
     });
     setLoading(false);
@@ -48,10 +50,10 @@ const EditGallery = () => {
     }
   };
 
-  const handleGalleryName = (e) => setGalleryName(e.target.value);
-  const handleDeskripsi = (e) => setDeskripsi(e.target.value);
+  // const handleGalleryName = (e) => setGalleryName(e.target.value);
+  // let handleDeskripsi = (e) => setDeskripsi(e.target.value);
 
-  console.log(GalleryName);
+  console.log(Deskripsi);
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -67,7 +69,7 @@ const EditGallery = () => {
                   Back
                 </button>
                 <h6 className="text-blueGray-700 text-xl font-bold">
-                  Edit Gallery
+                  Edit Project Works
                 </h6>
               </div>
             </div>
@@ -83,15 +85,15 @@ const EditGallery = () => {
                             className="block  text-blueGray-600 text-xs font-bold mb-2"
                             htmlFor="grid-password"
                           >
-                            Gallery Name
+                            Project Works Name
                           </label>
                           <input
-                            // value={data.images_nama}
+                            value={GalleryName}
                             onChange={(e) => {
-                              handleGalleryName(e);
+                              setGalleryName(e.target.value);
                             }}
                             type="text"
-                            placeholder={data.nama}
+                            // placeholder={data.nama}
                             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           />
                         </div>
@@ -102,17 +104,18 @@ const EditGallery = () => {
                             className="block  text-blueGray-600 text-xs font-bold mb-2"
                             htmlFor="grid-password"
                           >
-                            Deksripsi Gallery
+                            Deksripsi Project Works
                           </label>
-                          <input
-                            // value={data.images_nama}
+                          <textarea
+                            value={Deskripsi}
                             onChange={(e) => {
-                              handleDeskripsi(e);
+                              setDeskripsi(e.target.value);
                             }}
                             type="text"
-                            placeholder={data.deskripsi}
+                            name={Deskripsi}
+                            // placeholder={data.deskripsi}
                             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          />
+                          ></textarea>
                         </div>
                       </div>
                       <div className="w-full lg:w-6/12 px-4">

@@ -25,7 +25,7 @@ export default function CardWorksDetail({ color }) {
       })
       .catch((error) => {
         console.log(error);
-        setData([]);
+        // setData([]);
         setEmpty(true);
       });
     setLoading(false);

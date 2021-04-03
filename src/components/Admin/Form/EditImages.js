@@ -24,6 +24,7 @@ const EditImages = () => {
     setLoading(true);
     axios.get(`https://api.sarafdesign.com/images/${id}`).then((res) => {
       setData(res.data[0]);
+      setImageName(res.data[0].images_nama);
       //   console.log(res.data[0].images_nama);
     });
     setLoading(false);
@@ -43,7 +44,7 @@ const EditImages = () => {
         images.set("images_nama", ImageName);
       }
       if (Image == "") {
-        images.set("file", "https://api.sarafdesign.com/uploads/" + data.file);
+        images.set("file", data.file);
       } else {
         images.set("file", Image);
       }
@@ -130,6 +131,26 @@ const EditImages = () => {
                             className="block  text-blueGray-600 text-xs font-bold mb-2"
                             htmlFor="grid-password"
                           >
+                            Image
+                          </label>
+                          <img
+                            src={`https://api.sarafdesign.com/uploads/${data.file}`}
+                            alt=""
+                          />
+                          <input
+                            onChange={handleImage}
+                            type="file"
+                            placeholder="input file image"
+                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                          />
+                        </div>
+                      </div>
+                      <div className="w-full lg:w-6/12 px-4">
+                        <div className="relative w-full mb-3">
+                          <label
+                            className="block  text-blueGray-600 text-xs font-bold mb-2"
+                            htmlFor="grid-password"
+                          >
                             Images Name
                           </label>
                           {/* {Image === undefined ? (
@@ -153,37 +174,16 @@ const EditImages = () => {
                           )} */}
 
                           <input
-                            // value={
-                            //   ImageName === "" ? data.images_nama : ImageName
-                            // }
+                            value={ImageName}
                             onChange={(e) => {
                               handleImageName(e);
                             }}
                             type="text"
-                            placeholder={data.images_nama}
+                            // placeholder={data.images_nama}
                             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                           />
                         </div>
-                      </div>
-                      <div className="w-full lg:w-6/12 px-4">
-                        <div className="relative w-full mb-3">
-                          <label
-                            className="block  text-blueGray-600 text-xs font-bold mb-2"
-                            htmlFor="grid-password"
-                          >
-                            Image
-                          </label>
-                          <img
-                            src={`https://api.sarafdesign.com/uploads/${data.file}`}
-                            alt=""
-                          />
-                          <input
-                            onChange={handleImage}
-                            type="file"
-                            placeholder="input file image"
-                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          />
-                        </div>
+
                         <button
                           className="bg-green-500 text-white active:bg-lightBlue-600 font-bold  text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                           type="button"
