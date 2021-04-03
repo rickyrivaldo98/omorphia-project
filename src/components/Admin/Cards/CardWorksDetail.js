@@ -50,6 +50,7 @@ export default function CardWorksDetail({ color }) {
     }
     // console.log(e, x);
   };
+  let i = 1;
   return (
     <>
       <div
@@ -163,7 +164,7 @@ export default function CardWorksDetail({ color }) {
                           <>
                             <tr>
                               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                                {x.id_images}
+                                {i++}
                               </td>
                               <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
                                 {x.images_nama}
