@@ -71,7 +71,7 @@ const Footer = () => {
         message: message,
       };
       axios
-        .post("http://api.sarafdesign.com/contact", contact)
+        .post("https://api.sarafdesign.com/contact", contact)
         .then((res) => {
           // console.log("Ini Hasil:");
           // console.log(res);

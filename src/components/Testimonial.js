@@ -23,17 +23,20 @@ const Testimonial = () => {
       <img src={testimonialAria} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="heading-card pb-4  md:flex-none">
-            <img
-              src={Aria}
-              className=" photo-testiomonial w-10 rounded-full md:w-14 "
-              alt=""
-            />
-            <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
-              @AriaSchnuffel <br />
-              <span className="font-normal text-xs">China</span>
-            </h3>
+          <div className="pb-4">
+            <div className="grid grid-cols-5 md:grid-cols-4">
+              <img
+                src={Aria}
+                className=" photo-testiomonial w-10 rounded-full md:w-14 "
+                alt=""
+              />
+              <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
+                @AriaSchnuffel <br />
+                <span className="font-normal text-xs">China</span>
+              </h3>
+            </div>
           </div>
+
           <div className="pb-4">
             <p className="text-xs md:text-sm">
               Huge thanks to <span className="font-bold">@Omorphia1</span> Thank
@@ -50,16 +53,18 @@ const Testimonial = () => {
       <img src={testimonialRhys} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="heading-card pb-4 md:flex-none">
-            <img
-              src={Rhys}
-              className=" photo-testiomonial w-10 rounded-full md:w-14 "
-              alt=""
-            />
-            <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
-              @RhysCyfnos <br />
-              <span className="font-normal text-xs">United States</span>
-            </h3>
+          <div className="pb-4">
+            <div className="grid grid-cols-5 md:grid-cols-4">
+              <img
+                src={Rhys}
+                className=" photo-testiomonial w-10 rounded-full md:w-14 "
+                alt=""
+              />
+              <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
+                @RhysCyfnos <br />
+                <span className="font-normal text-xs">United States</span>
+              </h3>
+            </div>
           </div>
           <div className="pb-4">
             <p className="text-xs md:text-sm">
@@ -77,16 +82,18 @@ const Testimonial = () => {
       <img src={testimonialMumu} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="heading-card pb-4 md:flex-none">
-            <img
-              src={Mumu}
-              className=" photo-testiomonial w-10 rounded-full md:w-14 "
-              alt=""
-            />
-            <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
-              @MumuGaVT <br />
-              <span className="font-normal text-xs">Japan</span>
-            </h3>
+          <div className="pb-4">
+            <div className="grid grid-cols-5 md:grid-cols-4">
+              <img
+                src={Mumu}
+                className=" photo-testiomonial w-10 rounded-full md:w-14 "
+                alt=""
+              />
+              <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
+                @MumuGaVT <br />
+                <span className="font-normal text-xs">Japan</span>
+              </h3>
+            </div>
           </div>
           <div className="pb-4">
             <p className="text-xs md:text-sm">
@@ -106,16 +113,18 @@ const Testimonial = () => {
       <img src={testimonialJae} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="heading-card pb-4 md:flex-none">
-            <img
-              src={Jae}
-              className=" photo-testiomonial w-10 rounded-full md:w-14 "
-              alt=""
-            />
-            <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
-              @jaejoonah_vt <br />
-              <span className="font-normal text-xs">Korea</span>
-            </h3>
+          <div className="pb-4">
+            <div className="grid grid-cols-5 md:grid-cols-4">
+              <img
+                src={Jae}
+                className=" photo-testiomonial w-10 rounded-full md:w-14 "
+                alt=""
+              />
+              <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
+                @jaejoonah_vt <br />
+                <span className="font-normal text-xs">Korea</span>
+              </h3>
+            </div>
           </div>
           <div className="pb-4">
             <p className="text-xs md:text-sm">
@@ -136,16 +145,18 @@ const Testimonial = () => {
       <img src={testimonialArven} className="w-full" alt="" />
       <div className="pt-4 pb-2">
         <div className="lg:flex items-center px-1  sm:space-x-5 lg:space-x-3.5 xl:space-x-3.5">
-          <div className="heading-card pb-4 md:flex-none">
-            <img
-              src={Arven}
-              className=" photo-testiomonial w-10 rounded-full md:w-14 "
-              alt=""
-            />
-            <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
-              @arventisgontera <br />
-              <span className="font-normal text-xs">German</span>
-            </h3>
+          <div className="pb-4">
+            <div className="grid grid-cols-5 md:grid-cols-4">
+              <img
+                src={Arven}
+                className=" photo-testiomonial w-10 rounded-full md:w-14 "
+                alt=""
+              />
+              <h3 className="pl-2 md:pl-4 text-sm font-bold w-full">
+                @arventisgontera <br />
+                <span className="font-normal text-xs">German</span>
+              </h3>
+            </div>
           </div>
           <div className="pb-4">
             <p className="text-xs md:text-sm">
