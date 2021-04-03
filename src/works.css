@@ -44,12 +44,24 @@ a.ImageWorks {
   -o-transition: all 250ms; */
   transition: all 250ms;
 }
-a.ImageWorks:hover::after {
+/* a.ImageWorks:hover::after {
+  content: "";
+  display: block;
   background: radial-gradient(
     90.94% 80.15% at 50.13% 7.12%,
     #5d27ab 0%,
     #0d1632 100%
   );
+  color: white;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 16px;
+  opacity: 0.8;
 }
 .ImageWorks {
   cursor: pointer;
@@ -60,4 +72,35 @@ a.ImageWorks:hover::after {
     #5d27ab 0%,
     #0d1632 100%
   );
+} */
+
+.ImageWorks:hover .test {
+  display: block;
+  background: radial-gradient(
+    90.94% 80.15% at 50.13% 7.12%,
+    #5d27ab 0%,
+    #0d1632 100%
+  );
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 16px;
+  opacity: 0.8;
+}
+
+.test {
+  /* background-color: #ff2128; */
+  color: white;
+  display: none;
+}
+
+.test2 {
+  left: 50%;
+  /* right: 50%; */
+  transform: translate(-50%, -50%);
 }

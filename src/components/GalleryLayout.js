@@ -80,11 +80,16 @@ const GalleryLayout = () => {
     setActiveAll(true);
   };
   // style untuk hover image
-  var content = "belum bisa untuk hover tulisan, kemungkinan malam mas";
+  const content = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
 
   const styleHover = css({
     ":hover::after": {
-      content: `${content}`,
+      // content: `${content}`,
       color: "white",
       position: "absolute",
       // background: "red",
@@ -144,14 +149,23 @@ const GalleryLayout = () => {
           ? data.map((x) => (
               <>
                 <Link
-                  className={`${styleHover} relative ImageWorks`}
+                  // content={x.nama_image}
+                  className="relative ImageWorks"
                   to={`/detailworks/${x.id_images}`}
-                  key={x.nama_image}
+                  key={x.images_nama}
                   style={{
                     ...myArray[Math.floor(Math.random() * myArray.length)],
                     backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                   }}
-                ></Link>
+                >
+                  <div className="text-center test">
+                    <div className="mt-5 font-extrabold">{x.category_nama}</div>
+                    <div className="absolute bottom-0 test2">
+                      <div className="font-bold">{x.images_nama}</div>
+                      <div>{x.nama}</div>
+                    </div>
+                  </div>
+                </Link>
               </>
             ))
           : data
@@ -167,13 +181,24 @@ const GalleryLayout = () => {
               .map((x) => (
                 <>
                   <Link
+                    className="relative ImageWorks"
                     to={`/detailworks/${x.id_images}`}
                     key={x.nama_image}
                     style={{
                       ...myArray[Math.floor(Math.random() * myArray.length)],
                       backgroundImage: `url(https://api.sarafdesign.com/uploads/${x.file})`,
                     }}
-                  ></Link>
+                  >
+                    <div className="text-center test">
+                      <div className="mt-5 font-extrabold">
+                        {x.category_nama}
+                      </div>
+                      <div className="absolute bottom-0 test2">
+                        <div className="font-bold">{x.images_nama}</div>
+                        <div>{x.nama}</div>
+                      </div>
+                    </div>
+                  </Link>
                 </>
               ))}
       </div>
