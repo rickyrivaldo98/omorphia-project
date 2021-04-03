@@ -37,6 +37,7 @@ export default function CardWorks({ color }) {
     } else {
     }
   };
+  let i = 1;
   return (
     <>
       <div
@@ -146,7 +147,7 @@ export default function CardWorks({ color }) {
                     data.map((x) => (
                       <tr>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                          {x.id_gallery}
+                          {i++}
                         </td>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
                           {x.nama}

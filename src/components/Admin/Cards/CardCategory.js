@@ -54,7 +54,7 @@ export default function CardCategory({ color }) {
     }
     // e.preventDefault();
   };
-
+  let i = 1;
   return (
     <>
       <div
@@ -145,7 +145,7 @@ export default function CardCategory({ color }) {
                     data.map((x) => (
                       <tr>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                          1
+                          {i++}
                         </td>
 
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">

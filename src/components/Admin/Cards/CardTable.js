@@ -24,6 +24,7 @@ export default function CardTable({ color }) {
       });
     setLoading(false);
   }, []);
+  let i = 1;
 
   return (
     <>
@@ -121,7 +122,7 @@ export default function CardTable({ color }) {
                       <tbody>
                         <tr>
                           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
-                            {x.id}
+                            {i++}
                           </td>
                           <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left font-bold">
                             {x.name}
