@@ -83,7 +83,7 @@ const Contactinfo = () => {
           // console.log("Ini Hasil:");
           // console.log(res);
           // console.log("Berhasil Masuk");
-          alert.show("Telah Dikirim");
+          alert.show("Message has been sent, Thank you!");
           setTimeout(() => {
             history.push("/");
             window.location.reload();

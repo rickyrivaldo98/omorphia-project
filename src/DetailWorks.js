@@ -193,7 +193,7 @@ const DetailWorks = () => {
                 <Dropdown isOpen={isOpen} toggle={toggle} />
               </div>
               <div className="container p-3 mx-auto ">
-                <div className="  mt-32 ml-32  ">
+                <div className=" xl:mt-32 lg:mt-24 ml-32  ">
                   <button
                     style={{ cursor: "context-menu" }}
                     disabled
@@ -211,7 +211,7 @@ const DetailWorks = () => {
                     <button
                       style={{ cursor: "context-menu" }}
                       disabled
-                      className="flex flex-nowrap   xl:mt-20 mt-32 rounded-lg  text-white bg-opacity-20 p-3  bg-gray-900"
+                      className="flex flex-nowrap   xl:mt-20 lg:mt-16 mt-32 rounded-lg  text-white bg-opacity-20 p-3  bg-gray-900"
                     >
                       {loading && <div>loading...</div>}
                       {!loading &&
